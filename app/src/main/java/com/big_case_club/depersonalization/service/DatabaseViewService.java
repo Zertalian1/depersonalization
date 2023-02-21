@@ -14,6 +14,6 @@ public class DatabaseViewService {
     private DataRepository dataRepository;
 
     public List<Data> viewDatabase() {
-        return dataRepository.findAll();
+        return (List<Data>) dataRepository.findAll();
     }
 }
