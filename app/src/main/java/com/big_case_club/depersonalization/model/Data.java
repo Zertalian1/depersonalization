@@ -1,9 +1,6 @@
 package com.big_case_club.depersonalization.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.*;
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDate;
