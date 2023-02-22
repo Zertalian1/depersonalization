@@ -16,13 +16,13 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests().requestMatchers("/api/database/**").hasRole("ADMIN").anyRequest().permitAll().and().formLogin();
+        http.csrf().disable().formLogin().permitAll().and()
+                .authorizeHttpRequests().requestMatchers("/api/database/**").hasRole("ADMIN").anyRequest().permitAll();
 
         return http.build();
     }
 
     @Bean
-
     public UserDetailsService userDetailsService() {
         UserDetails admin = User.withDefaultPasswordEncoder()
                 .username("admin")
