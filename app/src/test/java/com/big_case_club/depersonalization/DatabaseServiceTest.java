@@ -39,7 +39,6 @@ public class DatabaseServiceTest {
     public void testSaveAndViewDatabase() {
         // Создаем несколько объектов Data и сохраняем их в базе данных
         Data data1 = new Data();
-        data1.setId(1L);
         data1.setFullName("Иванов Иван Иванович");
         data1.setDateOfBirth(LocalDate.of(1990, 1, 1));
         data1.setPlaceOfBirth("Москва");
@@ -52,7 +51,6 @@ public class DatabaseServiceTest {
         data1.setDocumentNumber("1234 567890");
 
         Data data2 = new Data();
-        data2.setId(2L);
         data2.setFullName("Петров Петр Петрович");
         data2.setDateOfBirth(LocalDate.of(1980, 2, 2));
         data2.setPlaceOfBirth("Санкт-Петербург");
@@ -76,7 +74,6 @@ public class DatabaseServiceTest {
     public void testFindByIdAndUpdateData() {
         // Создаем тестовые данные
         Data data = new Data();
-        data.setId(1L);
         data.setFullName("John Smith");
         data.setDateOfBirth(LocalDate.of(1980, 1, 1));
         data.setPlaceOfBirth("New York");
