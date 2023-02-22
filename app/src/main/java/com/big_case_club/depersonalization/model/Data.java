@@ -2,7 +2,7 @@ package com.big_case_club.depersonalization.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.data.relational.core.mapping.Table;
+
 
 import java.time.LocalDate;
 
@@ -12,7 +12,6 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
-@Table(name = "data")
 public class Data {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
