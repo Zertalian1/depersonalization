@@ -1,4 +1,4 @@
-package com.big_case_club.depersonalization.model;
+package com.big_case_club.depersonalization.modelDepersonalize;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @Setter
 @EqualsAndHashCode
 @Entity
-public class PersonalizeData {
+public class DepersonalizeData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
