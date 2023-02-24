@@ -8,7 +8,7 @@ public class DepersonalizationAlgoritms {
     public void depersonalizeFullName(PersonalizeData data) {
         data.setFullName("DEPERSONALIZED_NAME");
     }
-    public void depersonalizesnils(PersonalizeData data) {
+    public void depersonalizeSnils(PersonalizeData data) {
         String oldSnils = data.getSnils();
         StringBuilder newSnils = new StringBuilder();
         int hash = Math.abs(oldSnils.hashCode());
