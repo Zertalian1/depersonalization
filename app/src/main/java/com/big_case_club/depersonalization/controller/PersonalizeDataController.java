@@ -1,6 +1,6 @@
 package com.big_case_club.depersonalization.controller;
 
-import com.big_case_club.depersonalization.model.PersonalizeData;
+import com.big_case_club.depersonalization.model.personalize.PersonalizeData;
 import com.big_case_club.depersonalization.service.PersonalizeDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

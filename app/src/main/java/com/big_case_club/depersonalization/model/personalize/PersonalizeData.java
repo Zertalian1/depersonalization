@@ -1,4 +1,4 @@
-package com.big_case_club.depersonalization.model;
+package com.big_case_club.depersonalization.model.personalize;
 
 import jakarta.persistence.*;
 import lombok.*;

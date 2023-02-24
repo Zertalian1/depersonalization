@@ -22,8 +22,8 @@ import java.util.HashMap;
 @Configuration
 public class DatabaseDepersonalizeConfig {
     public static final String PROPERTY_PREFIX = "app.depersonalize.datasource";
-    public static final String JPA_REPOSITORY_PACKAGE = "com.big_case_club.depersonalization.repositoryDepersonalize";
-    public static final String ENTITY_PACKAGE = "com.big_case_club.depersonalization.modelDepersonalize";
+    public static final String JPA_REPOSITORY_PACKAGE = "com.big_case_club.depersonalization.repository.depersonalize";
+    public static final String ENTITY_PACKAGE = "com.big_case_club.depersonalization.model.depersonalize";
     public static final String ENTITY_MANAGER_FACTORY = "depersonalizeEntityManagerFactory";
     public static final String DATA_SOURCE = "depersonalizeDataSource";
     public static final String DATABASE_PROPERTY = "depersonalizeDatabaseProperty";
