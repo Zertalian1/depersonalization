@@ -1,5 +1,6 @@
 package com.big_case_club.depersonalization.service;
 
+import com.big_case_club.depersonalization.algoritms.DepersonalizationAlgoritms;
 import com.big_case_club.depersonalization.dto.DepersonalizeDataDTO;
 import com.big_case_club.depersonalization.model.personalize.PersonalizeData;
 import com.big_case_club.depersonalization.repository.depersonalize.DepersonalizeDataRepository;
@@ -22,6 +23,9 @@ public class Depersonalizator {
     @Autowired
     private PersonalizeDataRepository personalizeDataRepository;
 
+    @Autowired
+    private DepersonalizationAlgoritms depersonalizationAlgoritms;
+
     public Boolean depersonalize(DepersonalizeDataDTO dataDto) {
         List<PersonalizeData> listData = personalizeDataRepository.findAll();
         Field[] fields = dataDto.getClass().getDeclaredFields();
@@ -34,7 +38,7 @@ public class Depersonalizator {
                     // получение имени поля
                     String fieldName = field.getName();
                     // получение метода depersonalize для соответствующего поля
-                    Method depersonalizeMethod = this.getClass().getMethod("depersonalize" + fieldName, PersonalizeData.class);
+                    Method depersonalizeMethod = depersonalizationAlgoritms.getClass().getMethod("depersonalize" + fieldName, PersonalizeData.class);
                     // вызов метода depersonalize для каждого обекта в листе
                     for (PersonalizeData data: listData) {
                         depersonalizeMethod.invoke(this, data);
@@ -47,10 +51,5 @@ public class Depersonalizator {
         }
         depersonalizeDataRepository.deleteAll();
         return true;
-    }
-
-    // пример метода depersonalize для поля name
-    public void depersonalizeFullName(PersonalizeData data) {
-        data.setFullName("DEPERSONALIZED_NAME");
     }
 }
