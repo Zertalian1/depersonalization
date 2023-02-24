@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@Transactional
+@Transactional(transactionManager = "depersonalizeTransactionManager")
 public class DepersonalizeDataServiceTest {
 
     @Autowired
