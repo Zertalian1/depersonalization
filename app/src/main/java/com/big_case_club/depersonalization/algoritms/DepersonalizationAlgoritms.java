@@ -112,4 +112,22 @@ public class DepersonalizationAlgoritms {
         newSnils.append(controlSumString);
         data.setSnils(newSnils.toString());
     }
+
+    public void depersonalizeContactInfo(PersonalizeData data) {
+        String oldContact = data.getContactInfo();
+        int hash = oldContact.hashCode();
+        String alphabet = "abcdefghijklmnopqrstuvwxyz0123456789";
+        StringBuilder newContact = new StringBuilder();
+        for(int i=0; i<oldContact.length(); ++i) {
+            char contactChar = oldContact.charAt(i);
+            if(contactChar!='.' && contactChar!='@') {
+                int temp = contactChar;
+                temp+=Math.abs(hash);
+                hash=String.valueOf(hash).hashCode();
+                contactChar=alphabet.charAt(temp%alphabet.length());
+            }
+            newContact.append(contactChar);
+        }
+        data.setContactInfo(newContact.toString());
+    }
 }
