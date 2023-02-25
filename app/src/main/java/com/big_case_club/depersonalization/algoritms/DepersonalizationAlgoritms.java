@@ -107,4 +107,21 @@ public class DepersonalizationAlgoritms {
         data.setPlaceOfBirth(citiesDictionary[hash%citiesDictionary.length]);
     }
 
+    public void depersonalizeDocumentNumber(PersonalizeData data) {
+        String oldDocument = data.getDocumentNumber();
+        int hash = oldDocument.hashCode();
+        StringBuilder newDocument = new StringBuilder();
+        for(int i=0; i<oldDocument.length(); ++i) {
+            char documentChar = oldDocument.charAt(i);
+            if(documentChar>='0' && documentChar<='9') {
+                int numberInt = documentChar-'0';
+                numberInt=(numberInt+Math.abs(hash))%10;
+                hash = String.valueOf(hash).hashCode();
+                documentChar = (char)(numberInt+'0');
+            }
+            newDocument.append(documentChar);
+        }
+        data.setContactInfo(newDocument.toString());
+    }
+
 }
