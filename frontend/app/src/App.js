@@ -6,9 +6,10 @@ const App = () => {
         <div className="App-background">
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-lg-3">
+                    <div className="col-sm">
+
                     </div>
-                    <div className="col-lg-2">
+                    <div className="col-sm">
                         <div className="table row justify-content-center mt-4">
                             <table className="table table-bordered" >
                                 <thead>
@@ -73,11 +74,27 @@ const App = () => {
                             </table>
                         </div>
                     </div>
-                    <div className="col-lg-7">
+                    <div className="col-sm">
                         <div className="row">
                             <div className="col-lg-12 d-flex mb-4 mt-4 justify-content-end">
                                 <button
                                     className="btn btn-primary btn-sm btn-success top"
+                                >
+                                    <i className="mdi mdi-plus me-1"/>
+                                    Авторизация
+                                </button>
+                            </div>
+                            <div className="col-lg-12 d-flex mb-4 justify-content-end">
+                                <button
+                                    className="btn btn-primary btn-sm btn-success"
+                                >
+                                    <i className="mdi mdi-plus me-1"/>
+                                    Авторизация
+                                </button>
+                            </div>
+                            <div className="col-lg-12 d-flex mb-4 justify-content-end">
+                                <button
+                                    className="btn btn-primary btn-sm btn-success"
                                 >
                                     <i className="mdi mdi-plus me-1"/>
                                     Авторизация
