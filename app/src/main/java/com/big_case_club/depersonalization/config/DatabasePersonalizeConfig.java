@@ -23,8 +23,8 @@ import java.util.HashMap;
 @Configuration
 public class DatabasePersonalizeConfig {
     public static final String PROPERTY_PREFIX = "app.personalize.datasource";
-    public static final String JPA_REPOSITORY_PACKAGE = "com.big_case_club.depersonalization.repository";
-    public static final String ENTITY_PACKAGE = "com.big_case_club.depersonalization.model";
+    public static final String JPA_REPOSITORY_PACKAGE = "com.big_case_club.depersonalization.repository.personalize";
+    public static final String ENTITY_PACKAGE = "com.big_case_club.depersonalization.model.personalize";
     public static final String ENTITY_MANAGER_FACTORY = "personalizeEntityManagerFactory";
     public static final String DATA_SOURCE = "personalizeDataSource";
     public static final String DATABASE_PROPERTY = "personalizeDatabaseProperty";

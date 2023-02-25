@@ -1,7 +1,7 @@
 package com.big_case_club.depersonalization;
 
-import com.big_case_club.depersonalization.modelDepersonalize.DepersonalizeData;
-import com.big_case_club.depersonalization.repositoryDepersonalize.DepersonalizeDataRepository;
+import com.big_case_club.depersonalization.model.depersonalize.DepersonalizeData;
+import com.big_case_club.depersonalization.repository.depersonalize.DepersonalizeDataRepository;
 import com.big_case_club.depersonalization.service.DepersonalizeDataService;
 import org.junit.Test;
 import org.junit.runner.RunWith;

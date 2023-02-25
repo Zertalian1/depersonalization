@@ -1,7 +1,7 @@
 package com.big_case_club.depersonalization.service;
 
-import com.big_case_club.depersonalization.modelDepersonalize.DepersonalizeData;
-import com.big_case_club.depersonalization.repositoryDepersonalize.DepersonalizeDataRepository;
+import com.big_case_club.depersonalization.model.depersonalize.DepersonalizeData;
+import com.big_case_club.depersonalization.repository.depersonalize.DepersonalizeDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
