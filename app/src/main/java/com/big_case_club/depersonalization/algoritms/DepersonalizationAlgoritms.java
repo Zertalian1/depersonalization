@@ -1,6 +1,7 @@
 package com.big_case_club.depersonalization.algoritms;
 
 import com.big_case_club.depersonalization.model.personalize.PersonalizeData;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
@@ -26,19 +27,27 @@ public class DepersonalizationAlgoritms {
         data.setFullName("DEPERSONALIZED_NAME");
     }*/
 
-    public void depersonalizeInn(PersonalizeData data) throws NoSuchAlgorithmException {
-        MessageDigest md = MessageDigest.getInstance("SHA-256");
-        byte[] digest = md.digest(data.getInn().getBytes(StandardCharsets.UTF_8));
-        StringBuilder string = new StringBuilder();
-        for(byte b: digest){
-            string.append(String.format("%02x", b & 0xff));
+    public void depersonalizeInn(PersonalizeData data) {
+        String oldInn = data.getInn();
+        int hash = oldInn.hashCode();
+        StringBuilder newInn = new StringBuilder();
+        for(int i=0; i<oldInn.length(); ++i) {
+            char innChar = oldInn.charAt(i);
+            if(innChar>='0' && innChar<='9') {
+                int number = innChar-'0';
+                number=(number+Math.abs(hash))%10;
+                hash=String.valueOf(hash).hashCode();
+                innChar = (char)(number+'0');
+            }
+            newInn.append(innChar);
         }
-        data.setInn(string.toString());
+        data.setInn(newInn.toString());
     }
 
     public void  depersonalizeDateOfBirth(PersonalizeData data){
         LocalDate date = data.getDateOfBirth();
-        data.setDateOfBirth(data.getDateOfBirth().withDayOfMonth((date.getDayOfMonth()*date.getDayOfYear()&date.getMonthValue())%28));
+        int hash = data.hashCode();
+        data.setDateOfBirth(date.withMonth(1+hash%12).withDayOfMonth(1+hash%28));
     }
 
     public void  depersonalizeFullName(PersonalizeData data){
