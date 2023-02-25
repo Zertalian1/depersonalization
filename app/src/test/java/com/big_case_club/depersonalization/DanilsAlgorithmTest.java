@@ -34,7 +34,7 @@ public class DanilsAlgorithmTest {
         personalizeData1.setAddress("Москва, ул. Пушкина, д. 1");
         personalizeData1.setDocumentType("паспорт");
         personalizeData1.setDocumentNumber("1234 567890");
-        DepersonalizationAlgoritms.depersonalizeInn(personalizeData1);
+        depersonalizationAlgoritms.depersonalizeInn(personalizeData1);
         assertEquals(personalizeData1.getInn(), "fa2a4917535deec40b26fd648fd81e383c02990f4f40ac669eb9d72d3175ead8");
     }
 
@@ -63,8 +63,8 @@ public class DanilsAlgorithmTest {
         personalizeData2.setAddress("Санкт-Петербург, ул. Лермонтова, д. 2");
         personalizeData2.setDocumentType("паспорт");
         personalizeData2.setDocumentNumber("1234 567890");
-        DepersonalizationAlgoritms.depersonalizeDateOfBirth(personalizeData1);
-        DepersonalizationAlgoritms.depersonalizeDateOfBirth(personalizeData2);
+        depersonalizationAlgoritms.depersonalizeDateOfBirth(personalizeData1);
+        depersonalizationAlgoritms.depersonalizeDateOfBirth(personalizeData2);
         assertEquals(personalizeData1.getDateOfBirth(), personalizeData2.getDateOfBirth());
     }
 
@@ -94,8 +94,8 @@ public class DanilsAlgorithmTest {
         personalizeData2.setDocumentType("паспорт");
         personalizeData2.setDocumentNumber("1234 567890");
 
-        DepersonalizationAlgoritms.depersonalizeFullName(personalizeData1);
-        DepersonalizationAlgoritms.depersonalizeFullName(personalizeData2);
+        depersonalizationAlgoritms.depersonalizeFullName(personalizeData1);
+        depersonalizationAlgoritms.depersonalizeFullName(personalizeData2);
 
         assertEquals(personalizeData1.getFullName(), personalizeData2.getFullName());
     }
