@@ -12,6 +12,8 @@ services:
       - "5432:5432"
     volumes:
       - app-volume:/var/lib/postgresql/data-original
+    depends_on:
+      - db2
 
   db2:
     image: postgres:latest
@@ -20,21 +22,26 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 1234
     ports:
-      - "5433:5432"
+      - "6101:6101"
+    command:
+      - "postgres"
+      - "-c"
+      - "port=6101"
     volumes:
       - app-volume:/var/lib/postgresql/data-depersonalize
 
+
+
+
   backend:
     build:
-      context: backend/app # Use an image built from the specified dockerfile in the `polling-app-server` directory.
+      context: app # Use an image built from the specified dockerfile in the `polling-app-server` directory.
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
-    networks:
-      - spring_net
     depends_on:
       - db1
-      - db2
+
 
   frontend:
     build:
@@ -47,6 +54,3 @@ services:
 
 volumes:
   app-volume: #
-
-networks:
-  spring_net:

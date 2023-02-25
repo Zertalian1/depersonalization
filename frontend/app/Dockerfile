@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:alpine
 WORKDIR /usr/app/front
 EXPOSE 3000
 COPY ./ ./
