@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b12775e4-48e4-4dfa-be4c-75117021168c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/mvnw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/mvnw.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/big_case_club/depersonalization/DepersonalizationApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/src/main/java/com/big_case_club/depersonalization/DepersonalizationApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/big_case_club/depersonalization/config/DatabaseDepersonalizeConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/src/main/java/com/big_case_club/depersonalization/config/DatabaseDepersonalizeConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/big_case_club/depersonalization/config/DatabasePersonalizeConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/src/main/java/com/big_case_club/depersonalization/config/DatabasePersonalizeConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/big_case_club/depersonalization/config/DatabaseProperty.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/src/main/java/com/big_case_club/depersonalization/config/DatabaseProperty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/big_case_club/depersonalization/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/src/main/java/com/big_case_club/depersonalization/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/big_case_club/depersonalization/controller/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/src/main/java/com/big_case_club/depersonalization/controller/AuthenticationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/big_case_club/depersonalization/controller/DepersonalizeDataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/src/main/java/com/big_case_club/depersonalization/controller/DepersonalizeDataController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/big_case_club/depersonalization/controller/FileDownloadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/src/main/java/com/big_case_club/depersonalization/controller/FileDownloadController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/big_case_club/depersonalization/controller/FileUploadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/src/main/java/com/big_case_club/depersonalization/controller/FileUploadController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/big_case_club/depersonalization/controller/PersonalizeDataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/src/main/java/com/big_case_club/depersonalization/controller/PersonalizeDataController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/big_case_club/depersonalization/exception/NotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/src/main/java/com/big_case_club/depersonalization/exception/NotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/big_case_club/depersonalization/model/depersonalize/DepersonalizeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/src/main/java/com/big_case_club/depersonalization/model/depersonalize/DepersonalizeData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/big_case_club/depersonalization/model/personalize/PersonalizeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/src/main/java/com/big_case_club/depersonalization/model/personalize/PersonalizeData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/big_case_club/depersonalization/repository/depersonalize/DepersonalizeDataRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/src/main/java/com/big_case_club/depersonalization/repository/depersonalize/DepersonalizeDataRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/big_case_club/depersonalization/repository/personalize/PersonalizeDataRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/src/main/java/com/big_case_club/depersonalization/repository/personalize/PersonalizeDataRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/big_case_club/depersonalization/service/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/src/main/java/com/big_case_club/depersonalization/service/AuthenticationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/big_case_club/depersonalization/service/DepersonalizeDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/src/main/java/com/big_case_club/depersonalization/service/DepersonalizeDataService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/big_case_club/depersonalization/service/FileDownloadService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/src/main/java/com/big_case_club/depersonalization/service/FileDownloadService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/big_case_club/depersonalization/service/FileUploadService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/src/main/java/com/big_case_club/depersonalization/service/FileUploadService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/big_case_club/depersonalization/service/PersonalizeDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/src/main/java/com/big_case_club/depersonalization/service/PersonalizeDataService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/big_case_club/depersonalization/DepersonalizeDataServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/src/test/java/com/big_case_club/depersonalization/DepersonalizeDataServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/big_case_club/depersonalization/PersonalizeDataServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/src/test/java/com/big_case_club/depersonalization/PersonalizeDataServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Описание классов" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/Описание классов" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2MDhdxvdJ4ZmphfERGW7xLnVxhp" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-18&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/zerta/IdeaProjects/depersonalization/backend&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\zerta\IdeaProjects\depersonalization" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Docker.docker-compose.yml: Compose Deployment">
+    <configuration name="app/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="buildOnly" value="true" />
+          <option name="sourceFilePath" value="backend/app/Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
+        <item itemvalue="Docker.app/Dockerfile" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b12775e4-48e4-4dfa-be4c-75117021168c" name="Changes" comment="" />
+      <created>1677308151404</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1677308151404</updated>
+      <workItem from="1677308152726" duration="3949000" />
+      <workItem from="1677313444951" duration="147000" />
+      <workItem from="1677313839228" duration="97000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

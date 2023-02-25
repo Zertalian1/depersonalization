@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+
+  db1:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: BigCaseClub
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - "5432:5432"
+    volumes:
+      - app-volume:/var/lib/postgresql/data-original
+
+  db2:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: BigCaseClubDepersonalize
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - "5433:5432"
+    volumes:
+      - app-volume:/var/lib/postgresql/data-depersonalize
+
+  backend:
+    build:
+      context: backend/app # Use an image built from the specified dockerfile in the `polling-app-server` directory.
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - spring_net
+    depends_on:
+      - db1
+      - db2
+
+  frontend:
+    build:
+      context: frontend/app # Use an image built from the specified dockerfile in the `polling-app-server` directory.
+      dockerfile: Dockerfile
+    ports:
+      - "80:3000"
+    depends_on:
+      - backend
+
+volumes:
+  app-volume: #
+
+networks:
+  spring_net:
