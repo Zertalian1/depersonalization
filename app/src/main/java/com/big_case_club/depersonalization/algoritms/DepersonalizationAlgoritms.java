@@ -46,14 +46,16 @@ public class DepersonalizationAlgoritms {
 
     public void  depersonalizeDateOfBirth(PersonalizeData data){
         LocalDate date = data.getDateOfBirth();
-        int hash = data.hashCode();
+        int hash = Math.abs(data.hashCode());
         data.setDateOfBirth(date.withMonth(1+hash%12).withDayOfMonth(1+hash%28));
     }
 
     public void  depersonalizeFullName(PersonalizeData data){
         String[] fullName = data.getFullName().split(" ");
-        String firstName = firstNamesDictionary[fullName[0].hashCode()%firstNamesDictionary.length];
-        String secondName = secondNameDictionary[fullName[1].hashCode()%secondNameDictionary.length];
+        int hash0 = Math.abs(fullName[0].hashCode());
+        int hash1 = Math.abs(fullName[1].hashCode());
+        String firstName = firstNamesDictionary[hash0%firstNamesDictionary.length];
+        String secondName = secondNameDictionary[hash1%secondNameDictionary.length];
         data.setFullName(firstName+" "+secondName);
     }
 
@@ -122,6 +124,10 @@ public class DepersonalizationAlgoritms {
             newDocument.append(documentChar);
         }
         data.setContactInfo(newDocument.toString());
+    }
+
+    public void depersonalizeAddress(PersonalizeData data) {
+
     }
 
 }
