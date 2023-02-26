@@ -1,6 +1,6 @@
 package com.big_case_club.depersonalization.service;
 
-import com.big_case_club.depersonalization.algoritms.DepersonalizationAlgoritms;
+import com.big_case_club.depersonalization.algoritms.DepersonalizationAlgorithms;
 import com.big_case_club.depersonalization.dto.DepersonalizeDataDTO;
 import com.big_case_club.depersonalization.mapper.PersonalizeDataMapper;
 import com.big_case_club.depersonalization.model.depersonalize.DepersonalizeData;
@@ -9,14 +9,10 @@ import com.big_case_club.depersonalization.repository.depersonalize.Depersonaliz
 import com.big_case_club.depersonalization.repository.personalize.PersonalizeDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.function.Consumer;
 
 @Service
 public class Depersonalizator {
@@ -28,7 +24,7 @@ public class Depersonalizator {
     private PersonalizeDataRepository personalizeDataRepository;
 
     @Autowired
-    private DepersonalizationAlgoritms depersonalizationAlgoritms;
+    private DepersonalizationAlgorithms depersonalizationAlgorithms;
 
     @Autowired
     private PersonalizeDataMapper personalizeDataMapper;
@@ -56,10 +52,10 @@ public class Depersonalizator {
                     // получение имени поля
                     String fieldName = field.getName();
                     // получение метода depersonalize для соответствующего поля
-                    Method depersonalizeMethod = depersonalizationAlgoritms.getClass().getMethod("depersonalize" + fieldName, PersonalizeData.class);
+                    Method depersonalizeMethod = depersonalizationAlgorithms.getClass().getMethod("depersonalize" + fieldName, PersonalizeData.class);
                     // вызов метода depersonalize для каждого обекта в листе
                     for (PersonalizeData data: listData) {
-                        depersonalizeMethod.invoke(depersonalizationAlgoritms, data);
+                        depersonalizeMethod.invoke(depersonalizationAlgorithms, data);
                     }
                 }
             } catch (Exception e) {
