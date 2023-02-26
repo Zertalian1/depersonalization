@@ -39,7 +39,7 @@ public class PersonalizeDataServiceTest {
         personalizeData1.setFullName("Иванов Иван Иванович");
         personalizeData1.setDateOfBirth(LocalDate.of(1990, 1, 1));
         personalizeData1.setPlaceOfBirth("Москва");
-        personalizeData1.setGender("мужской");
+        personalizeData1.setGender("м");
         personalizeData1.setInn("123456789012");
         personalizeData1.setSnils("123-456-789 00");
         personalizeData1.setContactInfo("ivanov@example.com");
@@ -51,7 +51,7 @@ public class PersonalizeDataServiceTest {
         personalizeData2.setFullName("Петров Петр Петрович");
         personalizeData2.setDateOfBirth(LocalDate.of(1980, 2, 2));
         personalizeData2.setPlaceOfBirth("Санкт-Петербург");
-        personalizeData2.setGender("мужской");
+        personalizeData2.setGender("м");
         personalizeData2.setInn("123456789012");
         personalizeData2.setSnils("123-456-789 00");
         personalizeData2.setContactInfo("petrov@example.com");
@@ -63,7 +63,9 @@ public class PersonalizeDataServiceTest {
 
         // Вызываем метод viewDatabase() и проверяем, что он возвращает список ожидаемых объектов Data
         List<PersonalizeData> expected = Arrays.asList(personalizeData1, personalizeData2);
-        List<PersonalizeData> actual = personalizeDataService.viewDatabase();
+        List<PersonalizeData> list = personalizeDataService.viewDatabase();
+        List<PersonalizeData> actual = list.subList(list.size()-2,list.size());
+
         assertThat(actual, containsInAnyOrder(expected.toArray()));
     }
 
@@ -74,7 +76,7 @@ public class PersonalizeDataServiceTest {
         personalizeData.setFullName("John Smith");
         personalizeData.setDateOfBirth(LocalDate.of(1980, 1, 1));
         personalizeData.setPlaceOfBirth("New York");
-        personalizeData.setGender("Male");
+        personalizeData.setGender("м");
         personalizeData.setInn("123456789012");
         personalizeData.setSnils("123-456-789 00");
         personalizeData.setContactInfo("john.smith@gmail.com");

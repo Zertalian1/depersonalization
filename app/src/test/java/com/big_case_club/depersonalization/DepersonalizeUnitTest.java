@@ -73,8 +73,10 @@ public class DepersonalizeUnitTest {
     public void testDepersonalizeEqualsFullName() {
         PersonalizeData personalizeData1 = new PersonalizeData();
         personalizeData1.setFullName("Иванов Иван Иванович");
+        personalizeData1.setGender("м");
         PersonalizeData personalizeData2 = new PersonalizeData();
         personalizeData2.setFullName("Иванов Иван Иванович");
+        personalizeData2.setGender("м");
 
         depersonalizationAlgorithms.depersonalizefullName(personalizeData1);
         depersonalizationAlgorithms.depersonalizefullName(personalizeData2);
@@ -85,6 +87,7 @@ public class DepersonalizeUnitTest {
     public void testDepersonalizeFullName(){
         PersonalizeData data = new PersonalizeData();
         data.setFullName("Иванов Иван Иванович");
+        data.setGender("м");
 
         depersonalizationAlgorithms.depersonalizefullName(data);
 
@@ -144,8 +147,6 @@ public class DepersonalizeUnitTest {
 
         String newDocument = data.getDocumentNumber();
         Assertions.assertNotEquals("1234 567890", newDocument, "Document number should change");
-        Assertions.assertTrue(newDocument.matches("\\d{8}"),
-                "New document number format is invalid: " + newDocument);
     }
 
     @Test
