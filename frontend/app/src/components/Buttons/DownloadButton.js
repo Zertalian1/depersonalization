@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import img1 from '../assets/images/authorization/authorization-nonclick.png';
-import img2 from '../assets/images/authorization/authorization-point.png';
-import img3 from '../assets/images/authorization/authorization-push.png';
-import {Button} from "reactstrap";
-
-const ViewButton = () => {
+import img1 from '../../assets/images/download/download-point.png'
+import img2 from '../../assets/images/download/download-point.png'
+import img3 from '../../assets/images/download/download-nonclick.png'
+const DownloadButton = () => {
     const [image, setImage] = useState(img1);
 
     const handleLeave = () => {
@@ -21,19 +19,19 @@ const ViewButton = () => {
 
     return (
         <div className="col-lg-12 d-flex mb-4 mt-4 justify-content-end">
-            <button
+            <img
                 className=""
-                style={{backgroundColor: 'none' , backgroundImage: `url(${img1})`}}
+                src={image}
+                alt="button"
+                style={{width: "40%", height: "100%"}}
                 onMouseEnter={handleHover}
                 onMouseLeave={handleLeave}
                 onMouseDown={handlePress}
                 onMouseUp={handleHover}
             >
-                dfjglsdhjksdfgkbn
-                <i className="mdi mdi-plus me-1"/>
-            </button>
+            </img>
         </div>
     );
 }
 
-export default ViewButton;
+export default DownloadButton;
