@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class DepersonalizeTest {
+public class DepersonalizeUnitTest {
 
     @Autowired
     private DepersonalizationAlgoritms depersonalizationAlgoritms;
@@ -25,7 +25,7 @@ public class DepersonalizeTest {
         PersonalizeData data = new PersonalizeData();
         data.setSnils("123-456-789 01");
 
-        depersonalizationAlgoritms.depersonalizeSnils(data);
+        depersonalizationAlgoritms.depersonalizesnils(data);
 
         String newSnils = data.getSnils();
         Assertions.assertNotEquals(newSnils,"123-456-789 01");
@@ -38,7 +38,7 @@ public class DepersonalizeTest {
         data.setInn("123456789012");
 
 
-        depersonalizationAlgoritms.depersonalizeInn(data);
+        depersonalizationAlgoritms.depersonalizeinn(data);
 
         String newInn = data.getInn();
         Assertions.assertNotEquals(newInn,"123456789012");
@@ -52,8 +52,8 @@ public class DepersonalizeTest {
         PersonalizeData personalizeData2 = new PersonalizeData();
         personalizeData2.setDateOfBirth(LocalDate.of(1990, 1, 1));
 
-        depersonalizationAlgoritms.depersonalizeDateOfBirth(personalizeData1);
-        depersonalizationAlgoritms.depersonalizeDateOfBirth(personalizeData2);
+        depersonalizationAlgoritms.depersonalizedateOfBirth(personalizeData1);
+        depersonalizationAlgoritms.depersonalizedateOfBirth(personalizeData2);
 
         assertEquals(personalizeData1.getDateOfBirth(), personalizeData2.getDateOfBirth());
     }
@@ -62,7 +62,7 @@ public class DepersonalizeTest {
         PersonalizeData data = new PersonalizeData();
         data.setDateOfBirth(LocalDate.of(1990, 1, 1));
 
-        depersonalizationAlgoritms.depersonalizeDateOfBirth(data);
+        depersonalizationAlgoritms.depersonalizedateOfBirth(data);
 
         LocalDate ld = data.getDateOfBirth();
         Assertions.assertEquals(1990, ld.getYear(), "Year should not change");
@@ -76,8 +76,8 @@ public class DepersonalizeTest {
         PersonalizeData personalizeData2 = new PersonalizeData();
         personalizeData2.setFullName("Иванов Иван Иванович");
 
-        depersonalizationAlgoritms.depersonalizeFullName(personalizeData1);
-        depersonalizationAlgoritms.depersonalizeFullName(personalizeData2);
+        depersonalizationAlgoritms.depersonalizefullName(personalizeData1);
+        depersonalizationAlgoritms.depersonalizefullName(personalizeData2);
 
         assertEquals(personalizeData1.getFullName(), personalizeData2.getFullName());
     }
@@ -86,7 +86,7 @@ public class DepersonalizeTest {
         PersonalizeData data = new PersonalizeData();
         data.setFullName("Иванов Иван Иванович");
 
-        depersonalizationAlgoritms.depersonalizeFullName(data);
+        depersonalizationAlgoritms.depersonalizefullName(data);
 
         Assertions.assertNotEquals("Иванов Иван Иванович", data.getFullName(), "Name should change");
     }
@@ -97,8 +97,8 @@ public class DepersonalizeTest {
         PersonalizeData personalizeData2 = new PersonalizeData();
         personalizeData2.setPlaceOfBirth("Москва");
 
-        depersonalizationAlgoritms.depersonalizePaceOfBirth(personalizeData1);
-        depersonalizationAlgoritms.depersonalizePaceOfBirth(personalizeData2);
+        depersonalizationAlgoritms.depersonalizeplaceOfBirth(personalizeData1);
+        depersonalizationAlgoritms.depersonalizeplaceOfBirth(personalizeData2);
 
         assertEquals(personalizeData1.getPlaceOfBirth(), personalizeData2.getPlaceOfBirth());
     }
@@ -107,7 +107,7 @@ public class DepersonalizeTest {
         PersonalizeData data = new PersonalizeData();
         data.setPlaceOfBirth("Москва");
 
-        depersonalizationAlgoritms.depersonalizePaceOfBirth(data);
+        depersonalizationAlgoritms.depersonalizeplaceOfBirth(data);
 
         Assertions.assertNotEquals("Москва", data.getPlaceOfBirth(), "Place should change");
     }
@@ -118,8 +118,8 @@ public class DepersonalizeTest {
         PersonalizeData personalizeData2 = new PersonalizeData();
         personalizeData2.setContactInfo("ivanov@example.com");
 
-        depersonalizationAlgoritms.depersonalizeContactInfo(personalizeData1);
-        depersonalizationAlgoritms.depersonalizeContactInfo(personalizeData2);
+        depersonalizationAlgoritms.depersonalizecontactInfo(personalizeData1);
+        depersonalizationAlgoritms.depersonalizecontactInfo(personalizeData2);
 
         assertEquals(personalizeData1.getContactInfo(), personalizeData2.getContactInfo());
     }
@@ -128,7 +128,7 @@ public class DepersonalizeTest {
         PersonalizeData data = new PersonalizeData();
         data.setContactInfo("ivanov@example.com");
 
-        depersonalizationAlgoritms.depersonalizeContactInfo(data);
+        depersonalizationAlgoritms.depersonalizecontactInfo(data);
 
         Assertions.assertNotEquals("ivanov@example.com", data.getContactInfo(), "ContactInfo should change");
         Assertions.assertTrue(data.getContactInfo().matches("^[^@]+@[^@]+\\.[^@]+$"),
@@ -140,7 +140,7 @@ public class DepersonalizeTest {
         PersonalizeData data = new PersonalizeData();
         data.setDocumentNumber("1234 567890");
 
-        depersonalizationAlgoritms.depersonalizeDocumentNumber(data);
+        depersonalizationAlgoritms.depersonalizedocumentNumber(data);
 
         String newDocument = data.getDocumentNumber();
         Assertions.assertNotEquals("1234 567890", newDocument, "Document number should change");
@@ -153,7 +153,7 @@ public class DepersonalizeTest {
         PersonalizeData data = new PersonalizeData();
         data.setAddress("Москва, ул. Пушкина, д. 1");
 
-        depersonalizationAlgoritms.depersonalizeAddress(data);
+        depersonalizationAlgoritms.depersonalizeaddress(data);
 
         String newAddress = data.getAddress();
         Assertions.assertNotEquals("Москва, ул. Пушкина, д. 1", newAddress, "Address number should change");

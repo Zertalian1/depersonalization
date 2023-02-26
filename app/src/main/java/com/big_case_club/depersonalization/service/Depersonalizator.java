@@ -30,13 +30,16 @@ public class Depersonalizator {
     @Autowired
     private DepersonalizationAlgoritms depersonalizationAlgoritms;
 
+    @Autowired
+    private PersonalizeDataMapper personalizeDataMapper;
+
     public Boolean depersonalize(DepersonalizeDataDTO dataDto) {
         List<PersonalizeData> personalizeDataList = personalizeDataRepository.findAll();
         personalizeDataList = depersonalizeEachFiled(dataDto,personalizeDataList);
         if(personalizeDataList == null) {
             return false;
         }
-        List<DepersonalizeData> depersonalizeDataList = PersonalizeDataMapper.INSTANCE.toDepersonalizeDataList(personalizeDataList);
+        List<DepersonalizeData> depersonalizeDataList = personalizeDataMapper.toDepersonalizeDataList(personalizeDataList);
         depersonalizeDataRepository.deleteAll();
         depersonalizeDataRepository.saveAll(depersonalizeDataList);
         return true;
