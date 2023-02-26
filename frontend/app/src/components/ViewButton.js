@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import img1 from '../assets/images/authorization/authorization-nonclick.png';
 import img2 from '../assets/images/authorization/authorization-point.png';
 import img3 from '../assets/images/authorization/authorization-push.png';
+import {Button} from "reactstrap";
 
 const ViewButton = () => {
     const [image, setImage] = useState(img1);
@@ -22,7 +23,7 @@ const ViewButton = () => {
         <div className="col-lg-12 d-flex mb-4 mt-4 justify-content-end">
             <button
                 className=""
-                style={{backgroundColor: 'none' , backgroundImage: `url(${image})`}}
+                style={{backgroundColor: 'none' , backgroundImage: `url(${img1})`}}
                 onMouseEnter={handleHover}
                 onMouseLeave={handleLeave}
                 onMouseDown={handlePress}
