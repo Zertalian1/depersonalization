@@ -1,15 +1,9 @@
 package com.big_case_club.depersonalization.algoritms;
 
 import com.big_case_club.depersonalization.model.personalize.PersonalizeData;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Component;
 
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 @Component
 public class DepersonalizationAlgoritms {
@@ -29,7 +23,7 @@ public class DepersonalizationAlgoritms {
         data.setFullName("DEPERSONALIZED_NAME");
     }*/
 
-    public void depersonalizeInn(PersonalizeData data) {
+    public void depersonalizeinn(PersonalizeData data) {
         String oldInn = data.getInn();
         int hash = oldInn.hashCode();
         StringBuilder newInn = new StringBuilder();
@@ -46,13 +40,13 @@ public class DepersonalizationAlgoritms {
         data.setInn(newInn.toString());
     }
 
-    public void  depersonalizeDateOfBirth(PersonalizeData data){
+    public void depersonalizedateOfBirth(PersonalizeData data){
         LocalDate date = data.getDateOfBirth();
         int hash = Math.abs(data.hashCode());
         data.setDateOfBirth(date.withMonth(1+hash%12).withDayOfMonth(1+hash%28));
     }
 
-    public void  depersonalizeFullName(PersonalizeData data){
+    public void depersonalizefullName(PersonalizeData data){
         String[] fullName = data.getFullName().split(" ");
         int hash0 = Math.abs(fullName[0].hashCode());
         int hash1 = Math.abs(fullName[1].hashCode());
@@ -61,7 +55,7 @@ public class DepersonalizationAlgoritms {
         data.setFullName(firstName+" "+secondName);
     }
 
-    public void depersonalizeSnils(PersonalizeData data) {
+    public void depersonalizesnils(PersonalizeData data) {
         String oldSnils = data.getSnils();
         StringBuilder newSnils = new StringBuilder();
         int hash = Math.abs(oldSnils.hashCode());
@@ -88,7 +82,7 @@ public class DepersonalizationAlgoritms {
         data.setSnils(newSnils.toString());
     }
 
-    public void depersonalizeContactInfo(PersonalizeData data) {
+    public void depersonalizecontactInfo(PersonalizeData data) {
         String oldContact = data.getContactInfo();
         int hash = oldContact.hashCode();
         String alphabet = "abcdefghijklmnopqrstuvwxyz0123456789";
@@ -106,12 +100,12 @@ public class DepersonalizationAlgoritms {
         data.setContactInfo(newContact.toString());
     }
 
-    public void depersonalizePaceOfBirth(PersonalizeData data) {
+    public void depersonalizeplaceOfBirth(PersonalizeData data) {
         int hash = data.getPlaceOfBirth().hashCode();
         data.setPlaceOfBirth(citiesDictionary[hash%citiesDictionary.length]);
     }
 
-    public void depersonalizeDocumentNumber(PersonalizeData data) {
+    public void depersonalizedocumentNumber(PersonalizeData data) {
         String oldDocument = data.getDocumentNumber();
         int hash = oldDocument.hashCode();
         StringBuilder newDocument = new StringBuilder();
@@ -125,10 +119,10 @@ public class DepersonalizationAlgoritms {
             }
             newDocument.append(documentChar);
         }
-        data.setContactInfo(newDocument.toString());
+        data.setDocumentNumber(newDocument.toString());
     }
 
-    public void depersonalizeAddress(PersonalizeData data) {
+    public void depersonalizeaddress(PersonalizeData data) {
         int hash = data.getAddress().hashCode();
         StringBuilder address = new StringBuilder();
         address.append(citiesDictionary[Math.abs(hash)%citiesDictionary.length]);
