@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import img1 from '../../assets/images/download/download-point.png'
+import img3 from '../../assets/images/download/download-push.png'
 import img2 from '../../assets/images/download/download-point.png'
-import img3 from '../../assets/images/download/download-nonclick.png'
+import img1 from '../../assets/images/download/download-nonclick.png'
 const DownloadButton = () => {
     const [image, setImage] = useState(img1);
 
@@ -23,7 +23,7 @@ const DownloadButton = () => {
                 className=""
                 src={image}
                 alt="button"
-                style={{width: "40%", height: "100%"}}
+                style={{width: "100%", height: "100%"}}
                 onMouseEnter={handleHover}
                 onMouseLeave={handleLeave}
                 onMouseDown={handlePress}

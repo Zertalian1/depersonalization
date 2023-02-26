@@ -11,6 +11,7 @@ import DepersonalizationButton from "./components/Buttons/DepersonalizationButto
 import UploadButton from "./components/Buttons/UploadButton";
 import DownloadButton from "./components/Buttons/DownloadButton";
 import GetInButton from "./components/Buttons/GetInButton";
+import {Navbar, Table, TabPane} from "reactstrap";
 
 const App = () => {
     const [selectedColumns, setSelectedColumns] = useState([]);
@@ -36,7 +37,7 @@ const App = () => {
                         <div className="row">
                             <AuthButton/>
                             <UploadButton/>
-                            <DepersonalizationButton selectedColumns={selectedColumns}/>
+                            <DepersonalizationButton/>
                             <DownloadButton/>
                             <GetInButton/>
                         </div>

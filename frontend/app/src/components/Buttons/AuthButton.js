@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import img1 from '../../assets/images/authorization/authorization-push.png'
+import img3 from '../../assets/images/authorization/authorization-push.png'
 import img2 from '../../assets/images/authorization/authorization-point.png'
-import img3 from '../../assets/images/authorization/authorization-nonclick.png'
+import img1 from '../../assets/images/authorization/authorization-nonclick.png'
 const AuthButton = () => {
     const [image, setImage] = useState(img1);
 
@@ -23,7 +23,7 @@ const AuthButton = () => {
                 className=""
                 src={image}
                 alt="button"
-                style={{width: "40%", height: "100%"}}
+                style={{width: "100%", height: "100%"}}
                 onMouseEnter={handleHover}
                 onMouseLeave={handleLeave}
                 onMouseDown={handlePress}

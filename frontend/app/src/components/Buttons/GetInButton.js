@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import img1 from '../../assets/images/getin/getin-push.png'
+
+import img3 from '../../assets/images/getin/getin-push.png'
 import img2 from '../../assets/images/getin/getin-point.png'
-import img3 from '../../assets/images/getin/getin-nonclick.png'
+import img1 from '../../assets/images/getin/getin-nonclick.png'
 const GetInButton = () => {
     const [image, setImage] = useState(img1);
 
@@ -23,7 +24,7 @@ const GetInButton = () => {
                 className=""
                 src={image}
                 alt="button"
-                style={{width: "40%", height: "100%"}}
+                style={{width: "100%", height: "100%"}}
                 onMouseEnter={handleHover}
                 onMouseLeave={handleLeave}
                 onMouseDown={handlePress}
