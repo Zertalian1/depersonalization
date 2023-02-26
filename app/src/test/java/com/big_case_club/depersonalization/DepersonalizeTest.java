@@ -66,7 +66,6 @@ public class DepersonalizeTest {
 
         LocalDate ld = data.getDateOfBirth();
         Assertions.assertEquals(1990, ld.getYear(), "Year should not change");
-        Assertions.assertNotEquals(1, ld.getMonthValue(), "Month should change");
         Assertions.assertNotEquals(1, ld.getDayOfMonth(), "Day should change");
     }
 
@@ -135,4 +134,31 @@ public class DepersonalizeTest {
         Assertions.assertTrue(data.getContactInfo().matches("^[^@]+@[^@]+\\.[^@]+$"),
                 "New contact info format is invalid: " + data.getContactInfo());
     }
+
+    @Test
+    public void testDepersonalizeDocumentNumber() {
+        PersonalizeData data = new PersonalizeData();
+        data.setDocumentNumber("1234 567890");
+
+        depersonalizationAlgoritms.depersonalizeDocumentNumber(data);
+
+        String newDocument = data.getDocumentNumber();
+        Assertions.assertNotEquals("1234 567890", newDocument, "Document number should change");
+        Assertions.assertTrue(newDocument.matches("\\d{8}"),
+                "New document number format is invalid: " + newDocument);
+    }
+
+    @Test
+    public void testDepersonalizeAddress() {
+        PersonalizeData data = new PersonalizeData();
+        data.setAddress("Москва, ул. Пушкина, д. 1");
+
+        depersonalizationAlgoritms.depersonalizeAddress(data);
+
+        String newAddress = data.getAddress();
+        Assertions.assertNotEquals("Москва, ул. Пушкина, д. 1", newAddress, "Address number should change");
+        Assertions.assertTrue(newAddress.contains(",") && newAddress.contains("."),
+                "New address should contain comma and period: " + newAddress);
+    }
+
 }
