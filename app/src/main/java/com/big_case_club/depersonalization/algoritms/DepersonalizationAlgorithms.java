@@ -110,7 +110,7 @@ public class DepersonalizationAlgorithms {
     }
 
     public void depersonalizeplaceOfBirth(PersonalizeData data) {
-        int hash = data.getPlaceOfBirth().hashCode();
+        int hash = Math.abs(data.getPlaceOfBirth().hashCode());
         data.setPlaceOfBirth(citiesDictionary[hash%citiesDictionary.length]);
     }
 
