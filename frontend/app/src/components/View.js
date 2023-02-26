@@ -5,7 +5,7 @@ const View = props => {
     const [view, setView] = useState([]);
 
     useEffect(() => {
-        axios.get('/api/database/personalize/view')
+        axios.get('http://localhost:8080/api/database/personalize/view')
             .then(response => {
                 setView(response.data);
             })

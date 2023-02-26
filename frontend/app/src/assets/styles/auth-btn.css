@@ -1,0 +1,12 @@
+.auth-btn {
+    background-image: url("../images/authorization/authorization-nonclick.png"); /* Общая картинка кнопки */
+}
+
+.auth-btn:hover {
+    background-image: url("../images/authorization/authorization-point.png"); /* Картинка при наведении курсора */
+}
+
+.auth-btn:active {
+    background-image: url("../images/authorization/authorization-push.png"); /* Картинка при нажатии на кнопку */
+}
+

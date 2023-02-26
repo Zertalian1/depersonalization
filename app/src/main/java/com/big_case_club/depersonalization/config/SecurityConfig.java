@@ -24,7 +24,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable().cors(Customizer.withDefaults()).formLogin().permitAll().and()
-                .authorizeHttpRequests().requestMatchers("/api/database/personalize/**").hasRole("ADMIN").anyRequest().permitAll();
+                .authorizeHttpRequests().anyRequest().permitAll();
 
         return http.build();
     }

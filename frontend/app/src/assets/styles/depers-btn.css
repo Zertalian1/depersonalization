@@ -1,0 +1,11 @@
+#depers-btn {
+    background-image: url("../images/depersonalization/depersonalization-nonclick.png"); /* Общая картинка кнопки */
+}
+
+#depers-btn:hover {
+    background-image: url("../images/depersonalization/depersonalization-point.png"); /* Картинка при наведении курсора */
+}
+
+#depers-btn:active {
+    background-image: url("../images/depersonalization/depersonalization-pusht.png"); /* Картинка при нажатии на кнопку */
+}

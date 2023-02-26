@@ -1,0 +1,11 @@
+#download-btn {
+    background-image: url("../images/download/download-nonclick.png"); /* Общая картинка кнопки */
+}
+
+#download-btn:hover {
+    background-image: url("../images/download/download-point.png"); /* Картинка при наведении курсора */
+}
+
+#download-btn:active {
+    background-image: url("../images/download/download-push.png"); /* Картинка при нажатии на кнопку */
+}

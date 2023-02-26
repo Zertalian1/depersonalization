@@ -1,0 +1,11 @@
+#getin-btn {
+    background-image: url("../images/getin/getin-nonclick.png"); /* Общая картинка кнопки */
+}
+
+#getin-btn:hover {
+    background-image: url("../images/getin/getin-point.png"); /* Картинка при наведении курсора */
+}
+
+#getin-btn:active {
+    background-image: url("../images/getin/getin-push.png"); /* Картинка при нажатии на кнопку */
+}
