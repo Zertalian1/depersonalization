@@ -3,7 +3,10 @@ import React, { useState } from 'react';
 import img1 from '../../assets/images/depersonalization/depersonalization-nonclick.png'
 import img3 from '../../assets/images/depersonalization/depersonalization-pusht.png'
 import img2 from '../../assets/images/depersonalization/depersonalization-point.png'
-const DepersonalizationButton = () => {
+import axios from "axios";
+
+
+const DepersonalizationButton = ({ selectedColumns }) => {
     const [image, setImage] = useState(img1);
 
     const handleLeave = () => {
@@ -15,7 +18,21 @@ const DepersonalizationButton = () => {
     };
 
     const handlePress = () => {
-        setImage(img3);
+        setImage(img3)
+        const result = selectedColumns.reduce((acc, curr) => {
+            acc[curr] = true;
+            return acc;
+        }, {});
+
+        axios.post("http://localhost:8080/api/database/personalize/depersonalize", result)
+            .then(response => {
+                // обрабатываем успешный ответ от сервера
+                console.log(response);
+            })
+            .catch(error => {
+                // обрабатываем ошибку
+                console.error(error);
+            });
     };
 
     return (

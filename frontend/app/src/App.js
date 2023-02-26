@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Switch, BrowserRouter as Router } from 'react-router-dom';
 
 import './assets/styles/main.css';
@@ -13,6 +13,11 @@ import DownloadButton from "./components/Buttons/DownloadButton";
 import GetInButton from "./components/Buttons/GetInButton";
 
 const App = () => {
+    const [selectedColumns, setSelectedColumns] = useState([]);
+
+    const handleSubmit = (columns) => {
+        setSelectedColumns(columns);
+    };
     return (
         <div className="App-background">
             <div className="container-fluid">
@@ -23,8 +28,7 @@ const App = () => {
                     <div className="col-sm">
                         <div className="table row justify-content-center mt-4">
                             <table className="table table-bordered " >
-
-                                <View/>
+                                <View handleSubmit={handleSubmit} />
                             </table>
                         </div>
                     </div>
@@ -32,7 +36,7 @@ const App = () => {
                         <div className="row">
                             <AuthButton/>
                             <UploadButton/>
-                            <DepersonalizationButton/>
+                            <DepersonalizationButton selectedColumns={selectedColumns}/>
                             <DownloadButton/>
                             <GetInButton/>
                         </div>
