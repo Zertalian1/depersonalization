@@ -56,7 +56,7 @@ public class Depersonalizator {
                     Method depersonalizeMethod = depersonalizationAlgoritms.getClass().getMethod("depersonalize" + fieldName, PersonalizeData.class);
                     // вызов метода depersonalize для каждого обекта в листе
                     for (PersonalizeData data: listData) {
-                        depersonalizeMethod.invoke(this, data);
+                        depersonalizeMethod.invoke(depersonalizationAlgoritms, data);
                     }
                 }
             } catch (Exception e) {
