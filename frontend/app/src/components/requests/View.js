@@ -11,6 +11,7 @@ const View = props => {
     const [view, setView] = useState([]);
     const [editingRowIndex, setEditingRowIndex] = useState(-1);
     const [editingRow, setEditingRow] = useState({});
+
     // Список столбцов таблицы
     const columns = [
         "ФИО",
@@ -41,7 +42,8 @@ const View = props => {
 
 
     const updateTable = () => {
-        axios.get('http://localhost:8080/api/database/personalize/view?sorted=', {withCredentials:true})
+        let database = props.database
+        axios.get('http://localhost:8080/api/database/'+database+'/view?sorted=', {withCredentials:true})
             .then(response => {
                 setView(response.data);
             })
@@ -51,7 +53,8 @@ const View = props => {
     }
 
     const sendRow = (row,index) => {
-        axios.put('http://localhost:8080/api/database/personalize/' + row.id, row, {withCredentials:true})
+        let database = props.database
+        axios.put('http://localhost:8080/api/database/'+database+'/' + row.id, row, {withCredentials:true})
             .then(response => {
                 updateTable();
                 console.log("send success");
@@ -76,8 +79,9 @@ const View = props => {
     };
 
     function sendDelete(id) {
+        let database = props.database
         setEditingRowIndex(-1);
-        axios.delete('http://localhost:8080/api/database/personalize/' + id, {withCredentials:true})
+        axios.delete('http://localhost:8080/api/database/'+database+'/' + id, {withCredentials:true})
             .then(response => {
                 updateTable();
                 console.log("delete success");

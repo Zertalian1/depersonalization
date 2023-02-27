@@ -9,6 +9,7 @@ import UploadButton from "./components/buttons/UploadButton";
 import DownloadButton from "./components/buttons/DownloadButton";
 import AuthForm from "./components/forms/AuthForm";
 import {
+    Button,
     Col,
     Container,
     Form,
@@ -33,6 +34,7 @@ const App = () => {
     const [update,setUpdate] = useState(false)
     const [modalAuth, setModalAuth] = useState(false);
     const [modalAdd, setModalAdd] = useState(false);
+    const [database, setdatabase] = useState("personalize");
 
 
     const handleSubmit = (columns) => {
@@ -49,6 +51,17 @@ const App = () => {
 
     const updateTable = () => {
         setUpdate(update => !update)
+    }
+
+    const switchDatabase = () => {
+        console.log(database)
+        if (database === "personalize") {
+            setdatabase("depersonalize")
+        } else {
+            setdatabase("personalize")
+        }
+        updateTable();
+        console.log(database)
     }
 
     return (
@@ -69,7 +82,7 @@ const App = () => {
                         </Modal>
                         <div className="overflow-auto min-vh-100 " >
                             <Table className="table table-bordered mt-4 ">
-                                <View handleSubmit={handleSubmit} update={update} updateTable={updateTable}/>
+                                <View handleSubmit={handleSubmit} update={update} updateTable={updateTable} database={database}/>
                             </Table>
                         </div>
                         <Modal isOpen={modalAdd} toggle={toggleAdd}>
@@ -87,6 +100,7 @@ const App = () => {
                             <UploadButton/>
                             <DepersonalizationButton selectedColumns={selectedColumns}/>
                             <DownloadButton/>
+                            <Button onClick={switchDatabase}> Сменить базу данных </Button>
                         </div>
                     </Col>
                 </Row>
