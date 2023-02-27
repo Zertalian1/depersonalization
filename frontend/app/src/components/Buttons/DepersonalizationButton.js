@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-import img1 from '../../assets/images/depersonalization/depersonalization-nonclick.png'
-import img3 from '../../assets/images/depersonalization/depersonalization-pusht.png'
-import img2 from '../../assets/images/depersonalization/depersonalization-point.png'
+import img1 from '../../assets/images/buttons/depersonalization/depersonalization-nonclick.png'
+import img3 from '../../assets/images/buttons/depersonalization/depersonalization-pusht.png'
+import img2 from '../../assets/images/buttons/depersonalization/depersonalization-point.png'
 import axios from "axios";
 
 
@@ -41,7 +41,7 @@ const DepersonalizationButton = ({ selectedColumns }) => {
                 className=""
                 src={image}
                 alt="button"
-                style={{width: "100%", height: "100%"}}
+                style={{width: "60%", height: "100%"}}
                 onMouseEnter={handleHover}
                 onMouseLeave={handleLeave}
                 onMouseDown={handlePress}

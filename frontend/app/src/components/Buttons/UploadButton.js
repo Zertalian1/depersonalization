@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-import img3 from '../../assets/images/upload/upload-push.png'
-import img2 from '../../assets/images/upload/upload-point.png'
-import img1 from '../../assets/images/upload/upload-nonclick.png'
+import img3 from '../../assets/images/buttons/upload/upload-push.png'
+import img2 from '../../assets/images/buttons/upload/upload-point.png'
+import img1 from '../../assets/images/buttons/upload/upload-nonclick.png'
 const UploadButton = () => {
     const [image, setImage] = useState(img1);
 
@@ -24,7 +24,7 @@ const UploadButton = () => {
                 className=""
                 src={image}
                 alt="button"
-                style={{width: "100%", height: "100%"}}
+                style={{width: "60%", height: "100%"}}
                 onMouseEnter={handleHover}
                 onMouseLeave={handleLeave}
                 onMouseDown={handlePress}

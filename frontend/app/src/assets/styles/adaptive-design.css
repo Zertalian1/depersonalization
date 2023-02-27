@@ -3,7 +3,9 @@
     table {
         font-size: 12px;
         width: 50%;
-        background-color: white;
+        background-color: lightsteelblue;
+        opacity: 0.9;
+        border-radius: inherit;
     }
     th, td {
         padding: 0.25rem;
@@ -15,7 +17,8 @@
     table {
         font-size: 14px;
         width: 75%;
-        background-color: white;
+        background-color: lightblue;
+        opacity: 0.9;
     }
     th, td {
         padding: 0.5rem;
@@ -27,7 +30,8 @@
     table {
         font-size: 16px;
         width: 100%;
-        background-color: white;
+        background-color: lightblue;
+        opacity: 0.9;
     }
     th, td {
         padding: 0.75rem;
@@ -39,7 +43,8 @@
     table {
         font-size: 18px;
         width: 100%;
-        background-color: white;
+        background-color: lightblue;
+        opacity: 0.9;
     }
     th, td {
         padding: 1rem;
@@ -51,7 +56,11 @@
     table {
         font-size: 20px;
         width: 100%;
-        background-color: white;
+        background-color: lightsteelblue;
+        opacity: 0.9;
+        border-radius: 20px;
+        border: white;
+        border: none !important;
     }
 
     th, td {

@@ -1,5 +1,10 @@
 import {useEffect, useState} from "react";
-import axios from "axios"
+import axios from "axios";
+import {Link} from 'react-router-dom';
+import {UncontrolledTooltip} from "reactstrap";
+
+import "../assets/styles/checkbox.css";
+import "../assets/styles/actions.css";
 
 const View = props => {
     const [view, setView] = useState([]);
@@ -14,7 +19,8 @@ const View = props => {
         "Контактные данные",
         "Адрес",
         "Тип документа",
-        "Номер документа"
+        "Номер документа",
+        "Действие"
     ];
     const columnsJson = [
         "fullName",
@@ -29,9 +35,9 @@ const View = props => {
         "documentNumber"
     ];
 
-  // Обработчик нажатия на кнопку
+    // Обработчик нажатия на кнопку
     const handleSubmit = () => {
-        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const checkboxes = document.querySelectorAll('input[data-column]');
         const selectedColumns = [];
         checkboxes.forEach(checkbox => {
             if (checkbox.checked) {
@@ -58,9 +64,15 @@ const View = props => {
                 <th key={index} scope="col">
                     <input
                         type="checkbox"
+                        id={`customCheckbox-${index}`}// уникальный идентификатор
+                        hidden={true}
                         data-column={columnsJson[index]}
                         onChange={handleSubmit}
-                    />{column}
+                    />
+                    <label htmlFor={`customCheckbox-${index}`}></label>
+                    <div className="user-select-none">
+                        {column}
+                    </div>
                 </th>
             ))}
         </tr>
@@ -76,6 +88,18 @@ const View = props => {
                 <td>{item.address}</td>
                 <td>{item.documentType}</td>
                 <td>{item.documentNumber}</td>
+                <td>
+                    <div className="d-flex gap-3">
+                        <label className="pencil" id="edittooltip"/>
+                        <UncontrolledTooltip placement="top" target="edittooltip">
+                            Edit
+                        </UncontrolledTooltip>
+                        <label className="delete" id="deletetooltip"/>
+                        <UncontrolledTooltip placement="top" target="deletetooltip">
+                            Delete
+                        </UncontrolledTooltip>
+                    </div>
+                </td>
             </tr>
         ))}
         </tbody>
