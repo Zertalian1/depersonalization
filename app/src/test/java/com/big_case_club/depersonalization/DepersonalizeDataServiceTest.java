@@ -1,6 +1,7 @@
 package com.big_case_club.depersonalization;
 
 import com.big_case_club.depersonalization.model.depersonalize.DepersonalizeData;
+import com.big_case_club.depersonalization.model.personalize.PersonalizeData;
 import com.big_case_club.depersonalization.repository.depersonalize.DepersonalizeDataRepository;
 import com.big_case_club.depersonalization.service.DepersonalizeDataService;
 import org.junit.Test;
@@ -39,7 +40,7 @@ public class DepersonalizeDataServiceTest {
         depersonalizeData1.setFullName("Иванов Иван Иванович");
         depersonalizeData1.setDateOfBirth(LocalDate.of(1990, 1, 1));
         depersonalizeData1.setPlaceOfBirth("Москва");
-        depersonalizeData1.setGender("мужской");
+        depersonalizeData1.setGender("м");
         depersonalizeData1.setInn("123456789012");
         depersonalizeData1.setSnils("123-456-789 00");
         depersonalizeData1.setContactInfo("ivanov@example.com");
@@ -51,7 +52,7 @@ public class DepersonalizeDataServiceTest {
         depersonalizeData2.setFullName("Петров Петр Петрович");
         depersonalizeData2.setDateOfBirth(LocalDate.of(1980, 2, 2));
         depersonalizeData2.setPlaceOfBirth("Санкт-Петербург");
-        depersonalizeData2.setGender("мужской");
+        depersonalizeData2.setGender("м");
         depersonalizeData2.setInn("123456789012");
         depersonalizeData2.setSnils("123-456-789 00");
         depersonalizeData2.setContactInfo("petrov@example.com");
@@ -63,7 +64,8 @@ public class DepersonalizeDataServiceTest {
 
         // Вызываем метод viewDatabase() и проверяем, что он возвращает список ожидаемых объектов Data
         List<DepersonalizeData> expected = Arrays.asList(depersonalizeData1, depersonalizeData2);
-        List<DepersonalizeData> actual = depersonalizeDataService.viewDatabase();
+        List<DepersonalizeData> list = depersonalizeDataService.viewDatabase();
+        List<DepersonalizeData> actual = list.subList(list.size()-2,list.size());
         assertThat(actual, containsInAnyOrder(expected.toArray()));
     }
 

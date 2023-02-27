@@ -1,6 +1,8 @@
 package com.big_case_club.depersonalization.controller;
 
+import com.big_case_club.depersonalization.dto.DepersonalizeDataDTO;
 import com.big_case_club.depersonalization.model.personalize.PersonalizeData;
+import com.big_case_club.depersonalization.service.Depersonalizator;
 import com.big_case_club.depersonalization.service.PersonalizeDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,9 +16,14 @@ public class PersonalizeDataController {
 
     private final PersonalizeDataService personalizeDataService;
 
+    private final Depersonalizator depersonalizator;
+
+
+
     @Autowired
-    public PersonalizeDataController(PersonalizeDataService personalizeDataService) {
+    public PersonalizeDataController(PersonalizeDataService personalizeDataService,Depersonalizator depersonalizator) {
         this.personalizeDataService = personalizeDataService;
+        this.depersonalizator = depersonalizator;
     }
 
     @GetMapping("/view")
@@ -55,6 +62,15 @@ public class PersonalizeDataController {
     public ResponseEntity<?> deleteData(@PathVariable Long id) {
         personalizeDataService.deleteDataById(id);
         return ResponseEntity.ok().build();
+    }
+    @PostMapping("/depersonalize")
+    public ResponseEntity<String> depersonalizeData(@RequestBody DepersonalizeDataDTO dto) {
+        Boolean result = depersonalizator.depersonalize(dto);
+        if(result != null){
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
     }
 }
 
