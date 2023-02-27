@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import {Switch, BrowserRouter as Router} from "react-router-dom";
 
 import "./assets/styles/main.css";
-import "./assets/styles/adaptive-design.css";
 
 import {publicRoutes} from "./routes/index"
 import View from "./components/requests/View";
@@ -23,26 +22,33 @@ import {
     Navbar,
     Row,
     Table,
-    TabPane
 } from "reactstrap";
 
 const App = () => {
     const [selectedColumns, setSelectedColumns] = useState([]);
+    const [modal, setModal] = useState(false);
 
     const handleSubmit = (columns) => {
         setSelectedColumns(columns);
     };
 
+    const toggle = () => {
+        if (modal) {
+            setModal(false);
+        } else {
+            setModal(true);
+        }
+    };
+
     const [isEdit, setIsEdit] = useState(false);
 
     return (
-        <div className="App-background">
-            <Container fluid={true} >
+            <Container fluid={true} className="App container">
                 <Row>
-                    <Col>
+                    <Col lg={4}>
 
                     </Col>
-                    <Col>
+                    <Col lg={4} className="table-responsive ">
                         <Navbar>
 
                         </Navbar>
@@ -79,12 +85,10 @@ const App = () => {
                         <Navbar>
 
                         </Navbar>
-                        <div className="table row justify-content-center mt-4">
-                            <Table className="table table-bordered">
+                            <Table className="table table-bordered mt-4">
                                 <View handleSubmit={handleSubmit}/>
                             </Table>
-                        </div>
-                        <Modal isOpen={false}>
+                        <Modal isOpen={modal} toggle={toggle}>
                             <ModalHeader tag="h4">
                                 {!!isEdit ? "Изменить" : "Авторизоваться"}
                             </ModalHeader>
@@ -125,7 +129,7 @@ const App = () => {
                             </ModalBody>
                         </Modal>
                     </Col>
-                    <Col>
+                    <Col lg={4}>
                         <Navbar>
 
                         </Navbar>
@@ -160,7 +164,7 @@ const App = () => {
 
                         </Navbar>
                         <div className="row">
-                            <AuthButton/>
+                            <AuthButton toggle={toggle}/>
                             <UploadButton/>
                             <DepersonalizationButton/>
                             <DownloadButton/>
@@ -168,7 +172,6 @@ const App = () => {
                     </Col>
                 </Row>
             </Container>
-        </div>
 );
 }
 

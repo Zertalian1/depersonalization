@@ -99,7 +99,7 @@ const View = props => {
                         >
                         </img>
                         <UncontrolledTooltip placement="top" target="edit">
-                            Edit
+                            Изменить
                         </UncontrolledTooltip>
                         <img src={trashDelete}
                              alt="trashDelete"
@@ -108,7 +108,7 @@ const View = props => {
                         >
                         </img>
                         <UncontrolledTooltip placement="top" target="delete">
-                            Delete
+                            Удалить
                         </UncontrolledTooltip>
                     </div>
                 </td>

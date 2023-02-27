@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import img3 from '../../assets/images/buttons/authorization/authorization-push.png'
 import img2 from '../../assets/images/buttons/authorization/authorization-point.png'
 import img1 from '../../assets/images/buttons/authorization/authorization-nonclick.png'
-const AuthButton = () => {
+const AuthButton = ({toggle}) => {
     const [image, setImage] = useState(img1);
 
     const handleLeave = () => {
@@ -15,6 +15,7 @@ const AuthButton = () => {
 
     const handlePress = () => {
         setImage(img3);
+        toggle();
     };
 
     return (
