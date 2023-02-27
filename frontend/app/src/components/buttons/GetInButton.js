@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import img3 from '../../assets/images/buttons/getin/getin-push.png'
 import img2 from '../../assets/images/buttons/getin/getin-point.png'
 import img1 from '../../assets/images/buttons/getin/getin-nonclick.png'
-const GetInButton = () => {
+const GetInButton = ({toggle}) => {
     const [image, setImage] = useState(img1);
 
     const handleLeave = () => {
@@ -16,6 +16,7 @@ const GetInButton = () => {
 
     const handlePress = () => {
         setImage(img3);
+        toggle();
     };
 
     return (

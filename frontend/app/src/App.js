@@ -40,7 +40,6 @@ const App = () => {
         }
     };
 
-    const [isEdit, setIsEdit] = useState(false);
 
     return (
             <Container fluid={true} className="App container">
@@ -90,7 +89,7 @@ const App = () => {
                             </Table>
                         <Modal isOpen={modal} toggle={toggle}>
                             <ModalHeader tag="h4">
-                                {!!isEdit ? "Изменить" : "Авторизоваться"}
+                                {"Авторизоваться"}
                             </ModalHeader>
                             <ModalBody>
                                 <Form
@@ -104,7 +103,7 @@ const App = () => {
                                             <div className="mb-3">
                                                 <Label className="form-label">Логин</Label>
                                                 <Input
-                                                    name="vacancy"
+                                                    name="login"
                                                     type="text"
                                                 />
                                             </div>
@@ -112,7 +111,7 @@ const App = () => {
                                             <div className="mb-3">
                                                 <Label className="form-label">Пароль</Label>
                                                 <Input
-                                                    name="externalLink"
+                                                    name="password"
                                                     type="text"
                                                 />
                                             </div>
@@ -121,7 +120,7 @@ const App = () => {
                                     <Row>
                                         <Col>
                                             <div className="text-lg-center">
-                                                <GetInButton/>
+                                                <GetInButton toggle={toggle}/>
                                             </div>
                                         </Col>
                                     </Row>
