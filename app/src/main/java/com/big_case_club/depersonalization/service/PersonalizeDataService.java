@@ -15,7 +15,7 @@ public class PersonalizeDataService {
     private PersonalizeDataRepository personalizeDataRepository;
 
     public List<PersonalizeData> viewDatabase() {
-        return (List<PersonalizeData>) personalizeDataRepository.findAll();
+        return (List<PersonalizeData>) personalizeDataRepository.findAllByOrderByIdAsc();
     }
 
     public PersonalizeData findDataById(Long id) {

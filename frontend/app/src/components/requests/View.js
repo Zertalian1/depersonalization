@@ -9,6 +9,8 @@ import pencil from "../../assets/images/actions/pencil.png";
 import trashDelete from "../../assets/images/actions/delete.png";
 const View = props => {
     const [view, setView] = useState([]);
+    const [editingRowIndex, setEditingRowIndex] = useState(-1);
+    const [editingRow, setEditingRow] = useState({});
     // Список столбцов таблицы
     const columns = [
         "ФИО",
@@ -36,6 +38,56 @@ const View = props => {
         "documentNumber"
     ];
 
+    const updateTable = () => {
+        axios.get('http://localhost:8080/api/database/personalize/view')
+            .then(response => {
+                setView(response.data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
+
+    const sendRow = (row,index) => {
+        axios.put('http://localhost:8080/api/database/personalize/' + row.id, row)
+            .then(response => {
+                updateTable();
+                console.log("send success");
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    };
+
+    const handleEditClick = (index) => {
+        if (editingRowIndex !== -1) {
+            // Отправить измененную строку на сервер
+             sendRow(editingRow,editingRowIndex);
+        }
+
+        if (editingRowIndex === index) {
+            setEditingRowIndex(-1);
+        } else {
+            setEditingRowIndex(index);
+            setEditingRow(view[index]);
+        }
+    };
+
+    function sendDelete(id) {
+        setEditingRowIndex(-1);
+        axios.delete('http://localhost:8080/api/database/personalize/' + id)
+            .then(response => {
+                updateTable();
+                console.log("delete success");
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
+
+    const handleDeleteClick = (id) => {
+        sendDelete(id);
+    };
     // Обработчик нажатия на кнопку
     const handleSubmit = () => {
         const checkboxes = document.querySelectorAll('input[data-column]');
@@ -48,14 +100,16 @@ const View = props => {
         props.handleSubmit(selectedColumns);
     };
 
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setEditingRow((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+    };
+
     useEffect(() => {
-        axios.get('http://localhost:8080/api/database/personalize/view')
-            .then(response => {
-                setView(response.data);
-            })
-            .catch(error => {
-                console.error(error);
-            });
+        updateTable();
     }, []);
 
     return (
@@ -77,27 +131,27 @@ const View = props => {
                 </th>
             ))}
         </tr>
-        {view.map(item => (
+        {view.map((item, index) => (
             <tr key={item.id}>
-                <td>{item.fullName}</td>
-                <td>{item.dateOfBirth}</td>
-                <td>{item.placeOfBirth}</td>
-                <td>{item.gender}</td>
-                <td>{item.inn}</td>
-                <td>{item.snils}</td>
-                <td>{item.contactInfo}</td>
-                <td>{item.address}</td>
-                <td>{item.documentType}</td>
-                <td>{item.documentNumber}</td>
+                <td>{editingRowIndex === index ? <input type="text" defaultValue={item.fullName} name="fullName" onChange={handleInputChange} /> : item.fullName}</td>
+                <td>{editingRowIndex === index ? <input type="text" defaultValue={item.dateOfBirth} name="dateOfBirth" onChange={handleInputChange} /> : item.dateOfBirth}</td>
+                <td>{editingRowIndex === index ? <input type="text" defaultValue={item.placeOfBirth} name="placeOfBirth" onChange={handleInputChange}/> : item.placeOfBirth}</td>
+                <td>{editingRowIndex === index ? <input type="text" defaultValue={item.gender} name="gender" onChange={handleInputChange} /> : item.gender}</td>
+                <td>{editingRowIndex === index ? <input type="text" defaultValue={item.inn} name="inn" onChange={handleInputChange} /> : item.inn}</td>
+                <td>{editingRowIndex === index ? <input type="text" defaultValue={item.snils} name="snils" onChange={handleInputChange} /> : item.snils}</td>
+                <td>{editingRowIndex === index ? <input type="text" defaultValue={item.contactInfo} name="contactInfo" onChange={handleInputChange} /> : item.contactInfo}</td>
+                <td>{editingRowIndex === index ? <input type="text" defaultValue={item.address} name="address" onChange={handleInputChange}/> : item.address}</td>
+                <td>{editingRowIndex === index ? <input type="text" defaultValue={item.documentType} name="documentType" onChange={handleInputChange}/> : item.documentType}</td>
+                <td>{editingRowIndex === index ? <input type="text" defaultValue={item.documentNumber} name="documentNumber" onChange={handleInputChange}/> : item.documentNumber}</td>
                 <td>
                     <div className="d-flex gap-3">
                         <img
                             src={pencil}
                             alt="pencil"
                             id="edit"
-                            style={{width: "50%"}}
-                        >
-                        </img>
+                            style={{ width: "50%" }}
+                            onClick={() => handleEditClick(index)}
+                        />
                         <UncontrolledTooltip placement="top" target="edit">
                             Изменить
                         </UncontrolledTooltip>
@@ -105,6 +159,7 @@ const View = props => {
                              alt="trashDelete"
                              id="delete"
                              style={{width: "40%"}}
+                             onClick={() => handleDeleteClick(item.id)}
                         >
                         </img>
                         <UncontrolledTooltip placement="top" target="delete">

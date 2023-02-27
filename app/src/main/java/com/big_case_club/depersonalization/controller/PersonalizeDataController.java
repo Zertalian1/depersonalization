@@ -19,8 +19,6 @@ public class PersonalizeDataController {
 
     private final Depersonalizator depersonalizator;
 
-
-
     @Autowired
     public PersonalizeDataController(PersonalizeDataService personalizeDataService,Depersonalizator depersonalizator) {
         this.personalizeDataService = personalizeDataService;
