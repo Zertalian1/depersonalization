@@ -22,12 +22,21 @@ import {
     Table,
 } from "reactstrap";
 
+import {useFormik} from "formik";
+import * as Yup from "yup";
+import GetInButton from "./components/buttons/GetInButton";
+
+
 const App = () => {
     const [selectedColumns, setSelectedColumns] = useState([]);
     const [modal, setModal] = useState(false);
 
     const handleSubmit = (columns) => {
         setSelectedColumns(columns);
+    };
+
+    const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+        validation.handleBlur(event);
     };
 
     const toggle = () => {
@@ -40,6 +49,20 @@ const App = () => {
 
     const [isEdit, setIsEdit] = useState(false);
 
+    const validation = useFormik({
+        enableReinitialize: true,
+        initialValues: {
+            vacancyName: '',
+            salary: '',
+        },
+        validationSchema: Yup.object({
+            login: Yup.string().required("Пожалуйста, введите логин"),
+            password: Yup.string().required("Пожалуйста, введите пароль"),
+        }),
+        onSubmit: (values) => {
+            toggle();
+        }
+    });
     return (
             <Container fluid={true} className="App container">
                 <Row>
@@ -94,6 +117,7 @@ const App = () => {
                                 <Form
                                     onSubmit={(e) => {
                                         e.preventDefault();
+                                        validation.handleSubmit();
                                         return false;
                                     }}
                                 >
@@ -104,15 +128,25 @@ const App = () => {
                                                 <Input
                                                     name="login"
                                                     type="text"
+                                                    onBlur={handleBlur}
+                                                    onChange={validation.handleChange}
                                                 />
+                                                {validation.touched.login && validation.errors.login ? (
+                                                    <div style={{ color: 'red' }}>{validation.errors.login}</div>
+                                                ) : null}
                                             </div>
 
                                             <div className="mb-3">
                                                 <Label className="form-label">Пароль</Label>
                                                 <Input
                                                     name="password"
-                                                    type="text"
+                                                    type="password"
+                                                    onBlur={handleBlur}
+                                                    onChange={validation.handleChange}
                                                 />
+                                                {validation.touched.password && validation.errors.password ? (
+                                                    <div style={{ color: 'red' }}>{validation.errors.password}</div>
+                                                ) : null}
                                             </div>
                                         </Col>
                                     </Row>
