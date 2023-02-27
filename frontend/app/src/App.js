@@ -30,6 +30,7 @@ import AddForm from "./components/forms/AddForm";
 
 
 const App = () => {
+
     const [selectedColumns, setSelectedColumns] = useState([]);
     const [update,setUpdate] = useState(false)
     const [modalAuth, setModalAuth] = useState(false);
@@ -64,6 +65,7 @@ const App = () => {
         console.log(database)
     }
 
+
     return (
             <Container fluid={true} className="App container">
                 <Row>
@@ -80,11 +82,13 @@ const App = () => {
                                 <AuthForm toggle={toggleAuth} updateTable={updateTable}/>
                             </ModalBody>
                         </Modal>
+
                         <div className="overflow-auto min-vh-100 " >
                             <Table className="table table-bordered mt-4 ">
                                 <View handleSubmit={handleSubmit} update={update} updateTable={updateTable} database={database}/>
                             </Table>
                         </div>
+
                         <Modal isOpen={modalAdd} toggle={toggleAdd}>
                             <ModalHeader tag="h4">
                                 {"Добавить клиента"}
