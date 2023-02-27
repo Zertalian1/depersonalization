@@ -23,7 +23,7 @@ public class FileController {
 
     private FileService fileService;
 
-    @PostMapping("/api/database/download-file")
+    @PostMapping("/api/database/personalize/upload-file")
     @ResponseBody
     public ResponseEntity<Object> fileDownload(@RequestParam("file") MultipartFile file) {
         if (file.isEmpty()) {
@@ -48,7 +48,7 @@ public class FileController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/view/download-file")
+    @GetMapping("/api/database/depersonalize/download-file")
     @ResponseBody
     public ResponseEntity<Resource> fileUpload() {
         try {

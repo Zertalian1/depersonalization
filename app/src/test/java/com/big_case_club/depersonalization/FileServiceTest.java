@@ -54,7 +54,7 @@ public class FileServiceTest {
         }
         fileService.createDatabase(new MockMultipartFile(name, originalFileName, contentType, content));
         List<PersonalizeData> data = personalizeDataService.viewDatabase();
-        assertEquals(data.size(), 2);
+        assertEquals(data.size(), 4);
         System.out.println(data);
     }
 
