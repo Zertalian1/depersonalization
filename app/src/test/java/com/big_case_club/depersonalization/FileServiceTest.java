@@ -53,7 +53,7 @@ public class FileServiceTest {
             throw new RuntimeException(e);
         }
         fileService.createDatabase(new MockMultipartFile(name, originalFileName, contentType, content));
-        List<PersonalizeData> data = personalizeDataService.viewDatabase();
+        List<PersonalizeData> data = personalizeDataService.viewDatabase(null);
         assertEquals(data.size(), 4);
         System.out.println(data);
     }

@@ -24,10 +24,10 @@ public class PersonalizeDataController {
         this.depersonalizator = depersonalizator;
     }
 
-    @GetMapping("/view")
+    @RequestMapping(value="view", method = RequestMethod.GET)
     public @ResponseBody
-    List<PersonalizeData> viewDatabase() {
-        return personalizeDataService.viewDatabase();
+    List<PersonalizeData> viewDatabase(@RequestParam("sorted") String sorted) {
+        return personalizeDataService.viewDatabase(sorted);
     }
 
     @PostMapping("/save")

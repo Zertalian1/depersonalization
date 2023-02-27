@@ -5,6 +5,7 @@ import com.big_case_club.depersonalization.repository.personalize.PersonalizeDat
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,8 +15,12 @@ public class PersonalizeDataService {
     @Autowired
     private PersonalizeDataRepository personalizeDataRepository;
 
-    public List<PersonalizeData> viewDatabase() {
-        return (List<PersonalizeData>) personalizeDataRepository.findAllByOrderByIdAsc();
+    public List<PersonalizeData> viewDatabase(String sorted) {
+        List<PersonalizeData> out = new ArrayList<>();
+        if(sorted == ""){
+            out=personalizeDataRepository.findAllByOrderByIdAsc();
+        }
+        return out;
     }
 
     public PersonalizeData findDataById(Long id) {
