@@ -39,7 +39,7 @@ const View = props => {
     ];
 
     const updateTable = () => {
-        axios.get('http://localhost:8080/api/database/personalize/view')
+        axios.get('http://localhost:8080/api/database/personalize/view', {withCredentials:true})
             .then(response => {
                 setView(response.data);
             })
