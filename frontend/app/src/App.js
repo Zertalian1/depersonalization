@@ -1,15 +1,13 @@
 import React, {useState} from "react";
-import {Switch, BrowserRouter as Router} from "react-router-dom";
 
 import "./assets/styles/main.css";
 
-import {publicRoutes} from "./routes/index"
 import View from "./components/requests/View";
 import AuthButton from "./components/buttons/AuthButton";
 import DepersonalizationButton from "./components/buttons/DepersonalizationButton";
 import UploadButton from "./components/buttons/UploadButton";
 import DownloadButton from "./components/buttons/DownloadButton";
-import GetInButton from "./components/buttons/GetInButton";
+import AuthForm from "./components/forms/AuthForm";
 import {
     Col,
     Container,
@@ -40,6 +38,7 @@ const App = () => {
         }
     };
 
+    const [isEdit, setIsEdit] = useState(false);
 
     return (
             <Container fluid={true} className="App container">
