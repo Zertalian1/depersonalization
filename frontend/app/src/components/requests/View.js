@@ -48,6 +48,7 @@ const View = props => {
                 setView(response.data);
             })
             .catch(error => {
+                setView([]);
                 console.error(error);
             });
     }

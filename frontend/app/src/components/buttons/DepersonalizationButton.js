@@ -6,7 +6,7 @@ import img2 from '../../assets/images/buttons/depersonalization/depersonalizatio
 import axios from "axios";
 
 
-const DepersonalizationButton = ({ selectedColumns }) => {
+const DepersonalizationButton = ({ selectedColumns,updateTable }) => {
     const [image, setImage] = useState(img1);
 
     const handleLeave = () => {
@@ -28,6 +28,7 @@ const DepersonalizationButton = ({ selectedColumns }) => {
             .then(response => {
                 // обрабатываем успешный ответ от сервера
                 console.log(response);
+                updateTable();
             })
             .catch(error => {
                 // обрабатываем ошибку
