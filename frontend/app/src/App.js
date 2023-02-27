@@ -85,7 +85,7 @@ const App = () => {
                         <div className="row">
                             <AuthButton toggle={toggleAuth}/>
                             <UploadButton/>
-                            <DepersonalizationButton/>
+                            <DepersonalizationButton selectedColumns={selectedColumns}/>
                             <DownloadButton/>
                         </div>
                     </Col>
