@@ -16,7 +16,7 @@ Table {
         max-width: 576px;
     }
     Table {
-        font-size: 4px;
+        font-size: 2px;
         /*max-width: 60vw;*/
         /*max-height: 60vh;*/
     }
@@ -27,7 +27,7 @@ Table {
         max-width: 768px;
     }
     Table {
-        font-size: 6px;
+        font-size: 4px;
         /*max-width: 60vw;*/
         /*max-height: 60vh;*/
     }
@@ -38,7 +38,7 @@ Table {
         max-width: 992px;
     }
     Table {
-        font-size: 8px;
+        font-size: 6px;
         /*max-width: 60vw;*/
         /*max-height: 60vh;*/
     }
@@ -49,7 +49,7 @@ Table {
         max-width: 1200px;
     }
     Table {
-        font-size: 10px;
+        font-size: 8px;
         /*max-width: 60vw;*/
         /*max-height: 60vh;*/
     }
@@ -59,7 +59,7 @@ Table {
         max-width: 1500px;
     }
     Table {
-        font-size: 12px;
+        font-size: 10px;
         /*max-width: 60vw;*/
         /*max-height: 60vh;*/
     }
@@ -70,8 +70,7 @@ Table {
         max-width: 1800px;
     }
     Table {
-        width: 100%;
-        font-size: 14px;
+        font-size: 12px;
         /*max-width: 60vw;*/
         /*max-height: 60vh;*/
     }
@@ -82,7 +81,6 @@ Table {
         max-width: 4096px;
     }
     Table {
-        width: 100%;
         font-size: 16px;
         /*max-width: 20vw ;*/
         /*max-height: 20vh;*/

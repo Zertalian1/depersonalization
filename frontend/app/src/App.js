@@ -30,7 +30,8 @@ const App = () => {
     const [selectedColumns, setSelectedColumns] = useState([]);
     const [update,setUpdate] = useState(false)
     const [modal, setModal] = useState(false);
-    const [isEdit, setIsEdit] = useState(false);
+
+
     const handleSubmit = (columns) => {
         setSelectedColumns(columns);
     };
@@ -46,10 +47,10 @@ const App = () => {
     return (
             <Container fluid={true} className="App container">
                 <Row>
-                    <Col lg={4}>
+                    <Col lg={2}>
 
                     </Col>
-                    <Col lg={4} className="table-responsive ">
+                    <Col lg={8} className="">
                         <Navbar>
 
                         </Navbar>
@@ -86,9 +87,12 @@ const App = () => {
                         <Navbar>
 
                         </Navbar>
-                            <Table className="table table-bordered mt-4">
+                        <div className="overflow-auto min-vh-100 " >
+                            <Table className="table table-bordered mt-4 ">
                                 <View handleSubmit={handleSubmit} update={update}/>
                             </Table>
+                        </div>
+
                         <Modal isOpen={modal} toggle={toggle}>
                             <ModalHeader tag="h4">
                                 {"Авторизоваться"}
@@ -98,7 +102,7 @@ const App = () => {
                             </ModalBody>
                         </Modal>
                     </Col>
-                    <Col lg={4}>
+                    <Col lg={2}>
                         <Navbar>
 
                         </Navbar>

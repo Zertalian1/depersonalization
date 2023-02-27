@@ -64,7 +64,7 @@ const View = props => {
     const handleEditClick = (index) => {
         if (editingRowIndex !== -1) {
             // Отправить измененную строку на сервер
-             sendRow(editingRow,editingRowIndex);
+            sendRow(editingRow,editingRowIndex);
         }
 
         if (editingRowIndex === index) {
@@ -153,21 +153,23 @@ const View = props => {
                         <img
                             src={pencil}
                             alt="pencil"
-                            id="edit"
-                            style={{ width: "50%" }}
+                            id={`edit-${index}`}
+                            style={{ width: "60%" }}
                             onClick={() => handleEditClick(index)}
                         />
-                        <UncontrolledTooltip placement="top" target="edit">
+                        <UncontrolledTooltip placement="top" target={`edit-${index}`}>
                             Изменить
                         </UncontrolledTooltip>
-                        <img src={trashDelete}
-                             alt="trashDelete"
-                             id="delete"
-                             style={{width: "40%"}}
-                             onClick={() => handleDeleteClick(item.id)}
-                        >
-                        </img>
-                        <UncontrolledTooltip placement="top" target="delete">
+
+                        <img
+                            src={trashDelete}
+                            alt="delete"
+                            className="delete"
+                            id={`delete-${index}`}
+                            style={{ width: "50%",  right: "2vw", position: "relative"}}
+                            onClick={() => sendDelete(item.id)}
+                        />
+                        <UncontrolledTooltip placement="top" target={`delete-${index}`}>
                             Удалить
                         </UncontrolledTooltip>
                     </div>
