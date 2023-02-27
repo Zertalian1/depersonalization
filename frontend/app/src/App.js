@@ -97,7 +97,7 @@ const App = () => {
                     <Col lg={2}>
                         <div className="row">
                             <AuthButton toggle={toggleAuth}/>
-                            <UploadButton/>
+                            <UploadButton updateTable={updateTable}/>
                             <DepersonalizationButton selectedColumns={selectedColumns}/>
                             <DownloadButton/>
                             <Button onClick={switchDatabase}> Сменить базу данных </Button>
