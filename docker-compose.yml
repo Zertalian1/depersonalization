@@ -30,9 +30,6 @@ services:
     volumes:
       - app-volume:/var/lib/postgresql/data-depersonalize
 
-
-
-
   backend:
     build:
       context: app # Use an image built from the specified dockerfile in the `polling-app-server` directory.
