@@ -17,7 +17,7 @@
     table {
         font-size: 14px;
         width: 75%;
-        background-color: lightblue;
+        background-color: lightsteelblue;
         opacity: 0.9;
     }
     th, td {
@@ -30,7 +30,7 @@
     table {
         font-size: 16px;
         width: 100%;
-        background-color: lightblue;
+        background-color: lightsteelblue;
         opacity: 0.9;
     }
     th, td {
@@ -43,7 +43,7 @@
     table {
         font-size: 18px;
         width: 100%;
-        background-color: lightblue;
+        background-color: lightsteelblue;
         opacity: 0.9;
     }
     th, td {

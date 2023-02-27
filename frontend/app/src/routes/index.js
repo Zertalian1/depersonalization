@@ -1,10 +1,10 @@
-import View from "../components/View";
-import GetDataBaseData from "../components/GetDataBaseData";
-import GetUserData from "../components/GetUserData";
-import PutUserData from "../components/PutUserData";
-import DeleteUserData from "../components/DeleteUserData";
-import PostUserData from "../components/PostUserData";
-import Depersonalize from "../components/Depersonalize";
+import View from "../components/requests/View";
+import GetDataBaseData from "../components/requests/GetDataBaseData";
+import GetUserData from "../components/requests/GetUserData";
+import PutUserData from "../components/requests/PutUserData";
+import DeleteUserData from "../components/requests/DeleteUserData";
+import PostUserData from "../components/requests/PostUserData";
+import Depersonalize from "../components/requests/Depersonalize";
 const publicRoutes = [
     { path: "api/database/personalize/view", component: View },
     { path: "api/database/personalize/{{id}}", component: GetUserData },

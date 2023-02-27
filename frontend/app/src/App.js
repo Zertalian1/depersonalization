@@ -5,12 +5,12 @@ import "./assets/styles/main.css";
 import "./assets/styles/adaptive-design.css";
 
 import {publicRoutes} from "./routes/index"
-import View from "./components/View";
-import AuthButton from "./components/Buttons/AuthButton";
-import DepersonalizationButton from "./components/Buttons/DepersonalizationButton";
-import UploadButton from "./components/Buttons/UploadButton";
-import DownloadButton from "./components/Buttons/DownloadButton";
-import GetInButton from "./components/Buttons/GetInButton";
+import View from "./components/requests/View";
+import AuthButton from "./components/buttons/AuthButton";
+import DepersonalizationButton from "./components/buttons/DepersonalizationButton";
+import UploadButton from "./components/buttons/UploadButton";
+import DownloadButton from "./components/buttons/DownloadButton";
+import GetInButton from "./components/buttons/GetInButton";
 import {
     Col,
     Container,
@@ -37,7 +37,7 @@ const App = () => {
 
     return (
         <div className="App-background">
-            <Container fluid={true}>
+            <Container fluid={true} >
                 <Row>
                     <Col>
 

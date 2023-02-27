@@ -3,9 +3,10 @@ import axios from "axios";
 import {Link} from 'react-router-dom';
 import {UncontrolledTooltip} from "reactstrap";
 
-import "../assets/styles/checkbox.css";
-import "../assets/styles/actions.css";
-
+import "../../assets/styles/checkbox.css";
+import "../../assets/styles/actions.css";
+import pencil from "../../assets/images/actions/pencil.png";
+import trashDelete from "../../assets/images/actions/delete.png";
 const View = props => {
     const [view, setView] = useState([]);
     // Список столбцов таблицы
@@ -90,12 +91,23 @@ const View = props => {
                 <td>{item.documentNumber}</td>
                 <td>
                     <div className="d-flex gap-3">
-                        <label className="pencil" id="edittooltip"/>
-                        <UncontrolledTooltip placement="top" target="edittooltip">
+                        <img
+                            src={pencil}
+                            alt="pencil"
+                            id="edit"
+                            style={{width: "50%"}}
+                        >
+                        </img>
+                        <UncontrolledTooltip placement="top" target="edit">
                             Edit
                         </UncontrolledTooltip>
-                        <label className="delete" id="deletetooltip"/>
-                        <UncontrolledTooltip placement="top" target="deletetooltip">
+                        <img src={trashDelete}
+                             alt="trashDelete"
+                             id="delete"
+                             style={{width: "40%"}}
+                        >
+                        </img>
+                        <UncontrolledTooltip placement="top" target="delete">
                             Delete
                         </UncontrolledTooltip>
                     </div>
