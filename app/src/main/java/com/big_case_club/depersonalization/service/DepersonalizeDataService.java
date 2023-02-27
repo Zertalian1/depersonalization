@@ -35,6 +35,10 @@ public class DepersonalizeDataService {
         return null;
     }
 
+    public void deleteAllData(){
+        depersonalizeDataRepository.deleteAll();
+    }
+
     public void deleteDataById(Long id) {
         depersonalizeDataRepository.deleteById(id);
     }

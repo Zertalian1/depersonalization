@@ -13,6 +13,7 @@ import java.time.LocalDate;
 @Setter
 @EqualsAndHashCode
 @Entity
+@ToString
 public class PersonalizeData{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
