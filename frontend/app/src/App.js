@@ -27,6 +27,8 @@ import {
 import GetInButton from "./components/buttons/GetInButton";
 import AddClientButton from "./components/buttons/AddClientButton";
 import AddForm from "./components/forms/AddForm";
+import ChooseDepersonalizeDataButton from "./components/buttons/ChooseDepersonalizeDataButton";
+import ChoosePersonalizeDataButton from "./components/buttons/ChoosePersonalizeDataButton";
 
 
 const App = () => {
@@ -53,15 +55,14 @@ const App = () => {
         setUpdate(update => !update)
     }
 
-    const switchDatabase = () => {
-        console.log(database)
-        if (database === "personalize") {
-            setdatabase("depersonalize")
-        } else {
-            setdatabase("personalize")
-        }
+    const switchDatabase = (type) => {
+        // if (database === "personalize") {
+        //     setdatabase("depersonalize")
+        // } else {
+        //     setdatabase("personalize")
+        // }
+        setdatabase(type)
         updateTable();
-        console.log(database)
     }
 
     return (
@@ -100,7 +101,8 @@ const App = () => {
                             <UploadButton updateTable={updateTable}/>
                             <DepersonalizationButton selectedColumns={selectedColumns} updateTable={updateTable}/>
                             <DownloadButton/>
-                            <Button onClick={switchDatabase}> Сменить базу данных </Button>
+                            <ChooseDepersonalizeDataButton switchDatabase={switchDatabase}/>
+                            <ChoosePersonalizeDataButton switchDatabase={switchDatabase}/>
                         </div>
                     </Col>
                 </Row>

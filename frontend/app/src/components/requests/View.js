@@ -57,7 +57,15 @@ const View = props => {
         let database = props.database
         axios.put('http://localhost:8080/api/database/'+database+'/' + row.id, row, {withCredentials:true})
             .then(response => {
-                updateTable();
+                let newView = [];
+                for (let i = 0; i < view.length; i++) {
+                    if(i === index) {
+                        newView.push(response.data);
+                        continue;
+                    }
+                    newView.push(view[i]);
+                }
+                setView(newView);
                 console.log("send success");
             })
             .catch(error => {
@@ -79,12 +87,17 @@ const View = props => {
         }
     };
 
-    function sendDelete(id) {
+    function sendDelete(id,index) {
         let database = props.database
         setEditingRowIndex(-1);
         axios.delete('http://localhost:8080/api/database/'+database+'/' + id, {withCredentials:true})
             .then(response => {
-                updateTable();
+                let newView = [];
+                for (let i = 0; i < view.length; i++) {
+                    if(i === index) {continue}
+                    newView.push(view[i]);
+                }
+                setView(newView);
                 console.log("delete success");
             })
             .catch(error => {
@@ -173,7 +186,7 @@ const View = props => {
                             className="delete"
                             id={`delete-${index}`}
                             style={{ width: "50%",  right: "2vw", position: "relative"}}
-                            onClick={() => sendDelete(item.id)}
+                            onClick={() => sendDelete(item.id,index)}
                         />
                         <UncontrolledTooltip placement="top" target={`delete-${index}`}>
                             Удалить
