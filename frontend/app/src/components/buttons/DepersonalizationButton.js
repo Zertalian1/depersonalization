@@ -41,7 +41,7 @@ const DepersonalizationButton = ({ selectedColumns }) => {
                 className=""
                 src={image}
                 alt="button"
-                style={{width: "60%", height: "100%"}}
+                style={{width: "80%", height: "100%"}}
                 onMouseEnter={handleHover}
                 onMouseLeave={handleLeave}
                 onMouseDown={handlePress}

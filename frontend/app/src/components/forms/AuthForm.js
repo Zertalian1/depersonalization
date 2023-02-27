@@ -11,8 +11,8 @@ const AuthForm = ({toggle,updateTable}) => {
     const validation = useFormik({
         enableReinitialize: true,
         initialValues: {
-            vacancyName: '',
-            salary: '',
+            login: '',
+            password: '',
         },
         validationSchema: Yup.object({
             login: Yup.string().required("Пожалуйста, введите логин"),
@@ -32,19 +32,6 @@ const AuthForm = ({toggle,updateTable}) => {
 
         setPassword(event.target.value);
     }
-
-    const handleLoginClick = (event) => {
-        event.preventDefault();
-        // Вызываем функцию авторизации и передаем в нее логин и пароль
-        loginFunc(login, password);
-    }
-
-    const loginFunc = (login, password) => {
-        // Ваша функция авторизации здесь
-        console.log('Login:', login);
-        console.log('Password:', password);
-    }
-
     const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
         validation.handleBlur(event);
     };

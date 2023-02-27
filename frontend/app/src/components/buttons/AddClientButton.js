@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-
-import img3 from '../../assets/images/buttons/upload/upload-push.png'
-import img2 from '../../assets/images/buttons/upload/upload-point.png'
-import img1 from '../../assets/images/buttons/upload/upload-nonclick.png'
-const UploadButton = () => {
+import img3 from '../../assets/images/buttons/add/add-push.png'
+import img2 from '../../assets/images/buttons/add/add-point.png'
+import img1 from '../../assets/images/buttons/add/add-nonclick.png'
+const AddClientButton = ({toggle}) => {
     const [image, setImage] = useState(img1);
 
     const handleLeave = () => {
@@ -16,15 +15,16 @@ const UploadButton = () => {
 
     const handlePress = () => {
         setImage(img3);
+        toggle();
     };
 
     return (
-        <div className="col-lg-12 d-flex mb-4 mt-4 justify-content-end">
+        <div className="col-lg-12 d-flex mb-5 mt-5 justify-content-center">
             <img
                 className=""
                 src={image}
                 alt="button"
-                style={{width: "80%", height: "100%"}}
+                style={{width: "15%", height: "10%"}}
                 onMouseEnter={handleHover}
                 onMouseLeave={handleLeave}
                 onMouseDown={handlePress}
@@ -35,4 +35,4 @@ const UploadButton = () => {
     );
 }
 
-export default UploadButton;
+export default AddClientButton;

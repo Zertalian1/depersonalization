@@ -24,20 +24,27 @@ import {
 
 
 import GetInButton from "./components/buttons/GetInButton";
+import AddClientButton from "./components/buttons/AddClientButton";
+import AddForm from "./components/forms/AddForm";
 
 
 const App = () => {
     const [selectedColumns, setSelectedColumns] = useState([]);
     const [update,setUpdate] = useState(false)
-    const [modal, setModal] = useState(false);
+    const [modalAuth, setModalAuth] = useState(false);
+    const [modalAdd, setModalAdd] = useState(false);
 
 
     const handleSubmit = (columns) => {
         setSelectedColumns(columns);
     };
 
-    const toggle = () => {
-        setModal(modal => !modal);
+    const toggleAuth = () => {
+        setModalAuth(modalAuth => !modalAuth);
+    };
+
+    const toggleAdd = () => {
+        setModalAdd(modalAdd => !modalAdd);
     };
 
     const updateTable = () => {
@@ -51,93 +58,32 @@ const App = () => {
 
                     </Col>
                     <Col lg={8} className="">
-                        <Navbar>
-
-                        </Navbar>
-                        <Navbar>
-
-                        </Navbar>
-                        <Navbar>
-
-                        </Navbar>
-                        <Navbar>
-
-                        </Navbar>
-                        <Navbar>
-
-                        </Navbar>
-                        <Navbar>
-
-                        </Navbar>
-                        <Navbar>
-
-                        </Navbar>
-                        <Navbar>
-
-                        </Navbar>
-                        <Navbar>
-
-                        </Navbar>
-                        <Navbar>
-
-                        </Navbar>
-                        <Navbar>
-
-                        </Navbar>
-                        <Navbar>
-
-                        </Navbar>
+                        <AddClientButton toggle={toggleAuth}/>
+                        <Modal isOpen={modalAuth} toggle={toggleAuth}>
+                            <ModalHeader tag="h4">
+                                {"Авторизоваться"}
+                            </ModalHeader>
+                            <ModalBody>
+                                <AuthForm toggle={toggleAuth} updateTable={updateTable}/>
+                            </ModalBody>
+                        </Modal>
                         <div className="overflow-auto min-vh-100 " >
                             <Table className="table table-bordered mt-4 ">
                                 <View handleSubmit={handleSubmit} update={update}/>
                             </Table>
                         </div>
-
-                        <Modal isOpen={modal} toggle={toggle}>
+                        <Modal isOpen={modalAdd} toggle={toggleAdd}>
                             <ModalHeader tag="h4">
-                                {"Авторизоваться"}
+                                {"Добавить клиента"}
                             </ModalHeader>
                             <ModalBody>
-                                <AuthForm  toggle={toggle} updateTable={updateTable}/>
+                                <AddForm toggle={toggleAdd} updateTable={updateTable}/>
                             </ModalBody>
                         </Modal>
                     </Col>
                     <Col lg={2}>
-                        <Navbar>
-
-                        </Navbar>
-                        <Navbar>
-
-                        </Navbar>
-                        <Navbar>
-
-                        </Navbar>
-                        <Navbar>
-
-                        </Navbar>
-                        <Navbar>
-
-                        </Navbar>
-                        <Navbar>
-
-                        </Navbar>
-                        <Navbar>
-
-                        </Navbar>
-                        <Navbar>
-
-                        </Navbar>
-                        <Navbar>
-
-                        </Navbar>
-                        <Navbar>
-
-                        </Navbar>
-                        <Navbar>
-
-                        </Navbar>
                         <div className="row">
-                            <AuthButton toggle={toggle}/>
+                            <AuthButton toggle={toggleAuth}/>
                             <UploadButton/>
                             <DepersonalizationButton/>
                             <DownloadButton/>
