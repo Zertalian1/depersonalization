@@ -4,7 +4,7 @@ import img3 from '../../assets/images/buttons/getin/getin-push.png'
 import img2 from '../../assets/images/buttons/getin/getin-point.png'
 import img1 from '../../assets/images/buttons/getin/getin-nonclick.png'
 import axios from "axios";
-const GetInButton = ({ toggle, login, password }) => {
+const GetInButton = props => {
     const [image, setImage] = useState(img1);
 
     const handleLeave = () => {
@@ -18,12 +18,13 @@ const GetInButton = ({ toggle, login, password }) => {
     const handlePress = () => {
         setImage(img3);
         let fd = new FormData();
-        fd.append('username',login);
-        fd.append('password',password);
+        fd.append('username',props.login);
+        fd.append('password',props.password);
         axios.post('http://localhost:8080/login', fd,{withCredentials:true})
             .then((response) => {
                 console.log(response.data);
-                toggle();
+                props.toggle();
+                props.updateTable();
             })
             .catch((error) => {
                 console.error(error);

@@ -4,7 +4,7 @@ import {Col, Form, Input, Label, Row} from "reactstrap";
 import {useFormik} from "formik";
 import * as Yup from "yup";
 
-const AuthForm = ({toggle}) => {
+const AuthForm = ({toggle,updateTable}) => {
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
 
@@ -92,7 +92,7 @@ const AuthForm = ({toggle}) => {
             <Row>
                 <Col>
                     <div className="text-lg-center">
-                        <GetInButton toggle={toggle} login={login} password={password}/>
+                        <GetInButton toggle={toggle} updateTable={updateTable} login={login} password={password}/>
                     </div>
                 </Col>
             </Row>

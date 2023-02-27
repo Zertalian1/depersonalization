@@ -28,6 +28,7 @@ import GetInButton from "./components/buttons/GetInButton";
 
 const App = () => {
     const [selectedColumns, setSelectedColumns] = useState([]);
+    const [update,setUpdate] = useState(false)
     const [modal, setModal] = useState(false);
     const [isEdit, setIsEdit] = useState(false);
     const handleSubmit = (columns) => {
@@ -37,6 +38,10 @@ const App = () => {
     const toggle = () => {
         setModal(modal => !modal);
     };
+
+    const updateTable = () => {
+        setUpdate(true)
+    }
 
     return (
             <Container fluid={true} className="App container">
@@ -82,14 +87,14 @@ const App = () => {
 
                         </Navbar>
                             <Table className="table table-bordered mt-4">
-                                <View handleSubmit={handleSubmit}/>
+                                <View handleSubmit={handleSubmit} update={update}/>
                             </Table>
                         <Modal isOpen={modal} toggle={toggle}>
                             <ModalHeader tag="h4">
                                 {"Авторизоваться"}
                             </ModalHeader>
                             <ModalBody>
-                                <AuthForm  toggle={toggle}/>
+                                <AuthForm  toggle={toggle} updateTable={updateTable}/>
                             </ModalBody>
                         </Modal>
                     </Col>
