@@ -51,26 +51,12 @@ const View = props => {
     const sendRow = (row,index) => {
         axios.put('http://localhost:8080/api/database/personalize/' + row.id, row)
             .then(response => {
-                    axios.get('http://localhost:8080/api/database/personalize/' + row.id)
-                        .then(response => {
-                            updateTable();
-                        })
-                        .catch(error => {
-                            console.error(error);
-                        });
+                updateTable();
                 console.log("send success");
             })
             .catch(error => {
                 console.error(error);
             });
-    };
-
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setEditingRow((prev) => ({
-            ...prev,
-            [name]: value,
-        }));
     };
 
     const handleEditClick = (index) => {
@@ -86,6 +72,22 @@ const View = props => {
             setEditingRow(view[index]);
         }
     };
+
+    function sendDelete(id) {
+        setEditingRowIndex(-1);
+        axios.delete('http://localhost:8080/api/database/personalize/' + id)
+            .then(response => {
+                updateTable();
+                console.log("delete success");
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
+
+    const handleDeleteClick = (id) => {
+        sendDelete(id);
+    };
     // Обработчик нажатия на кнопку
     const handleSubmit = () => {
         const checkboxes = document.querySelectorAll('input[data-column]');
@@ -96,6 +98,14 @@ const View = props => {
             }
         });
         props.handleSubmit(selectedColumns);
+    };
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setEditingRow((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
     };
 
     useEffect(() => {
@@ -149,6 +159,7 @@ const View = props => {
                              alt="trashDelete"
                              id="delete"
                              style={{width: "40%"}}
+                             onClick={() => handleDeleteClick(item.id)}
                         >
                         </img>
                         <UncontrolledTooltip placement="top" target="delete">
