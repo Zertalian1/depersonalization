@@ -24,7 +24,7 @@ const DepersonalizationButton = ({ selectedColumns }) => {
             return acc;
         }, {});
 
-        axios.post("http://localhost:8080/api/database/personalize/depersonalize", result)
+        axios.post("http://localhost:8080/api/database/personalize/depersonalize", result, {withCredentials:true})
             .then(response => {
                 // обрабатываем успешный ответ от сервера
                 console.log(response);
