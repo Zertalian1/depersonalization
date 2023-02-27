@@ -41,7 +41,7 @@ const View = props => {
 
 
     const updateTable = () => {
-        axios.get('http://localhost:8080/api/database/personalize/view', {withCredentials:true})
+        axios.get('http://localhost:8080/api/database/personalize/view?sorted=', {withCredentials:true})
             .then(response => {
                 setView(response.data);
             })
@@ -114,6 +114,7 @@ const View = props => {
         updateTable();
         if (props.update) {
             updateTable();
+            props.updateTable();
         }
     }, [props.update]);
 

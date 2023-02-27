@@ -4,6 +4,7 @@ import {Col, Form, Input, Label, Row} from "reactstrap";
 import {useFormik} from "formik";
 import * as Yup from "yup";
 import AddClientButton from "../buttons/AddClientButton";
+import AddButton from "../buttons/AddButton";
 
 const AddForm = ({toggle,updateTable}) => {
     const [fullName, setFullName] = useState('');
@@ -78,10 +79,10 @@ const AddForm = ({toggle,updateTable}) => {
         setAddress(event.target.value);
     }
     const handleDocumentTypeChange = (event) => {
-        setAddress(event.target.value);
+        setDocumentType(event.target.value);
     }
     const handleDocumentNumberChange = (event) => {
-        setAddress(event.target.value);
+        setDocumentNumber(event.target.value);
     }
 
     const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
@@ -243,7 +244,17 @@ const AddForm = ({toggle,updateTable}) => {
             <Row>
                 <Col>
                     <div className="text-lg-center">
-
+                        <AddButton toggle={toggle} updateTable={updateTable}
+                                   fullName={fullName}
+                                   documentType={documentType}
+                                   documentNumber={documentNumber}
+                                   gender={gender}
+                                   inn={inn}
+                                   snils={snils}
+                                   placeOfBirth={placeOfBirth}
+                                   contactInfo={contactInfo}
+                                   address={address}
+                                   dateOfBirth={dateOfBirth}/>
                     </div>
                 </Col>
             </Row>

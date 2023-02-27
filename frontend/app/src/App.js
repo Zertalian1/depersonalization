@@ -48,7 +48,7 @@ const App = () => {
     };
 
     const updateTable = () => {
-        setUpdate(true)
+        setUpdate(update => !update)
     }
 
     return (
@@ -58,7 +58,7 @@ const App = () => {
 
                     </Col>
                     <Col lg={8} className="">
-                        <AddClientButton toggle={toggleAuth}/>
+                        <AddClientButton toggle={toggleAdd}/>
                         <Modal isOpen={modalAuth} toggle={toggleAuth}>
                             <ModalHeader tag="h4">
                                 {"Авторизоваться"}
@@ -69,7 +69,7 @@ const App = () => {
                         </Modal>
                         <div className="overflow-auto min-vh-100 " >
                             <Table className="table table-bordered mt-4 ">
-                                <View handleSubmit={handleSubmit} update={update}/>
+                                <View handleSubmit={handleSubmit} update={update} updateTable={updateTable}/>
                             </Table>
                         </div>
                         <Modal isOpen={modalAdd} toggle={toggleAdd}>
