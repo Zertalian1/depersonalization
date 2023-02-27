@@ -51,7 +51,7 @@ const View = props => {
     }
 
     const sendRow = (row,index) => {
-        axios.put('http://localhost:8080/api/database/personalize/' + row.id, row)
+        axios.put('http://localhost:8080/api/database/personalize/' + row.id, row, {withCredentials:true})
             .then(response => {
                 updateTable();
                 console.log("send success");
@@ -77,7 +77,7 @@ const View = props => {
 
     function sendDelete(id) {
         setEditingRowIndex(-1);
-        axios.delete('http://localhost:8080/api/database/personalize/' + id)
+        axios.delete('http://localhost:8080/api/database/personalize/' + id, {withCredentials:true})
             .then(response => {
                 updateTable();
                 console.log("delete success");

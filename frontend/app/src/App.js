@@ -139,7 +139,7 @@ const App = () => {
                         <div className="row">
                             <AuthButton toggle={toggle}/>
                             <UploadButton/>
-                            <DepersonalizationButton/>
+                            <DepersonalizationButton selectedColumns={selectedColumns}/>
                             <DownloadButton/>
                         </div>
                     </Col>
