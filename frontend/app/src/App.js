@@ -1,15 +1,13 @@
 import React, {useState} from "react";
-import {Switch, BrowserRouter as Router} from "react-router-dom";
 
 import "./assets/styles/main.css";
 
-import {publicRoutes} from "./routes/index"
 import View from "./components/requests/View";
 import AuthButton from "./components/buttons/AuthButton";
 import DepersonalizationButton from "./components/buttons/DepersonalizationButton";
 import UploadButton from "./components/buttons/UploadButton";
 import DownloadButton from "./components/buttons/DownloadButton";
-import GetInButton from "./components/buttons/GetInButton";
+import AuthForm from "./components/forms/AuthForm";
 import {
     Col,
     Container,
@@ -93,39 +91,7 @@ const App = () => {
                                 {!!isEdit ? "Изменить" : "Авторизоваться"}
                             </ModalHeader>
                             <ModalBody>
-                                <Form
-                                    onSubmit={(e) => {
-                                        e.preventDefault();
-                                        return false;
-                                    }}
-                                >
-                                    <Row>
-                                        <Col className="col-12">
-                                            <div className="mb-3">
-                                                <Label className="form-label">Логин</Label>
-                                                <Input
-                                                    name="vacancy"
-                                                    type="text"
-                                                />
-                                            </div>
-
-                                            <div className="mb-3">
-                                                <Label className="form-label">Пароль</Label>
-                                                <Input
-                                                    name="externalLink"
-                                                    type="text"
-                                                />
-                                            </div>
-                                        </Col>
-                                    </Row>
-                                    <Row>
-                                        <Col>
-                                            <div className="text-lg-center">
-                                                <GetInButton/>
-                                            </div>
-                                        </Col>
-                                    </Row>
-                                </Form>
+                                <AuthForm/>
                             </ModalBody>
                         </Modal>
                     </Col>
