@@ -19,6 +19,7 @@ public class LoadDataRunner {
     @Bean
     public CommandLineRunner loadData() {
         return (args) -> {
+            personalizeDataService.deleteAllData();
             personalizeDataService.saveData(new PersonalizeData(
                     0L,
                     "John Smith",
