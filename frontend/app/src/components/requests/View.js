@@ -45,9 +45,10 @@ const View = props => {
         const { target } = event;
         const { id, value } = target;
 
-        setInputValues((prevState) => ({ ...prevState, [event.target.getAttribute("data-column")]: event.target.value }));
-        console.log(event.target.value)
-        updateTable();
+        setInputValues((prevState) => ({
+            ...prevState,
+            [event.target.getAttribute("data-column")]: event.target.value
+        }));
     }
 
     const checkAccess = () => {
@@ -155,14 +156,8 @@ const View = props => {
 
     useEffect(() => {
         checkAccess();
-        if(view.length === 0){
-            updateTable();
-        }
-        if (props.update) {
-            updateTable();
-            props.updateTable();
-        }
-    }, [props.update]);
+        updateTable();
+    }, [props.update,inputValues]);
 
     return (
         <tbody>
