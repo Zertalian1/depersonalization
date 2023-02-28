@@ -29,10 +29,10 @@ import AddClientButton from "./components/buttons/AddClientButton";
 import AddForm from "./components/forms/AddForm";
 import ChooseDepersonalizeDataButton from "./components/buttons/ChooseDepersonalizeDataButton";
 import ChoosePersonalizeDataButton from "./components/buttons/ChoosePersonalizeDataButton";
-import FirstPageButton from "./components/buttons/FirstPageButton";
-import PreviousPageButton from "./components/buttons/PreviousPageButton";
-import NextPageButton from "./components/buttons/NextPageButton";
-import LastPageButton from "./components/buttons/LastPageButton";
+import FirstPageButton from "./components/buttons/pagination/FirstPageButton";
+import PreviousPageButton from "./components/buttons/pagination/PreviousPageButton";
+import NextPageButton from "./components/buttons/pagination/NextPageButton";
+import LastPageButton from "./components/buttons/pagination/LastPageButton";
 
 
 const App = () => {

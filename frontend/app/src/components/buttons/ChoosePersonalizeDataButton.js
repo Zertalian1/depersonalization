@@ -25,6 +25,7 @@ const ChoosePersonalizeDataButton = props => {
                 className=""
                 src={image}
                 alt="button"
+                draggable="false"
                 style={{width: "80%", height: "100%"}}
                 onMouseEnter={handleHover}
                 onMouseLeave={handleLeave}

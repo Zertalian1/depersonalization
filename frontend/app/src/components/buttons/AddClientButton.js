@@ -50,6 +50,7 @@ const AddClientButton = ({toggle , accessLock}) => {
                 className=""
                 src={image}
                 alt="button"
+                draggable="false"
                 style={{width: "15%", height: "10%"}}
                 onMouseEnter={handleHover}
                 onMouseLeave={handleLeave}

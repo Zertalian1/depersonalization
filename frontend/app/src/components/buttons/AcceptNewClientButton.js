@@ -46,6 +46,7 @@ const AcceptNewClientButton = props => {
                 className=""
                 src={image}
                 alt="button"
+                draggable="false"
                 style={{width: "50%", height: "100%"}}
                 onMouseEnter={handleHover}
                 onMouseLeave={handleLeave}

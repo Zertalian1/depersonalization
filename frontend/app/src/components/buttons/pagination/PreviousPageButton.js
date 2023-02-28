@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import img3 from '../../assets/images/buttons/button right two/button-right-two-push.png'
-import img2 from '../../assets/images/buttons/button right two/button-right-two-point.png'
-import img1 from '../../assets/images/buttons/button right two/button-right-two-nonclick.png'
-import axios from "axios";
-const LastPageButton = props => {
+import img3 from '../../../assets/images/buttons/button left one/button-left-one-push.png'
+import img2 from '../../../assets/images/buttons/button left one/button-left-one-point.png'
+import img1 from '../../../assets/images/buttons/button left one/button-left-one-nonclick.png'
+const PreviousPageButton = props => {
     const [image, setImage] = useState(img1);
 
     const handleLeave = () => {
@@ -16,7 +15,7 @@ const LastPageButton = props => {
 
     const handlePress = () => {
         setImage(img3);
-        props.setPageNumber(props.totalPageNumber);
+        props.setPageNumber(props.pageNumber-1);
         props.updateTable();
     };
 
@@ -26,6 +25,7 @@ const LastPageButton = props => {
                 className=""
                 src={image}
                 alt="button"
+                draggable="false"
                 style={{width: "200px", height: "100px" ,marginTop: '-40px'}}
                 onMouseEnter={handleHover}
                 onMouseLeave={handleLeave}
@@ -37,4 +37,4 @@ const LastPageButton = props => {
     );
 }
 
-export default LastPageButton;
+export default PreviousPageButton;
