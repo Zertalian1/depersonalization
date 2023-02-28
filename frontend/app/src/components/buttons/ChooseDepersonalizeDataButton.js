@@ -15,7 +15,8 @@ const ChooseDepersonalizeDataButton = props => {
 
     const handlePress = () => {
         setImage(img3);
-        props.switchDatabase("depersonalize")
+        props.switchDatabase("depersonalize");
+        props.setPageNumber(0);
     };
 
     return (

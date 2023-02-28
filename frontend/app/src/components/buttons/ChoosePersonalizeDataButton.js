@@ -15,7 +15,8 @@ const ChoosePersonalizeDataButton = props => {
 
     const handlePress = () => {
         setImage(img3);
-        props.switchDatabase("personalize")
+        props.switchDatabase("personalize");
+        props.setPageNumber(0);
     };
 
     return (

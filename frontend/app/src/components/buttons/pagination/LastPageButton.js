@@ -15,6 +15,8 @@ const LastPageButton = () => {
 
     const handlePress = () => {
         setImage(img3);
+        props.setPageNumber(props.totalPageNumber);
+        props.updateTable();
     };
 
     return (

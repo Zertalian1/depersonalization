@@ -56,7 +56,8 @@ public class DepersonalizeE2ETest {
         Boolean result = depersonalizator.depersonalize(dto);
 
         Assertions.assertNotEquals(null,result);
-        List<DepersonalizeData> depersonalizeDataList = depersonalizeDataController.viewDatabase();
+        int pageSize = depersonalizeDataController.getPages();
+        List<DepersonalizeData> depersonalizeDataList = depersonalizeDataController.viewDatabase("Id", pageSize-1, "ASC");
         DepersonalizeData depersonalizeData = depersonalizeDataList.get(depersonalizeDataList.toArray().length - 1);
         Assertions.assertEquals("Михаил Паньков Вячеславович",depersonalizeData.getFullName());
         Assertions.assertNotEquals("Новосибирск",depersonalizeData.getPlaceOfBirth());

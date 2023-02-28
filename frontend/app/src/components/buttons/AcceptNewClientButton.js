@@ -32,7 +32,6 @@ const AcceptNewClientButton = props => {
             fullName,documentType,documentNumber,dateOfBirth,contactInfo,address,gender,inn,snils,placeOfBirth
         },{withCredentials:true})
             .then((response) => {
-                console.log(response.data);
                 props.toggle();
                 props.updateTable();
             })
