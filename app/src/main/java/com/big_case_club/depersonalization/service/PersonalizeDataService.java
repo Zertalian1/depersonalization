@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Method;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -31,8 +32,10 @@ public class PersonalizeDataService {
             String fieldName = entry.getKey();
             String data = entry.getValue();
             if(data == null) continue;
-            if(fieldName.equals("Id")) {
+            if(fieldName.equalsIgnoreCase("id")) {
                 pdata.setId(Long.valueOf(data));
+            } else if(fieldName.equalsIgnoreCase("dateofbirth")) {
+                pdata.setDateOfBirth(LocalDate.parse(data));
             }
             else {
                 try {

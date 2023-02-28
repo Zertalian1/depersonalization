@@ -8,6 +8,7 @@ import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import java.beans.PropertyDescriptor;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -34,6 +35,8 @@ public class DepersonalizeDataService {
             if(data == null) continue;
             if(fieldName.equals("Id")) {
                 pdata.setId(Long.valueOf(data));
+            } else if(fieldName.equalsIgnoreCase("dateofbirth")) {
+                pdata.setDateOfBirth(LocalDate.parse(data));
             }
             else {
                 try {
