@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import img3 from '../../assets/images/buttons/button rigth one/button-right-one-push.png'
 import img2 from '../../assets/images/buttons/button rigth one/button-right-one-point.png'
 import img1 from '../../assets/images/buttons/button rigth one/button-right-one-nonclick.png'
-const NextPageButton = () => {
+const NextPageButton = props => {
     const [image, setImage] = useState(img1);
 
     const handleLeave = () => {
@@ -15,6 +15,8 @@ const NextPageButton = () => {
 
     const handlePress = () => {
         setImage(img3);
+        props.setPageNumber(props.pageNumber+1);
+        props.updateTable();
     };
 
     return (

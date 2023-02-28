@@ -44,6 +44,7 @@ const App = () => {
     const [database, setdatabase] = useState("depersonalize");
     const [accessLock,setAccessLock] = useState(true);
     const [pageNumber,setPageNumber] = useState(0);
+    const [totalPageNumber,setTotalPageNumber] = useState(0);
 
 
     const handleSubmit = (columns) => {
@@ -93,6 +94,7 @@ const App = () => {
                                       database={database}
                                       setAccessLock={setAccessLock}
                                       pageNumber={pageNumber}
+                                      setTotalPageNumber={setTotalPageNumber}
                                 />
 
                             </Table>
@@ -102,8 +104,8 @@ const App = () => {
                                     <PreviousPageButton setPageNumber={setPageNumber} pageNumber={pageNumber} updateTable={updateTable}/>
                                 </ButtonGroup>
                                 <ButtonGroup className="float-end">
-                                    <NextPageButton setPageNumber={setPageNumber} pageNumber={pageNumber} updateTable={updateTable}/>
-                                    <LastPageButton setPageNumber={setPageNumber} pageNumber={pageNumber} updateTable={updateTable}/>
+                                    <NextPageButton setPageNumber={setPageNumber} pageNumber={pageNumber} updateTable={updateTable} totalPageNumber={totalPageNumber}/>
+                                    <LastPageButton setPageNumber={setPageNumber} pageNumber={pageNumber} updateTable={updateTable} totalPageNumber={totalPageNumber}/>
                                 </ButtonGroup>
                             </div>
                         </div>
@@ -124,8 +126,8 @@ const App = () => {
                             <UploadButton updateTable={updateTable} accessLock={accessLock}/>
                             <DepersonalizationButton selectedColumns={selectedColumns} updateTable={updateTable} accessLock={accessLock}/>
                             <DownloadButton/>
-                            <ChooseDepersonalizeDataButton switchDatabase={switchDatabase}/>
-                            <ChoosePersonalizeDataButton switchDatabase={switchDatabase}/>
+                            <ChooseDepersonalizeDataButton switchDatabase={switchDatabase} setPageNumber={setPageNumber}/>
+                            <ChoosePersonalizeDataButton switchDatabase={switchDatabase} setPageNumber={setPageNumber}/>
                         </div>
                     </Col>
                 </Row>

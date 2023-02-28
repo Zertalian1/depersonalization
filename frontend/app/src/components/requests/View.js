@@ -11,7 +11,7 @@ const View = props => {
     const [view, setView] = useState([]);
     const [editingRowIndex, setEditingRowIndex] = useState(-1);
     const [editingRow, setEditingRow] = useState({});
-    const [sorted, setsorted] = useState("");
+    const [sorted, setsorted] = useState("Id");
 
     // Список столбцов таблицы
     const columns = [
@@ -55,7 +55,15 @@ const View = props => {
     const updateTable = () => {
         let database = props.database
         let pageNumber = props.pageNumber
-        axios.get('http://localhost:8080/api/database/'+database+'/view?sorted=' + sorted + '&page=' + pageNumber, {withCredentials:true})
+        axios.get("http://localhost:8080/api/database/"+database+"/pages", {withCredentials:true})
+            .then(response => {
+                props.setTotalPageNumber(response.data - 1)
+            })
+            .catch(error => {
+                // обрабатываем ошибку
+                console.error(error);
+            });
+        axios.get('http://localhost:8080/api/database/'+database+'/view?sorted=' + sorted + '&page=' + pageNumber + '&direction=ASC', {withCredentials:true})
             .then(response => {
                 setView(response.data);
             })
@@ -142,7 +150,9 @@ const View = props => {
 
     useEffect(() => {
         checkAccess();
-        updateTable();
+        if(view.length === 0){
+            updateTable();
+        }
         if (props.update) {
             updateTable();
             props.updateTable();
