@@ -103,6 +103,9 @@ const App = () => {
                                     <FirstPageButton setPageNumber={setPageNumber} pageNumber={pageNumber} updateTable={updateTable}/>
                                     <PreviousPageButton setPageNumber={setPageNumber} pageNumber={pageNumber} updateTable={updateTable}/>
                                 </ButtonGroup>
+                                <div style={{ display: 'inline-block', background: 'white',  borderRadius: '4px', marginLeft: '17%' }}>
+                                    {pageNumber}
+                                </div>
                                 <ButtonGroup className="float-end">
                                     <NextPageButton setPageNumber={setPageNumber} pageNumber={pageNumber} updateTable={updateTable} totalPageNumber={totalPageNumber}/>
                                     <LastPageButton setPageNumber={setPageNumber} pageNumber={pageNumber} updateTable={updateTable} totalPageNumber={totalPageNumber}/>

@@ -26,7 +26,7 @@ const LastPageButton = props => {
                 className=""
                 src={image}
                 alt="button"
-                style={{width: "200px", height: "100px" ,marginTop: '10px'}}
+                style={{width: "200px", height: "100px" ,marginTop: '-40px'}}
                 onMouseEnter={handleHover}
                 onMouseLeave={handleLeave}
                 onMouseDown={handlePress}
