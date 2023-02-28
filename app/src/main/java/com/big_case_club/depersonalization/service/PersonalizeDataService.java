@@ -10,6 +10,7 @@ import java.beans.PropertyDescriptor;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -23,18 +24,22 @@ public class PersonalizeDataService {
         return personalizeDataRepository.findAll(Pageable.ofSize(5)).getTotalPages();
     }
 
-    public List<PersonalizeData> searchDatabase(String fieldName, String data, Sort sort, int pageIndex) {
+    public List<PersonalizeData> searchDatabase(Map<String, String> searchData, Sort sort, int pageIndex) {
         ExampleMatcher matcher = ExampleMatcher.matching().withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING).withIgnoreCase();
         PersonalizeData pdata = new PersonalizeData();
-
-        if(fieldName.equals("Id")) {
-            pdata.setId(Long.valueOf(data));
-        }
-        else {
-            try {
-                new PropertyDescriptor(fieldName,pdata.getClass()).getWriteMethod().invoke(pdata, data);
-            } catch (Exception e) {
-                return new ArrayList<PersonalizeData>();
+        for(Map.Entry<String, String> entry: searchData.entrySet()) {
+            String fieldName = entry.getKey();
+            String data = entry.getValue();
+            if(data == null) continue;
+            if(fieldName.equals("Id")) {
+                pdata.setId(Long.valueOf(data));
+            }
+            else {
+                try {
+                    new PropertyDescriptor(fieldName,pdata.getClass()).getWriteMethod().invoke(pdata, data);
+                } catch (Exception e) {
+                    return new ArrayList<PersonalizeData>();
+                }
             }
         }
         Example<PersonalizeData> example = Example.of(pdata, matcher);

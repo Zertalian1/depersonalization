@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/database/personalize")
@@ -33,13 +34,13 @@ public class PersonalizeDataController {
         return personalizeDataService.viewDatabase(Sort.by(dir, sorted), page);
     }
 
-    @RequestMapping(value="search", method = RequestMethod.GET)
+    @RequestMapping(value="search", method = RequestMethod.POST)
     public @ResponseBody
-    List<PersonalizeData> viewDatabase(@RequestParam("searchField") String field, @RequestParam("searchData") String searchData,
+    List<PersonalizeData> viewDatabase(@RequestBody Map<String, String> searchData,
                                        @RequestParam("sorted") String sorted, @RequestParam("page") int page, @RequestParam("direction") String direction) {
         Sort.Direction dir=Sort.Direction.ASC;
         if(direction.equals("DESC")) dir= Sort.Direction.DESC;
-        return personalizeDataService.searchDatabase(field, searchData, Sort.by(dir, sorted), page);
+        return personalizeDataService.searchDatabase(searchData, Sort.by(dir, sorted), page);
     }
     @GetMapping("/pages")
     public @ResponseBody int getPages() {

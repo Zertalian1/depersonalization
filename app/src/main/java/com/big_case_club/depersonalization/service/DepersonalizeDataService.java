@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.beans.PropertyDescriptor;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -23,18 +24,23 @@ public class DepersonalizeDataService {
         return depersonalizeDataRepository.findAll(Pageable.ofSize(5)).getTotalPages();
     }
 
-    public List<DepersonalizeData> searchDatabase(String fieldName, String data, Sort sort, int pageIndex) {
+    public List<DepersonalizeData> searchDatabase(Map<String, String> searchData, Sort sort, int pageIndex) {
         ExampleMatcher matcher = ExampleMatcher.matching().withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING).withIgnoreCase();
         DepersonalizeData pdata = new DepersonalizeData();
 
-        if(fieldName.equals("Id")) {
-            pdata.setId(Long.valueOf(data));
-        }
-        else {
-            try {
-                new PropertyDescriptor(fieldName,pdata.getClass()).getWriteMethod().invoke(pdata, data);
-            } catch (Exception e) {
-                return new ArrayList<DepersonalizeData>();
+        for(Map.Entry<String, String> entry: searchData.entrySet()) {
+            String fieldName = entry.getKey();
+            String data = entry.getValue();
+            if(data == null) continue;
+            if(fieldName.equals("Id")) {
+                pdata.setId(Long.valueOf(data));
+            }
+            else {
+                try {
+                    new PropertyDescriptor(fieldName,pdata.getClass()).getWriteMethod().invoke(pdata, data);
+                } catch (Exception e) {
+                    return new ArrayList<DepersonalizeData>();
+                }
             }
         }
         Example<DepersonalizeData> example = Example.of(pdata, matcher);
