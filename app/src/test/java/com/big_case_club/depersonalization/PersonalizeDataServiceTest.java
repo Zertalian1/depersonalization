@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -63,7 +64,7 @@ public class PersonalizeDataServiceTest {
 
         // Вызываем метод viewDatabase() и проверяем, что он возвращает список ожидаемых объектов Data
         List<PersonalizeData> expected = Arrays.asList(personalizeData1, personalizeData2);
-        List<PersonalizeData> list = personalizeDataService.viewDatabase(null);
+        List<PersonalizeData> list = personalizeDataService.viewDatabase();
         List<PersonalizeData> actual = list.subList(list.size()-2,list.size());
 
         assertThat(actual, containsInAnyOrder(expected.toArray()));

@@ -3,6 +3,9 @@ package com.big_case_club.depersonalization.service;
 import com.big_case_club.depersonalization.model.personalize.PersonalizeData;
 import com.big_case_club.depersonalization.repository.personalize.PersonalizeDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,12 +18,22 @@ public class PersonalizeDataService {
     @Autowired
     private PersonalizeDataRepository personalizeDataRepository;
 
-    public List<PersonalizeData> viewDatabase(String sorted) {
-        List<PersonalizeData> out = new ArrayList<>();
-        if(sorted == ""){
-            out=personalizeDataRepository.findAllByOrderByIdAsc();
-        }
-        return out;
+
+    public int getTotalPages() {
+        return personalizeDataRepository.findAll(Pageable.ofSize(5)).getTotalPages();
+    }
+    public List<PersonalizeData> viewDatabase(Sort sort) {
+
+        return viewDatabase(sort, 0);
+    }
+
+    public List<PersonalizeData> viewDatabase() {
+
+        return personalizeDataRepository.findAll(Sort.unsorted());
+    }
+
+    public List<PersonalizeData> viewDatabase(Sort sort, int pageIndex) {
+        return personalizeDataRepository.findAll(PageRequest.of(pageIndex,5,sort)).getContent();
     }
 
     public PersonalizeData findDataById(Long id) {

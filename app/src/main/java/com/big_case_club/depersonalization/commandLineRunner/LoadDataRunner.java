@@ -20,7 +20,7 @@ public class LoadDataRunner {
     @Bean
     public CommandLineRunner loadData() {
         return (args) -> {
-            List<PersonalizeData> data = personalizeDataService.viewDatabase("");
+            List<PersonalizeData> data = personalizeDataService.viewDatabase();
             if(data.isEmpty()) {
                 personalizeDataService.saveData(new PersonalizeData(
                         0L,
