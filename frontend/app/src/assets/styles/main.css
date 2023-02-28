@@ -1,15 +1,31 @@
 .App {
-  background: url('../images/space.png');
-  background-size: cover;
+    height: 100vh;
+    background: url('../images/space.png');
+    background-size: cover;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 Table {
     background-color: lightsteelblue;
     opacity: 0.9;
     border-radius: 20px;
-    border: none !important;
 
 }
+
+tbody {
+    border-collapse: collapse;
+}
+
+td, th {
+    border: 1px solid black;
+    padding: 5px;
+}
+
 th:first-line{
     border-color: lightsteelblue;
 }

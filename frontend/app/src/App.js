@@ -87,18 +87,24 @@ const App = () => {
                             </ModalBody>
                         </Modal>
 
-                        <div className="overflow-auto min-vh-100 " >
-                            <Table className="table table-bordered mt-4 ">
-                                <View handleSubmit={handleSubmit}
-                                      update={update}
-                                      updateTable={updateTable}
-                                      database={database}
-                                      setAccessLock={setAccessLock}
-                                      pageNumber={pageNumber}
-                                      setTotalPageNumber={setTotalPageNumber}
-                                />
-
-                            </Table>
+                        <div className="" >
+                            <div style={{ overflowX: 'auto',
+                                paddingRight:'0',
+                                marginRight:'-80px',
+                                paddingLeft: '0',
+                                marginLeft:'-80px'
+                            }}>
+                                <Table className="table table-bordered mt-4">
+                                    <View handleSubmit={handleSubmit}
+                                          update={update}
+                                          updateTable={updateTable}
+                                          database={database}
+                                          setAccessLock={setAccessLock}
+                                          pageNumber={pageNumber}
+                                          setTotalPageNumber={setTotalPageNumber}
+                                    />
+                                </Table>
+                            </div>
                             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                                 <ButtonGroup className="float-start">
                                     <FirstPageButton setPageNumber={setPageNumber} pageNumber={pageNumber} updateTable={updateTable}/>

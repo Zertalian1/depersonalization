@@ -1,16 +1,35 @@
-import React, {useState} from 'react';
-import img2 from '../../assets/images/buttons/sort/bottom-sort-button.png'
-import img1 from '../../assets/images/buttons/sort/top-sort-button.png'
+import React, {useEffect,useState} from 'react';
+import DESCSortImg from '../../assets/images/buttons/sort/bottom-sort-button.png'
+import ASCSortImg from '../../assets/images/buttons/sort/top-sort-button.png'
+import noSortImg from '../../assets/images/buttons/sort/no-sort-button.png'
 
-const SortButton = ({toggle}) => {
-    const [image, setImage] = useState(img1);
+
+const SortButton = props => {
+    const [image, setImage] = useState(noSortImg);
 
     const handlePress = () => {
-        if (image === img1)
-            setImage(img2)
-        else
-            setImage(img1)
+        if (image === ASCSortImg) {
+            setImage(DESCSortImg)
+            props.setDirection("DESC")
+            props.setSorted(props.name)
+        }
+        else if (image === DESCSortImg) {
+            setImage(noSortImg)
+            props.setDirection("ASC")
+            props.setSorted("Id")
+        }
+        else if (image === noSortImg) {
+            setImage(ASCSortImg)
+            props.setDirection("ASC")
+            props.setSorted(props.name)
+        }
     };
+
+    useEffect(() => {
+        if(props.sorted !== props.name){
+            setImage(noSortImg);
+        }
+    }, [props.sorted]);
 
     return (
         <div className="">
@@ -24,7 +43,6 @@ const SortButton = ({toggle}) => {
                     width: "40px",
                     position: "relative",
                     bottom: "0.5vh",
-                    marginRight: "1vw"
                 }}
                 onMouseDown={handlePress}
 
