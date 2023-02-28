@@ -65,7 +65,7 @@ const UploadButton = props => {
     }, [props.accessLock]);
 
     return (
-        <div className="col-lg-12 d-flex mb-4 mt-4 justify-content-end">
+        <div className="col-lg-12 d-flex mb-2 mt-2 justify-content-end">
             <input type="file" style={{display:"none"}} ref={inputFile} onChange={handleFileSelect} />
             <img
                 className=""

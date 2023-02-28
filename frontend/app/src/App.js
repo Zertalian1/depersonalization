@@ -43,6 +43,7 @@ const App = () => {
     const [modalAdd, setModalAdd] = useState(false);
     const [database, setdatabase] = useState("depersonalize");
     const [accessLock,setAccessLock] = useState(true);
+    const [pageNumber,setPageNumber] = useState(0);
 
 
     const handleSubmit = (columns) => {
@@ -86,17 +87,23 @@ const App = () => {
 
                         <div className="overflow-auto min-vh-100 " >
                             <Table className="table table-bordered mt-4 ">
-                                <View handleSubmit={handleSubmit} update={update} updateTable={updateTable} database={database} setAccessLock={setAccessLock}/>
+                                <View handleSubmit={handleSubmit}
+                                      update={update}
+                                      updateTable={updateTable}
+                                      database={database}
+                                      setAccessLock={setAccessLock}
+                                      pageNumber={pageNumber}
+                                />
 
                             </Table>
                             <div style={{ marginTop: '10px' }}>
                                 <ButtonGroup className="float-start">
-                                    <FirstPageButton/>
-                                    <PreviousPageButton/>
+                                    <FirstPageButton setPageNumber={setPageNumber} pageNumber={pageNumber} updateTable={updateTable}/>
+                                    <PreviousPageButton setPageNumber={setPageNumber} pageNumber={pageNumber} updateTable={updateTable}/>
                                 </ButtonGroup>
                                 <ButtonGroup className="float-end">
-                                    <NextPageButton/>
-                                    <LastPageButton/>
+                                    <NextPageButton setPageNumber={setPageNumber} pageNumber={pageNumber} updateTable={updateTable}/>
+                                    <LastPageButton setPageNumber={setPageNumber} pageNumber={pageNumber} updateTable={updateTable}/>
                                 </ButtonGroup>
                             </div>
                         </div>

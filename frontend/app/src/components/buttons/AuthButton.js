@@ -19,7 +19,7 @@ const AuthButton = ({toggle}) => {
     };
 
     return (
-        <div className="col-lg-12 d-flex mb-4 mt-4 justify-content-end">
+        <div className="col-lg-12 d-flex mb-2 mt-5 justify-content-end">
             <img
                 className=""
                 src={image}
