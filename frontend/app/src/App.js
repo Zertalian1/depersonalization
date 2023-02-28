@@ -37,7 +37,8 @@ const App = () => {
     const [update,setUpdate] = useState(false)
     const [modalAuth, setModalAuth] = useState(false);
     const [modalAdd, setModalAdd] = useState(false);
-    const [database, setdatabase] = useState("personalize");
+    const [database, setdatabase] = useState("depersonalize");
+    const [accessLock,setAccessLock] = useState(true);
 
 
     const handleSubmit = (columns) => {
@@ -57,11 +58,6 @@ const App = () => {
     }
 
     const switchDatabase = (type) => {
-        // if (database === "personalize") {
-        //     setdatabase("depersonalize")
-        // } else {
-        //     setdatabase("personalize")
-        // }
         setdatabase(type)
         updateTable();
     }
@@ -74,19 +70,19 @@ const App = () => {
 
                     </Col>
                     <Col lg={8} className="">
-                        <AddClientButton toggle={toggleAdd}/>
+                        <AddClientButton toggle={toggleAdd} accessLock={accessLock}/>
                         <Modal isOpen={modalAuth} toggle={toggleAuth}>
                             <ModalHeader tag="h4">
                                 {"Авторизоваться"}
                             </ModalHeader>
                             <ModalBody>
-                                <AuthForm toggle={toggleAuth} updateTable={updateTable}/>
+                                <AuthForm toggle={toggleAuth} updateTable={updateTable} setAccessLock={setAccessLock}/>
                             </ModalBody>
                         </Modal>
 
                         <div className="overflow-auto min-vh-100 " >
                             <Table className="table table-bordered mt-4 ">
-                                <View handleSubmit={handleSubmit} update={update} updateTable={updateTable} database={database}/>
+                                <View handleSubmit={handleSubmit} update={update} updateTable={updateTable} database={database} setAccessLock={setAccessLock}/>
                             </Table>
                         </div>
 
@@ -95,15 +91,15 @@ const App = () => {
                                 {"Добавить клиента"}
                             </ModalHeader>
                             <ModalBody>
-                                <AddForm toggle={toggleAdd} updateTable={updateTable}/>
+                                <AddForm toggle={toggleAdd} updateTable={updateTable} />
                             </ModalBody>
                         </Modal>
                     </Col>
                     <Col lg={2}>
                         <div className="row">
                             <AuthButton toggle={toggleAuth}/>
-                            <UploadButton updateTable={updateTable}/>
-                            <DepersonalizationButton selectedColumns={selectedColumns} updateTable={updateTable}/>
+                            <UploadButton updateTable={updateTable} accessLock={accessLock}/>
+                            <DepersonalizationButton selectedColumns={selectedColumns} updateTable={updateTable} accessLock={accessLock}/>
                             <DownloadButton/>
                             <ChooseDepersonalizeDataButton switchDatabase={switchDatabase}/>
                             <ChoosePersonalizeDataButton switchDatabase={switchDatabase}/>

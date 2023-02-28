@@ -39,7 +39,17 @@ const View = props => {
         "documentNumber"
     ];
 
-
+    const checkAccess = () => {
+        axios.get('http://localhost:8080/api/database/personalize/hasAccess', {withCredentials:true})
+            .then(response => {
+                props.setAccessLock(false);
+            })
+            .catch(error => {
+                props.setAccessLock(true);
+                setView([]);
+                console.error(error);
+            });
+    }
 
     const updateTable = () => {
         let database = props.database
@@ -129,6 +139,7 @@ const View = props => {
     };
 
     useEffect(() => {
+        checkAccess();
         updateTable();
         if (props.update) {
             updateTable();

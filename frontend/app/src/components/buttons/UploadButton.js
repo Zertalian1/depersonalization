@@ -1,21 +1,45 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 
 import img3 from '../../assets/images/buttons/upload/upload-push.png'
 import img2 from '../../assets/images/buttons/upload/upload-point.png'
 import img1 from '../../assets/images/buttons/upload/upload-nonclick.png'
 import axios from "axios";
+import lock from "../../assets/images/buttons/lock-nonclick.png";
+
 const UploadButton = props => {
     const [image, setImage] = useState(img1);
     const inputFile = useRef(null);
     const [selectedFile, setSelectedFile] = React.useState(null);
 
+    const hasAccess = () => {
+        return !props.accessLock;
+    };
+
     const handleLeave = () => {
-        setImage(img1);
+        if (hasAccess()) {
+            setImage(img1);
+        } else {
+            setImage(lock)
+        }
     };
 
     const handleHover = () => {
-        setImage(img2);
+        if (hasAccess()) {
+            setImage(img2);
+        } else {
+            setImage(lock)
+        }
     };
+
+    const handlePress = () => {
+        if (hasAccess()) {
+            setImage(img3);
+            inputFile.current.click();
+        } else {
+            setImage(lock)
+        }
+    };
+
 
     const handleFileSelect = (event) => {
         console.log(event);
@@ -32,11 +56,13 @@ const UploadButton = props => {
             });
     }
 
-    const handlePress = () => {
-        setImage(img3);
-        inputFile.current.click();
-
-    };
+    useEffect(() => {
+        if (props.accessLock) {
+            setImage(lock);
+        } else {
+            setImage(img1);
+        }
+    }, [props.accessLock]);
 
     return (
         <div className="col-lg-12 d-flex mb-4 mt-4 justify-content-end">

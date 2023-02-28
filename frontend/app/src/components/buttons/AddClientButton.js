@@ -1,22 +1,48 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import img3 from '../../assets/images/buttons/add/add-push.png'
 import img2 from '../../assets/images/buttons/add/add-point.png'
 import img1 from '../../assets/images/buttons/add/add-nonclick.png'
-const AddClientButton = ({toggle}) => {
-    const [image, setImage] = useState(img1);
+import lock from '../../assets/images/buttons/lock-nonclick.png'
+
+
+const AddClientButton = ({toggle , accessLock}) => {
+    const [image, setImage] = useState(lock);
+
+    const hasAccess = () => {
+        return !accessLock;
+    };
 
     const handleLeave = () => {
-        setImage(img1);
+        if (hasAccess()) {
+            setImage(img1);
+        } else {
+            setImage(lock)
+        }
     };
 
     const handleHover = () => {
-        setImage(img2);
+        if (hasAccess()) {
+            setImage(img2);
+        } else {
+            setImage(lock)
+        }
     };
 
     const handlePress = () => {
-        setImage(img3);
-        toggle();
+        if (hasAccess()) {
+            setImage(img3);
+            toggle();
+        } else {
+            setImage(lock)
+        }
     };
+    useEffect(() => {
+        if (accessLock) {
+            setImage(lock);
+        } else {
+            setImage(img1);
+        }
+    }, [accessLock]);
 
     return (
         <div className="col-lg-12 d-flex mb-5 mt-5 justify-content-center">

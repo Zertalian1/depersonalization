@@ -25,8 +25,10 @@ const   GetInButton = props => {
                 console.log(response.data);
                 props.toggle();
                 props.updateTable();
+                props.setAccessLock(false);
             })
             .catch((error) => {
+                props.setAccessLock(true);
                 console.error(error);
             });
     };

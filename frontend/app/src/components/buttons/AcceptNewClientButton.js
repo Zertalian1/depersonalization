@@ -3,8 +3,9 @@ import React, { useState } from 'react';
 import img3 from '../../assets/images/buttons/create/create-push.png'
 import img2 from '../../assets/images/buttons/create/create-point.png'
 import img1 from '../../assets/images/buttons/create/create-nonclick.png'
+
 import axios from "axios";
-const AddButton = props => {
+const AcceptNewClientButton = props => {
     const [image, setImage] = useState(img1);
 
     const handleLeave = () => {
@@ -57,4 +58,4 @@ const AddButton = props => {
     );
 }
 
-export default AddButton;
+export default AcceptNewClientButton;
