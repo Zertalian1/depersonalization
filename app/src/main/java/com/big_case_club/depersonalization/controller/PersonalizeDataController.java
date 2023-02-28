@@ -18,18 +18,16 @@ public class PersonalizeDataController {
 
     private final Depersonalizator depersonalizator;
 
-
-
     @Autowired
     public PersonalizeDataController(PersonalizeDataService personalizeDataService,Depersonalizator depersonalizator) {
         this.personalizeDataService = personalizeDataService;
         this.depersonalizator = depersonalizator;
     }
 
-    @GetMapping("/view")
+    @RequestMapping(value="view", method = RequestMethod.GET)
     public @ResponseBody
-    List<PersonalizeData> viewDatabase() {
-        return personalizeDataService.viewDatabase();
+    List<PersonalizeData> viewDatabase(@RequestParam("sorted") String sorted) {
+        return personalizeDataService.viewDatabase(sorted);
     }
 
     @PostMapping("/save")

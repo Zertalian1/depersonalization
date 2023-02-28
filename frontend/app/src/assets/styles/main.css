@@ -1,0 +1,88 @@
+.App {
+  background: url('../images/space.png');
+  background-size: cover;
+}
+
+Table {
+    background-color: lightsteelblue;
+    opacity: 0.9;
+    border-radius: 20px;
+    border: none !important;
+}
+
+@media (max-width: 576px) {
+    .container{
+        max-width: 576px;
+    }
+    Table {
+        font-size: 2px;
+        /*max-width: 60vw;*/
+        /*max-height: 60vh;*/
+    }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+    .container{
+        max-width: 768px;
+    }
+    Table {
+        font-size: 4px;
+        /*max-width: 60vw;*/
+        /*max-height: 60vh;*/
+    }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+    .container{
+        max-width: 992px;
+    }
+    Table {
+        font-size: 6px;
+        /*max-width: 60vw;*/
+        /*max-height: 60vh;*/
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+    .container{
+        max-width: 1200px;
+    }
+    Table {
+        font-size: 8px;
+        /*max-width: 60vw;*/
+        /*max-height: 60vh;*/
+    }
+}
+@media (min-width: 1200px) and (max-width: 1500px) {
+    .container{
+        max-width: 1500px;
+    }
+    Table {
+        font-size: 10px;
+        /*max-width: 60vw;*/
+        /*max-height: 60vh;*/
+    }
+}
+
+@media (min-width: 1500px) and (max-width: 1800px) {
+    .container{
+        max-width: 1800px;
+    }
+    Table {
+        font-size: 12px;
+        /*max-width: 60vw;*/
+        /*max-height: 60vh;*/
+    }
+}
+
+@media (min-width: 1800px) {
+    .container {
+        max-width: 4096px;
+    }
+    Table {
+        font-size: 16px;
+        /*max-width: 20vw ;*/
+        /*max-height: 20vh;*/
+    }
+}
+

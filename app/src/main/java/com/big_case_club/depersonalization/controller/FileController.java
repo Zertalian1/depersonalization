@@ -29,7 +29,7 @@ public class FileController {
         if (file.isEmpty()) {
             return ResponseEntity.badRequest().build();
         }
-        if(fileService.createDatabase(file)){
+        if(!fileService.createDatabase(file)){
             return ResponseEntity.badRequest().body(
                     """
                             некорректный файл необходимы данные формата
