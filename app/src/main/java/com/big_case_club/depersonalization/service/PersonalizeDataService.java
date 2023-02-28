@@ -20,12 +20,7 @@ public class PersonalizeDataService {
     @Autowired
     private PersonalizeDataRepository personalizeDataRepository;
 
-
-    public int getTotalPages() {
-        return personalizeDataRepository.findAll(Pageable.ofSize(5)).getTotalPages();
-    }
-
-    public List<PersonalizeData> searchDatabase(Map<String, String> searchData, Sort sort, int pageIndex) {
+    public Page<PersonalizeData> searchDatabase(Map<String, String> searchData, Sort sort, int pageIndex) {
         ExampleMatcher matcher = ExampleMatcher.matching().withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING).withIgnoreCase();
         PersonalizeData pdata = new PersonalizeData();
         for(Map.Entry<String, String> entry: searchData.entrySet()) {
@@ -35,18 +30,18 @@ public class PersonalizeDataService {
             if(fieldName.equalsIgnoreCase("id")) {
                 pdata.setId(Long.valueOf(data));
             } else if(fieldName.equalsIgnoreCase("dateofbirth")) {
-                pdata.setDateOfBirth(LocalDate.parse(data));
+                continue;
             }
             else {
                 try {
                     new PropertyDescriptor(fieldName,pdata.getClass()).getWriteMethod().invoke(pdata, data);
                 } catch (Exception e) {
-                    return new ArrayList<PersonalizeData>();
+                    return null;
                 }
             }
         }
         Example<PersonalizeData> example = Example.of(pdata, matcher);
-        return personalizeDataRepository.findAll(example, PageRequest.of(pageIndex, 5, sort)).getContent();
+        return personalizeDataRepository.findAll(example, PageRequest.of(pageIndex, 5, sort));
     }
     public List<PersonalizeData> viewDatabase(Sort sort) {
 

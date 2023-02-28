@@ -4,10 +4,13 @@ import com.big_case_club.depersonalization.model.depersonalize.DepersonalizeData
 import com.big_case_club.depersonalization.model.personalize.PersonalizeData;
 import com.big_case_club.depersonalization.service.DepersonalizeDataService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Dictionary;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -32,15 +35,16 @@ public class DepersonalizeDataController {
 
     @RequestMapping(value="search", method = RequestMethod.POST)
     public @ResponseBody
-    List<DepersonalizeData> viewDatabase(@RequestBody Map<String, String> searchData,
+    Map<String, Object> viewDatabase(@RequestBody Map<String, String> searchData,
                                        @RequestParam("sorted") String sorted, @RequestParam("page") int page, @RequestParam("direction") String direction) {
         Sort.Direction dir=Sort.Direction.ASC;
         if(direction.equals("DESC")) dir= Sort.Direction.DESC;
-        return depersonalizeDataService.searchDatabase(searchData, Sort.by(dir, sorted), page);
-    }
-    @GetMapping("/pages")
-    public @ResponseBody int getPages() {
-        return depersonalizeDataService.getTotalPages();
+
+        Map<String, Object> res= new HashMap<>();
+        Page<DepersonalizeData> data = depersonalizeDataService.searchDatabase(searchData, Sort.by(dir, sorted), page);
+        res.put("table", data.getContent());
+        res.put("pages", data.getTotalPages());
+        return res;
     }
 
     @PostMapping("/save")

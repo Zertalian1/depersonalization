@@ -16,7 +16,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -56,8 +58,9 @@ public class DepersonalizeE2ETest {
         Boolean result = depersonalizator.depersonalize(dto);
 
         Assertions.assertNotEquals(null,result);
-        int pageSize = depersonalizeDataController.getPages();
-        List<DepersonalizeData> depersonalizeDataList = depersonalizeDataController.viewDatabase("Id", pageSize-1, "ASC");
+        Map<String, Object> res = depersonalizeDataController.viewDatabase(new HashMap<String, String>(),"Id", 0, "ASC");
+        int pages = (int) res.get("pages");
+        List<DepersonalizeData> depersonalizeDataList = (List<DepersonalizeData>) depersonalizeDataController.viewDatabase(new HashMap<String, String>(),"Id", pages-1, "ASC").get("table");
         DepersonalizeData depersonalizeData = depersonalizeDataList.get(depersonalizeDataList.toArray().length - 1);
         Assertions.assertEquals("Михаил Паньков Вячеславович",depersonalizeData.getFullName());
         Assertions.assertNotEquals("Новосибирск",depersonalizeData.getPlaceOfBirth());

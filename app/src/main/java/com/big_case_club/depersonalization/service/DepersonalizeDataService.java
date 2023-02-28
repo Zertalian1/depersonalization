@@ -20,12 +20,7 @@ public class DepersonalizeDataService {
     @Autowired
     private DepersonalizeDataRepository depersonalizeDataRepository;
 
-
-    public int getTotalPages() {
-        return depersonalizeDataRepository.findAll(Pageable.ofSize(5)).getTotalPages();
-    }
-
-    public List<DepersonalizeData> searchDatabase(Map<String, String> searchData, Sort sort, int pageIndex) {
+    public Page<DepersonalizeData> searchDatabase(Map<String, String> searchData, Sort sort, int pageIndex) {
         ExampleMatcher matcher = ExampleMatcher.matching().withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING).withIgnoreCase();
         DepersonalizeData pdata = new DepersonalizeData();
 
@@ -33,21 +28,21 @@ public class DepersonalizeDataService {
             String fieldName = entry.getKey();
             String data = entry.getValue();
             if(data == null) continue;
-            if(fieldName.equals("Id")) {
+            if(fieldName.equalsIgnoreCase("id")) {
                 pdata.setId(Long.valueOf(data));
             } else if(fieldName.equalsIgnoreCase("dateofbirth")) {
-                pdata.setDateOfBirth(LocalDate.parse(data));
+                continue;
             }
             else {
                 try {
                     new PropertyDescriptor(fieldName,pdata.getClass()).getWriteMethod().invoke(pdata, data);
                 } catch (Exception e) {
-                    return new ArrayList<DepersonalizeData>();
+                    return null;
                 }
             }
         }
         Example<DepersonalizeData> example = Example.of(pdata, matcher);
-        return depersonalizeDataRepository.findAll(example, PageRequest.of(pageIndex, 5, sort)).getContent();
+        return depersonalizeDataRepository.findAll(example, PageRequest.of(pageIndex, 5, sort));
     }
     public List<DepersonalizeData> viewDatabase() {
         return depersonalizeDataRepository.findAll(Sort.unsorted());

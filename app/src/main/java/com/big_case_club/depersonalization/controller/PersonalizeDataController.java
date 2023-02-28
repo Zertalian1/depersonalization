@@ -1,14 +1,17 @@
 package com.big_case_club.depersonalization.controller;
 
 import com.big_case_club.depersonalization.dto.DepersonalizeDataDTO;
+import com.big_case_club.depersonalization.model.depersonalize.DepersonalizeData;
 import com.big_case_club.depersonalization.model.personalize.PersonalizeData;
 import com.big_case_club.depersonalization.service.Depersonalizator;
 import com.big_case_club.depersonalization.service.PersonalizeDataService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -36,15 +39,16 @@ public class PersonalizeDataController {
 
     @RequestMapping(value="search", method = RequestMethod.POST)
     public @ResponseBody
-    List<PersonalizeData> viewDatabase(@RequestBody Map<String, String> searchData,
-                                       @RequestParam("sorted") String sorted, @RequestParam("page") int page, @RequestParam("direction") String direction) {
+    Map<String, Object> viewDatabase(@RequestBody Map<String, String> searchData,
+                                     @RequestParam("sorted") String sorted, @RequestParam("page") int page, @RequestParam("direction") String direction) {
         Sort.Direction dir=Sort.Direction.ASC;
         if(direction.equals("DESC")) dir= Sort.Direction.DESC;
-        return personalizeDataService.searchDatabase(searchData, Sort.by(dir, sorted), page);
-    }
-    @GetMapping("/pages")
-    public @ResponseBody int getPages() {
-        return personalizeDataService.getTotalPages();
+
+        Map<String, Object> res= new HashMap<>();
+        Page<PersonalizeData> data = personalizeDataService.searchDatabase(searchData, Sort.by(dir, sorted), page);
+        res.put("table", data.getContent());
+        res.put("pages", data.getTotalPages());
+        return res;
     }
 
     @PostMapping("/save")
