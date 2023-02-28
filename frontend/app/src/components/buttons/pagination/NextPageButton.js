@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import img3 from '../../../assets/images/buttons/button rigth one/button-right-one-push.png'
 import img2 from '../../../assets/images/buttons/button rigth one/button-right-one-point.png'
 import img1 from '../../../assets/images/buttons/button rigth one/button-right-one-nonclick.png'
+import '../../../assets/styles/pagination.css';
 const NextPageButton = props => {
     const [image, setImage] = useState(img1);
 
@@ -26,7 +27,7 @@ const NextPageButton = props => {
                 src={image}
                 alt="button"
                 draggable="false"
-                style={{width: "200px", height: "100px" ,marginTop: '-40px'}}
+                id="pagination-button"
                 onMouseEnter={handleHover}
                 onMouseLeave={handleLeave}
                 onMouseDown={handlePress}
