@@ -45,7 +45,8 @@ const View = props => {
         const { target } = event;
         const { id, value } = target;
 
-        setInputValues((prevState) => ({ ...prevState, [event.target.getAttribute("data-column")]: value }));
+        setInputValues((prevState) => ({ ...prevState, [event.target.getAttribute("data-column")]: event.target.value }));
+        console.log(event.target.value)
         updateTable();
     }
 
@@ -64,19 +65,12 @@ const View = props => {
     const updateTable = () => {
         let database = props.database
         let pageNumber = props.pageNumber
-        axios.get("http://localhost:8080/api/database/"+database+"/pages", {withCredentials:true})
-            .then(response => {
-                props.setTotalPageNumber(response.data - 1)
-            })
-            .catch(error => {
-                // обрабатываем ошибку
-                console.error(error);
-            });
         axios.post('http://localhost:8080/api/database/'+database+'/search?sorted=' + sorted + '&page=' + pageNumber + '&direction=ASC',
             inputValues,
             {withCredentials:true})
             .then(response => {
-                setView(response.data);
+                setView(response.data["table"]);
+                props.setTotalPageNumber(response.data["pages"] - 1)
             })
             .catch(error => {
                 setView([]);
@@ -175,27 +169,32 @@ const View = props => {
         <tr>
             {columns.map((column, index) => (
                 <th key={index} scope="col">
-                    <Input
-                        style={{ width: "7vh"}}
-                        type="text"
-                        id={`customSearchInput-${index}`}// уникальный идентификатор
-                        data-column={columnsJson[index]}
-                        onChange={changeSearchValue}
-                    />
+                    {index === 1 || index === 10 ? null : (
+                        <Input
+                            style={{ width: "7vh"}}
+                            type="text"
+                            id={`customSearchInput-${index}`}
+                            data-column={columnsJson[index]}
+                            onChange={changeSearchValue}
+                        />
+                    )}
                 </th>
             ))}
         </tr>
         <tr>
             {columns.map((column, index) => (
                 <th key={index} scope="col">
-                    <input
-                        type="checkbox"
-                        id={`customCheckbox-${index}`}// уникальный идентификатор
-                        hidden={true}
-                        data-column={columnsJson[index]}
-                        onChange={handleSubmit}
-                    />
-                    <label htmlFor={`customCheckbox-${index}`}></label>
+                    {index === 10 ? null : (
+                        <input
+                            type="checkbox"
+                            id={`customCheckbox-${index}`}// уникальный идентификатор
+                            hidden={true}
+                            data-column={columnsJson[index]}
+                            onChange={handleSubmit}
+                        />
+
+                    )}
+                    <label htmlFor={`customCheckbox-${index}`}/>
                     <div className="user-select-none">
                         {column}
                     </div>
