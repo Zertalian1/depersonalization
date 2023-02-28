@@ -170,23 +170,24 @@ const View = props => {
         </tr>
         {view.map((item, index) => (
             <tr key={item.id}>
-                <td>{editingRowIndex === index ? <input type="text" defaultValue={item.fullName} name="fullName" onChange={handleInputChange} /> : item.fullName}</td>
-                <td>{editingRowIndex === index ? <input type="text" defaultValue={item.dateOfBirth} name="dateOfBirth" onChange={handleInputChange} /> : item.dateOfBirth}</td>
-                <td>{editingRowIndex === index ? <input type="text" defaultValue={item.placeOfBirth} name="placeOfBirth" onChange={handleInputChange}/> : item.placeOfBirth}</td>
-                <td>{editingRowIndex === index ? <input type="text" defaultValue={item.gender} name="gender" onChange={handleInputChange} /> : item.gender}</td>
-                <td>{editingRowIndex === index ? <input type="text" defaultValue={item.inn} name="inn" onChange={handleInputChange} /> : item.inn}</td>
-                <td>{editingRowIndex === index ? <input type="text" defaultValue={item.snils} name="snils" onChange={handleInputChange} /> : item.snils}</td>
-                <td>{editingRowIndex === index ? <input type="text" defaultValue={item.contactInfo} name="contactInfo" onChange={handleInputChange} /> : item.contactInfo}</td>
-                <td>{editingRowIndex === index ? <input type="text" defaultValue={item.address} name="address" onChange={handleInputChange}/> : item.address}</td>
-                <td>{editingRowIndex === index ? <input type="text" defaultValue={item.documentType} name="documentType" onChange={handleInputChange}/> : item.documentType}</td>
-                <td>{editingRowIndex === index ? <input type="text" defaultValue={item.documentNumber} name="documentNumber" onChange={handleInputChange}/> : item.documentNumber}</td>
+                <td>{editingRowIndex === index ? <input type="text" style={{ width: "10vh"}} defaultValue={item.fullName} name="fullName" onChange={handleInputChange} /> : item.fullName}</td>
+                <td>{editingRowIndex === index ? <input type="text" style={{ width: "9vh"}} defaultValue={item.dateOfBirth} name="dateOfBirth" onChange={handleInputChange} /> : item.dateOfBirth}</td>
+                <td>{editingRowIndex === index ? <input type="text" style={{ width: "10vh"}} defaultValue={item.placeOfBirth} name="placeOfBirth" onChange={handleInputChange}/> : item.placeOfBirth}</td>
+                <td>{editingRowIndex === index ? <input type="text" style={{ width: "2vh"}} defaultValue={item.gender} name="gender" onChange={handleInputChange} /> : item.gender}</td>
+                <td>{editingRowIndex === index ? <input type="text" style={{ width: "10vh"}} defaultValue={item.inn} name="inn" onChange={handleInputChange} /> : item.inn}</td>
+                <td>{editingRowIndex === index ? <input type="text" style={{ width: "10vh"}} defaultValue={item.snils} name="snils" onChange={handleInputChange} /> : item.snils}</td>
+                <td>{editingRowIndex === index ? <input type="text" style={{ width: "17vh"}} defaultValue={item.contactInfo} name="contactInfo" onChange={handleInputChange} /> : item.contactInfo}</td>
+                <td>{editingRowIndex === index ? <input type="text" style={{ width: "10vh"}} defaultValue={item.address} name="address" onChange={handleInputChange}/> : item.address}</td>
+                <td>{editingRowIndex === index ? <input type="text" style={{ width: "10vh"}} defaultValue={item.documentType} name="documentType" onChange={handleInputChange}/> : item.documentType}</td>
+                <td>{editingRowIndex === index ? <input type="text" style={{ width: "10vh"}} defaultValue={item.documentNumber} name="documentNumber" onChange={handleInputChange}/> : item.documentNumber}</td>
                 <td>
-                    <div className="d-flex gap-3">
+                    <div className="d-flex gap-3 user-select-none">
                         <img
                             src={pencil}
                             alt="pencil"
+                            draggable="false"
                             id={`edit-${index}`}
-                            style={{ width: "60%" }}
+                            style={{ width: "9vh", height: "9vh",  position: "relative", bottom: "1.8vh", right: "1vw" }}
                             onClick={() => handleEditClick(index)}
                         />
                         <UncontrolledTooltip placement="top" target={`edit-${index}`}>
@@ -197,8 +198,9 @@ const View = props => {
                             src={trashDelete}
                             alt="delete"
                             className="delete"
+                            draggable="false"
                             id={`delete-${index}`}
-                            style={{ width: "50%",  right: "2vw", position: "relative"}}
+                            style={{ width: "5vh", height: "5vh", right: "3vw", position: "relative"}}
                             onClick={() => sendDelete(item.id,index)}
                         />
                         <UncontrolledTooltip placement="top" target={`delete-${index}`}>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import img3 from '../../assets/images/buttons/button right two/button-right-two-push.png'
-import img2 from '../../assets/images/buttons/button right two/button-right-two-point.png'
-import img1 from '../../assets/images/buttons/button right two/button-right-two-nonclick.png'
+import img3 from '../../../assets/images/buttons/button right two/button-right-two-push.png'
+import img2 from '../../../assets/images/buttons/button right two/button-right-two-point.png'
+import img1 from '../../../assets/images/buttons/button right two/button-right-two-nonclick.png'
 const LastPageButton = () => {
     const [image, setImage] = useState(img1);
 
@@ -23,6 +23,7 @@ const LastPageButton = () => {
                 className=""
                 src={image}
                 alt="button"
+                draggable="false"
                 style={{width: "200px", height: "100px" ,marginTop: '-40px'}}
                 onMouseEnter={handleHover}
                 onMouseLeave={handleLeave}
