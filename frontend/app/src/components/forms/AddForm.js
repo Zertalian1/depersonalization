@@ -17,8 +17,6 @@ const AddForm = ({toggle,updateTable}) => {
     const [address, setAddress] = useState('');
     const [documentType, setDocumentType] = useState('');
     const [documentNumber, setDocumentNumber] = useState('');
-
-
     const validation = useFormik({
         enableReinitialize: true,
         initialValues: {
@@ -89,6 +87,121 @@ const AddForm = ({toggle,updateTable}) => {
         validation.handleBlur(event);
     };
 
+    const formFields = [
+        {
+            label: "ФИО",
+            name: "fullName",
+            type: "text",
+            onBlur: handleBlur,
+            onChange: handleFullNameChange,
+            validation: {
+                touched: validation.touched.fullName,
+                errors: validation.errors.fullName,
+            },
+        },
+        {
+            label: "Дата рождения",
+            name: "dateOfBirth",
+            type: "text",
+            onBlur: handleBlur,
+            onChange: handleDateOfBirthChange,
+            validation: {
+                touched: validation.touched.dateOfBirth,
+                errors: validation.errors.dateOfBirth,
+            },
+        },
+        {
+            label: "Место рождения",
+            name: "placeOfBirth",
+            type: "text",
+            onBlur: handleBlur,
+            onChange: handlePlaceOfBirthChange,
+            validation: {
+                touched: validation.touched.placeOfBirth,
+                errors: validation.errors.placeOfBirth,
+            },
+        },
+        {
+            label: "Пол",
+            name: "gender",
+            type: "text",
+            onBlur: handleBlur,
+            onChange: handleGenderChange,
+            validation: {
+                touched: validation.touched.gender,
+                errors: validation.errors.gender,
+            },
+        },
+        {
+            label: "ИНН",
+            name: "inn",
+            type: "text",
+            onBlur: handleBlur,
+            onChange: handleInnChange,
+            validation: {
+                touched: validation.touched.inn,
+                errors: validation.errors.inn,
+            },
+        },
+        {
+            label: "СНИЛС",
+            name: "snils",
+            type: "text",
+            onBlur: handleBlur,
+            onChange: handleSnilsChange,
+            validation: {
+                touched: validation.touched.snils,
+                errors: validation.errors.snils,
+            },
+        },
+        {
+            label: "Контактные данные",
+            name: "contactInfo",
+            type: "text",
+            onBlur: handleBlur,
+            onChange: handleContactInfoChange,
+            validation: {
+                touched: validation.touched.contactInfo,
+                errors: validation.errors.contactInfo,
+            },
+        },
+        {
+            label: "Адрес",
+            name: "address",
+            type: "text",
+            onBlur: handleBlur,
+            onChange: handleAddressChange,
+            validation: {
+                touched: validation.touched.address,
+                errors: validation.errors.address,
+            },
+        },
+        {
+            label: "Тип документа",
+            name: "documentType",
+            type: "text",
+            onBlur: handleBlur,
+            onChange: handleDocumentTypeChange,
+            validation: {
+                touched: validation.touched.documentType,
+                errors: validation.errors.documentType,
+            },
+        },
+        {
+            label: "Номер документа",
+            name: "documentNumber",
+            type: "text",
+            onBlur: handleBlur,
+            onChange: handleDocumentNumberChange,
+            validation: {
+                touched: validation.touched.documentNumber,
+                errors: validation.errors.documentNumber,
+            },
+        },
+    ];
+
+
+
 
     return (
         <Form
@@ -100,145 +213,19 @@ const AddForm = ({toggle,updateTable}) => {
         >
             <Row>
                 <Col className="col-12">
-                    <div className="mb-3">
-                        <Label className="form-label">ФИО</Label>
-                        <Input
-                            name="fullName"
-                            type="text"
-                            onBlur={handleBlur}
-                            onInput={validation.handleChange}
-                            onChange={handleFullNameChange}
-                        />
-                        {validation.touched.fullName && validation.errors.fullName ? (
-                            <div style={{color: 'red'}}>{validation.errors.fullName}</div>
-                        ) : null}
-                    </div>
-
-                    <div className="mb-3">
-                        <Label className="form-label">Дата рождения</Label>
-                        <Input
-                            name="dateOfBirth"
-                            type="text"
-                            onBlur={handleBlur}
-                            onInput={validation.handleChange}
-                            onChange={handleDateOfBirthChange}
-                        />
-                        {validation.touched.dateOfBirth && validation.errors.dateOfBirth ? (
-                            <div style={{color: 'red'}}>{validation.errors.dateOfBirth}</div>
-                        ) : null}
-                    </div>
-
-                    <div className="mb-3">
-                        <Label className="form-label">Место рождения</Label>
-                        <Input
-                            name="placeOfBirth"
-                            type="text"
-                            onBlur={handleBlur}
-                            onInput={validation.handleChange}
-                            onChange={handlePlaceOfBirthChange}
-                        />
-                        {validation.touched.placeOfBirth && validation.errors.placeOfBirth ? (
-                            <div style={{color: 'red'}}>{validation.errors.placeOfBirth}</div>
-                        ) : null}
-                    </div>
-
-                    <div className="mb-3">
-                        <Label className="form-label">Пол</Label>
-                        <Input
-                            name="gender"
-                            type="text"
-                            onBlur={handleBlur}
-                            onInput={validation.handleChange}
-                            onChange={handleGenderChange}
-                        />
-                        {validation.touched.gender && validation.errors.gender ? (
-                            <div style={{color: 'red'}}>{validation.errors.gender}</div>
-                        ) : null}
-                    </div>
-
-                    <div className="mb-3">
-                        <Label className="form-label">ИНН</Label>
-                        <Input
-                            name="inn"
-                            type="text"
-                            onBlur={handleBlur}
-                            onInput={validation.handleChange}
-                            onChange={handleInnChange}
-                        />
-                        {validation.touched.inn && validation.errors.inn ? (
-                            <div style={{color: 'red'}}>{validation.errors.inn}</div>
-                        ) : null}
-                    </div>
-
-                    <div className="mb-3">
-                        <Label className="form-label">СНИЛС</Label>
-                        <Input
-                            name="snils"
-                            type="text"
-                            onBlur={handleBlur}
-                            onInput={validation.handleChange}
-                            onChange={handleSnilsChange}
-                        />
-                        {validation.touched.snils && validation.errors.snils ? (
-                            <div style={{color: 'red'}}>{validation.errors.snils}</div>
-                        ) : null}
-                    </div>
-
-                    <div className="mb-3">
-                        <Label className="form-label">Контактные данные</Label>
-                        <Input
-                            name="contactInfo"
-                            type="text"
-                            onBlur={handleBlur}
-                            onInput={validation.handleChange}
-                            onChange={handleContactInfoChange}
-                        />
-                        {validation.touched.contactInfo && validation.errors.contactInfo ? (
-                            <div style={{color: 'red'}}>{validation.errors.contactInfo}</div>
-                        ) : null}
-                    </div>
-
-                    <div className="mb-3">
-                        <Label className="form-label">Адрес</Label>
-                        <Input
-                            name="address"
-                            type="text"
-                            onBlur={handleBlur}
-                            onInput={validation.handleChange}
-                            onChange={handleAddressChange}
-                        />
-                        {validation.touched.address && validation.errors.address ? (
-                            <div style={{color: 'red'}}>{validation.errors.address}</div>
-                        ) : null}
-                    </div>
-
-                    <div className="mb-3">
-                        <Label className="form-label">Тип документа</Label>
-                        <Input
-                            name="documentType"
-                            type="text"
-                            onBlur={handleBlur}
-                            onInput={validation.handleChange}
-                            onChange={handleDocumentTypeChange}
-                        />
-                        {validation.touched.documentType && validation.errors.documentType ? (
-                            <div style={{color: 'red'}}>{validation.errors.documentType}</div>
-                        ) : null}
-                    </div>
-
-                    <div className="mb-3">
-                        <Label className="form-label">Номер документа</Label>
-                        <Input
-                            name="documentNumber"
-                            type="text"
-                            onBlur={handleBlur}
-                            onInput={validation.handleChange}
-                            onChange={handleDocumentNumberChange}
-                        />
-                        {validation.touched.documentNumber && validation.errors.documentNumber ? (
-                            <div style={{color: 'red'}}>{validation.errors.documentNumber}</div>
-                        ) : null}
-                    </div>
+                    {formFields.map((field) => (
+                        <div className="mb-3" key={field.name}>
+                            <Label className="form-label">{field.label}</Label>
+                            <Input
+                                name={field.name}
+                                type="text"
+                                onBlur={field.onBlur}
+                                onInput={field.onInput}
+                                onChange={field.onChange}
+                            />
+                            {field.error ? <div style={{ color: "red" }}>{field.error}</div> : null}
+                        </div>
+                    ))}
                 </Col>
             </Row>
             <Row>

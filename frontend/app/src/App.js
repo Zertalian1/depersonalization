@@ -92,7 +92,7 @@ const App = () => {
                                 paddingRight:'0',
                                 marginRight:'-80px',
                                 paddingLeft: '0',
-                                marginLeft:'-80px'
+                                marginLeft:'-80px',
                             }}>
                                 <Table className="table table-bordered mt-4">
                                     <View handleSubmit={handleSubmit}
