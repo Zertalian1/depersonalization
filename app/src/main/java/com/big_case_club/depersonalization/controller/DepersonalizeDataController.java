@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/database/depersonalize")
@@ -29,13 +30,13 @@ public class DepersonalizeDataController {
         return depersonalizeDataService.viewDatabase(Sort.by(dir, sorted), page);
     }
 
-    @RequestMapping(value="search", method = RequestMethod.GET)
+    @RequestMapping(value="search", method = RequestMethod.POST)
     public @ResponseBody
-    List<DepersonalizeData> viewDatabase(@RequestParam("searchField") String field, @RequestParam("searchData") String searchData,
+    List<DepersonalizeData> viewDatabase(@RequestBody Map<String, String> searchData,
                                        @RequestParam("sorted") String sorted, @RequestParam("page") int page, @RequestParam("direction") String direction) {
         Sort.Direction dir=Sort.Direction.ASC;
         if(direction.equals("DESC")) dir= Sort.Direction.DESC;
-        return depersonalizeDataService.searchDatabase(field, searchData, Sort.by(dir, sorted), page);
+        return depersonalizeDataService.searchDatabase(searchData, Sort.by(dir, sorted), page);
     }
     @GetMapping("/pages")
     public @ResponseBody int getPages() {

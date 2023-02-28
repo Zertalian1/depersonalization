@@ -16,8 +16,10 @@ const NextPageButton = props => {
 
     const handlePress = () => {
         setImage(img3);
-        props.setPageNumber(props.pageNumber+1);
-        props.updateTable();
+        if(props.pageNumber !== props.totalPageNumber) {
+            props.setPageNumber(props.pageNumber + 1);
+            props.updateTable();
+        }
     };
 
     return (

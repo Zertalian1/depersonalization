@@ -16,8 +16,10 @@ const PreviousPageButton = props => {
 
     const handlePress = () => {
         setImage(img3);
-        props.setPageNumber(props.pageNumber-1);
-        props.updateTable();
+        if(props.pageNumber !== 0){
+            props.setPageNumber(props.pageNumber-1);
+            props.updateTable();
+        }
     };
 
     return (
