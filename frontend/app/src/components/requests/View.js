@@ -1,12 +1,13 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {Link} from 'react-router-dom';
-import {Input, UncontrolledTooltip} from "reactstrap";
+import {ButtonGroup, Input, UncontrolledTooltip} from "reactstrap";
 
 import "../../assets/styles/checkbox.css";
 import "../../assets/styles/actions.css";
 import pencil from "../../assets/images/actions/pencil.png";
 import trashDelete from "../../assets/images/actions/delete.png";
+import SortButton from "../buttons/SortButton";
 const View = props => {
     const [view, setView] = useState([]);
     const [editingRowIndex, setEditingRowIndex] = useState(-1);
@@ -171,7 +172,7 @@ const View = props => {
                 <th key={index} scope="col">
                     {index === 1 || index === 10 ? null : (
                         <Input
-                            style={{ width: "7vh"}}
+                            style={{ width: "4vw", height: "3vh"}}
                             type="text"
                             id={`customSearchInput-${index}`}
                             data-column={columnsJson[index]}
@@ -184,6 +185,7 @@ const View = props => {
         <tr>
             {columns.map((column, index) => (
                 <th key={index} scope="col">
+                    <ButtonGroup className="float-start">
                     {index === 10 ? null : (
                         <input
                             type="checkbox"
@@ -195,6 +197,9 @@ const View = props => {
 
                     )}
                     <label htmlFor={`customCheckbox-${index}`}/>
+                        <SortButton/>
+                    </ButtonGroup>
+
                     <div className="user-select-none">
                         {column}
                     </div>

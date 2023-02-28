@@ -8,6 +8,10 @@ Table {
     opacity: 0.9;
     border-radius: 20px;
     border: none !important;
+
+}
+th:first-line{
+    border-color: lightsteelblue;
 }
 
 @media (max-width: 576px) {
@@ -69,8 +73,6 @@ Table {
     }
     Table {
         font-size: 15px;
-    }:root{
-         --scroll-width: calc(100vw - 100%);
-     }
+    }
 }
 
