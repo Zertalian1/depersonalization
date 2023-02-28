@@ -32,6 +32,15 @@ public class PersonalizeDataController {
         if(direction.equals("DESC")) dir= Sort.Direction.DESC;
         return personalizeDataService.viewDatabase(Sort.by(dir, sorted), page);
     }
+
+    @RequestMapping(value="search", method = RequestMethod.GET)
+    public @ResponseBody
+    List<PersonalizeData> viewDatabase(@RequestParam("searchField") String field, @RequestParam("searchData") String searchData,
+                                       @RequestParam("sorted") String sorted, @RequestParam("page") int page, @RequestParam("direction") String direction) {
+        Sort.Direction dir=Sort.Direction.ASC;
+        if(direction.equals("DESC")) dir= Sort.Direction.DESC;
+        return personalizeDataService.searchDatabase(field, searchData, Sort.by(dir, sorted), page);
+    }
     @GetMapping("/pages")
     public @ResponseBody int getPages() {
         return personalizeDataService.getTotalPages();
