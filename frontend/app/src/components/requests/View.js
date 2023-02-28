@@ -54,7 +54,8 @@ const View = props => {
 
     const updateTable = () => {
         let database = props.database
-        axios.get('http://localhost:8080/api/database/'+database+'/view?sorted=' + sorted, {withCredentials:true})
+        let pageNumber = props.pageNumber
+        axios.get('http://localhost:8080/api/database/'+database+'/view?sorted=' + sorted + '&page=' + pageNumber, {withCredentials:true})
             .then(response => {
                 setView(response.data);
             })
