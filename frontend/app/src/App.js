@@ -9,7 +9,7 @@ import UploadButton from "./components/buttons/UploadButton";
 import DownloadButton from "./components/buttons/DownloadButton";
 import AuthForm from "./components/forms/AuthForm";
 import {
-    Button,
+    Button, ButtonGroup,
     Col,
     Container,
     Form,
@@ -29,6 +29,10 @@ import AddClientButton from "./components/buttons/AddClientButton";
 import AddForm from "./components/forms/AddForm";
 import ChooseDepersonalizeDataButton from "./components/buttons/ChooseDepersonalizeDataButton";
 import ChoosePersonalizeDataButton from "./components/buttons/ChoosePersonalizeDataButton";
+import FirstPageButton from "./components/buttons/FirstPageButton";
+import PreviousPageButton from "./components/buttons/PreviousPageButton";
+import NextPageButton from "./components/buttons/NextPageButton";
+import LastPageButton from "./components/buttons/LastPageButton";
 
 
 const App = () => {
@@ -83,8 +87,20 @@ const App = () => {
                         <div className="overflow-auto min-vh-100 " >
                             <Table className="table table-bordered mt-4 ">
                                 <View handleSubmit={handleSubmit} update={update} updateTable={updateTable} database={database} setAccessLock={setAccessLock}/>
+
                             </Table>
+                            <div style={{ marginTop: '10px' }}>
+                                <ButtonGroup className="float-start">
+                                    <FirstPageButton/>
+                                    <PreviousPageButton/>
+                                </ButtonGroup>
+                                <ButtonGroup className="float-end">
+                                    <NextPageButton/>
+                                    <LastPageButton/>
+                                </ButtonGroup>
+                            </div>
                         </div>
+
 
                         <Modal isOpen={modalAdd} toggle={toggleAdd}>
                             <ModalHeader tag="h4">

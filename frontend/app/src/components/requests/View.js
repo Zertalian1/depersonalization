@@ -11,6 +11,7 @@ const View = props => {
     const [view, setView] = useState([]);
     const [editingRowIndex, setEditingRowIndex] = useState(-1);
     const [editingRow, setEditingRow] = useState({});
+    const [sorted, setsorted] = useState("");
 
     // Список столбцов таблицы
     const columns = [
@@ -53,7 +54,7 @@ const View = props => {
 
     const updateTable = () => {
         let database = props.database
-        axios.get('http://localhost:8080/api/database/'+database+'/view?sorted=', {withCredentials:true})
+        axios.get('http://localhost:8080/api/database/'+database+'/view?sorted=' + sorted, {withCredentials:true})
             .then(response => {
                 setView(response.data);
             })
