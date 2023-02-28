@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {Link} from 'react-router-dom';
-import {UncontrolledTooltip} from "reactstrap";
+import {Input, UncontrolledTooltip} from "reactstrap";
 
 import "../../assets/styles/checkbox.css";
 import "../../assets/styles/actions.css";
@@ -12,6 +12,7 @@ const View = props => {
     const [editingRowIndex, setEditingRowIndex] = useState(-1);
     const [editingRow, setEditingRow] = useState({});
     const [sorted, setsorted] = useState("Id");
+    const [inputValues, setInputValues] = useState({});
 
     // Список столбцов таблицы
     const columns = [
@@ -40,6 +41,14 @@ const View = props => {
         "documentNumber"
     ];
 
+    const changeSearchValue = (event) => {
+        const { target } = event;
+        const { id, value } = target;
+
+        setInputValues((prevState) => ({ ...prevState, [event.target.getAttribute("data-column")]: value }));
+        updateTable();
+    }
+
     const checkAccess = () => {
         axios.get('http://localhost:8080/api/database/personalize/hasAccess', {withCredentials:true})
             .then(response => {
@@ -63,7 +72,9 @@ const View = props => {
                 // обрабатываем ошибку
                 console.error(error);
             });
-        axios.get('http://localhost:8080/api/database/'+database+'/view?sorted=' + sorted + '&page=' + pageNumber + '&direction=ASC', {withCredentials:true})
+        axios.post('http://localhost:8080/api/database/'+database+'/search?sorted=' + sorted + '&page=' + pageNumber + '&direction=ASC',
+            inputValues,
+            {withCredentials:true})
             .then(response => {
                 setView(response.data);
             })
@@ -161,6 +172,19 @@ const View = props => {
 
     return (
         <tbody>
+        <tr>
+            {columns.map((column, index) => (
+                <th key={index} scope="col">
+                    <Input
+                        style={{ width: "7vh"}}
+                        type="text"
+                        id={`customSearchInput-${index}`}// уникальный идентификатор
+                        data-column={columnsJson[index]}
+                        onChange={changeSearchValue}
+                    />
+                </th>
+            ))}
+        </tr>
         <tr>
             {columns.map((column, index) => (
                 <th key={index} scope="col">

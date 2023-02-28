@@ -47,6 +47,7 @@ const App = () => {
     const [totalPageNumber,setTotalPageNumber] = useState(0);
 
 
+
     const handleSubmit = (columns) => {
         setSelectedColumns(columns);
     };
@@ -98,12 +99,12 @@ const App = () => {
                                 />
 
                             </Table>
-                            <div style={{ marginTop: '10px' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                                 <ButtonGroup className="float-start">
                                     <FirstPageButton setPageNumber={setPageNumber} pageNumber={pageNumber} updateTable={updateTable}/>
                                     <PreviousPageButton setPageNumber={setPageNumber} pageNumber={pageNumber} updateTable={updateTable}/>
                                 </ButtonGroup>
-                                <div style={{ display: 'inline-block', background: 'white',  borderRadius: '4px', marginLeft: '17%' }}>
+                                <div style={{ background: 'white', borderRadius: '4px', width: "1.1vw", textAlign: 'center', marginLeft: '5vw', marginRight: '5vw', marginBottom: '8vh' }} className="align-items-center">
                                     {pageNumber}
                                 </div>
                                 <ButtonGroup className="float-end">
