@@ -23,9 +23,8 @@ const NextPageButton = props => {
     };
 
     return (
-        <div className="">
+        <div className="user-select-none">
             <img
-                className=""
                 src={image}
                 alt="button"
                 draggable="false"

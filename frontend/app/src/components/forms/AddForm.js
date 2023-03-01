@@ -43,7 +43,7 @@ const AddForm = ({toggle,updateTable}) => {
             documentType: Yup.string().required("Пожалуйста, введите тип документа"),
             documentNumber: Yup.string().required  ("Пожалуйста, введите номер документа"),
         }),
-        onSubmit: (values) => {
+        onSubmit: () => {
             toggle();
         }
     });

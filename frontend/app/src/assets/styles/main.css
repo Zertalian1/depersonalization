@@ -13,8 +13,6 @@ html, body {
 Table {
     background-color: lightsteelblue;
     opacity: 0.9;
-    border-radius: 20px;
-
 }
 
 tbody {
@@ -26,9 +24,6 @@ td, th {
     padding: 5px;
 }
 
-th:first-line{
-    border-color: lightsteelblue;
-}
 
 @media (max-width: 576px) {
     .container{

@@ -1,6 +1,11 @@
 .pencil{
     background-image: url("../images/actions/pencil.png");
+    align-content: center;
 }
 .delete{
+    align-content: center;
+    background-image: url("../images/actions/delete.png");
+}
+.client-card{
     background-image: url("../images/actions/delete.png");
 }

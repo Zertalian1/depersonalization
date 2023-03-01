@@ -45,13 +45,13 @@ const AddClientButton = ({toggle , accessLock}) => {
     }, [accessLock]);
 
     return (
-        <div className="col-lg-12 d-flex mb-0 mt-5 justify-content-center">
+        <div className="col-lg-12 d-flex mb-2 mt-4 justify-content-center user-select-none">
             <img
                 className=""
                 src={image}
                 alt="button"
                 draggable="false"
-                style={{width: "15%", height: "10%", marginTop: "-2vh"}}
+                style={{width: "15%", height: "10%", marginTop: "3vh"}}
                 onMouseEnter={handleHover}
                 onMouseLeave={handleLeave}
                 onMouseDown={handlePress}

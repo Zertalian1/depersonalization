@@ -32,7 +32,7 @@ const SortButton = props => {
     }, [props.sorted]);
 
     return (
-        <div className="">
+        <div>
             <img
                 className=""
                 src={image}

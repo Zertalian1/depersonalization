@@ -76,7 +76,7 @@ const App = () => {
                     <Col lg={2}>
 
                     </Col>
-                    <Col lg={8} className="">
+                    <Col lg={8}>
                         <AddClientButton toggle={toggleAdd} accessLock={accessLock}/>
                         <Modal isOpen={modalAuth} toggle={toggleAuth}>
                             <ModalHeader tag="h4">
@@ -87,7 +87,7 @@ const App = () => {
                             </ModalBody>
                         </Modal>
 
-                        <div className="" >
+                        <div className="pixel-borders pixel-borders--1" >
                             <div style={{ overflowX: 'auto',
                                 paddingRight:'0',
                                 marginRight:'-80px',
@@ -120,7 +120,6 @@ const App = () => {
                             </div>
                         </div>
 
-
                         <Modal isOpen={modalAdd} toggle={toggleAdd}>
                             <ModalHeader tag="h4">
                                 {"Добавить клиента"}
@@ -131,7 +130,7 @@ const App = () => {
                         </Modal>
                     </Col>
                     <Col lg={2}>
-                        <div className="row">
+                        <div className="row user-select-none">
                             <AuthButton toggle={toggleAuth}/>
                             <UploadButton updateTable={updateTable} accessLock={accessLock}/>
                             <DepersonalizationButton selectedColumns={selectedColumns} updateTable={updateTable} accessLock={accessLock}/>
