@@ -55,7 +55,8 @@ cd frontend/app
 npm install
 npm start
 ```
-
+## Ссылка на репозиторий
+https://git.codenrock.com/adventure-league/cnrprod-team-27357/depersonalization
 
 [SpringBoot]:https://spring.io/
 [ReactJS]:https://reactjs.org/
