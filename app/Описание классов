@@ -1,0 +1,19 @@
+пакет controller:
+
+FileUploadController: класс, отвечающий за загрузку файла базы данных на сервер;
+FileDownloadController: класс, отвечающий за скачивание файла базы данных.
+PersonalizeDatabaseController: класс, отвечающий за работу с содержимым базы данных;
+
+пакет service:
+
+FileUploadService: класс, содержащий методы для загрузки файла базы данных;
+PersonalizeDatabaseService: класс, содержащий методы для отображения содержимого базы данных;
+FileDownloadService: класс, содержащий методы для скачивания файла базы данных.
+
+пакет repository:
+
+PersonalizeDatabaseRepository: класс, содержащий методы для работы с базой данных.
+
+пакет config:
+
+SecurityConfig: класс, отвечающий за настройку Spring Security. Определяет права доступа к различным ресурсам в зависимости от роли пользователя.

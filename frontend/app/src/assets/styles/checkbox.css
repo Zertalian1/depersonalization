@@ -1,0 +1,25 @@
+input[type=checkbox]{
+    background: url("../images/checkboxes/checkbox-without-point.png") no-repeat;
+    position: relative;
+    padding-left: 1.2rem;
+}
+
+input[type=checkbox] + label {
+    position: relative;
+    padding-left: 1.2rem;
+    display: inline-flex;
+    background: url("../images/checkboxes/checkbox-without-push.png") no-repeat;
+    height: 25px;
+    width: 25px;;
+    background-size: 100%; /* задаем размер картинки */
+}
+
+input[type=checkbox]:checked + label {
+    position: relative;
+    padding-left: 1.2rem;
+    background: url("../images/checkboxes/checkbox-with-push.png") no-repeat;
+    height: 25px;
+    width: 25px;
+    display: inline-flex;
+    background-size: 100%; /* задаем размер картинки */
+}
