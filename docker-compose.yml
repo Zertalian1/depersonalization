@@ -31,9 +31,7 @@ services:
       - app-volume:/var/lib/postgresql/data-depersonalize
 
   backend:
-    build:
-      context: app # Use an image built from the specified dockerfile in the `polling-app-server` directory.
-      dockerfile: Dockerfile
+    image: zertallian/depersonalization-backend
     ports:
       - "8080:8080"
     depends_on:
@@ -41,9 +39,7 @@ services:
 
 
   frontend:
-    build:
-      context: frontend/app # Use an image built from the specified dockerfile in the `polling-app-server` directory.
-      dockerfile: Dockerfile
+    image: zertallian/depersonalization-frontend
     ports:
       - "3000:3000"
     depends_on:
