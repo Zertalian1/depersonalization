@@ -1,0 +1,88 @@
+.App {
+    height: 100vh;
+    background: url('../images/space.png');
+    background-size: auto;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+Table {
+    background-color: lightsteelblue;
+    opacity: 0.9;
+}
+
+tbody {
+    border-collapse: collapse;
+}
+
+td, th {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+@media (max-width: 576px) {
+    .container{
+        max-width: 576px;
+    }
+    Table {
+        font-size: 2px;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+    .container{
+        max-width: 768px;
+    }
+    Table {
+        font-size: 4px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+    .container{
+        max-width: 992px;
+    }
+    Table {
+        font-size: 6px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+    .container{
+        max-width: 1200px;
+    }
+    Table {
+        font-size: 8px;
+    }
+}
+@media (min-width: 1200px) and (max-width: 1500px) {
+    .container{
+        max-width: 1500px;
+    }
+    Table {
+        font-size: 10px;
+    }
+}
+
+@media (min-width: 1500px) and (max-width: 1800px) {
+    .container{
+        max-width: 1800px;
+    }
+    Table {
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 1800px) {
+    .container {
+        max-width: 4096px;
+    }
+    Table {
+        font-size: 15px;
+    }
+}
+
