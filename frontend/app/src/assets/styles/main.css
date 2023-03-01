@@ -1,7 +1,7 @@
 .App {
     height: 100vh;
     background: url('../images/space.png');
-    background-size: cover;
+    background-size: auto;
 }
 
 html, body {
@@ -23,7 +23,6 @@ td, th {
     border: 1px solid black;
     padding: 5px;
 }
-
 
 @media (max-width: 576px) {
     .container{

@@ -94,7 +94,7 @@ const App = () => {
                                 paddingLeft: '0',
                                 marginLeft:'-80px',
                             }}>
-                                <Table className="table table-bordered mt-4">
+                                <Table className="table table-bordered mt-3">
                                     <View handleSubmit={handleSubmit}
                                           update={update}
                                           updateTable={updateTable}

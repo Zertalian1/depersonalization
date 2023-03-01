@@ -92,6 +92,7 @@ const AddForm = ({toggle,updateTable}) => {
             label: "ФИО",
             name: "fullName",
             type: "text",
+            exampleField : "Паньков Дмитрий Вячеславович",
             onBlur: handleBlur,
             onChange: handleFullNameChange,
             validation: {
@@ -103,6 +104,7 @@ const AddForm = ({toggle,updateTable}) => {
             label: "Дата рождения",
             name: "dateOfBirth",
             type: "text",
+            exampleField: "27-12-2002",
             onBlur: handleBlur,
             onChange: handleDateOfBirthChange,
             validation: {
@@ -114,6 +116,7 @@ const AddForm = ({toggle,updateTable}) => {
             label: "Место рождения",
             name: "placeOfBirth",
             type: "text",
+            exampleField: "Новосибирск",
             onBlur: handleBlur,
             onChange: handlePlaceOfBirthChange,
             validation: {
@@ -125,6 +128,7 @@ const AddForm = ({toggle,updateTable}) => {
             label: "Пол",
             name: "gender",
             type: "text",
+            exampleField: "м",
             onBlur: handleBlur,
             onChange: handleGenderChange,
             validation: {
@@ -136,6 +140,7 @@ const AddForm = ({toggle,updateTable}) => {
             label: "ИНН",
             name: "inn",
             type: "text",
+            exampleField: "202082024666",
             onBlur: handleBlur,
             onChange: handleInnChange,
             validation: {
@@ -149,6 +154,7 @@ const AddForm = ({toggle,updateTable}) => {
             type: "text",
             onBlur: handleBlur,
             onChange: handleSnilsChange,
+            exampleField: "465-197-270 16",
             validation: {
                 touched: validation.touched.snils,
                 errors: validation.errors.snils,
@@ -158,6 +164,7 @@ const AddForm = ({toggle,updateTable}) => {
             label: "Контактные данные",
             name: "contactInfo",
             type: "text",
+            exampleField: "d.pankov@g.nsu.ru",
             onBlur: handleBlur,
             onChange: handleContactInfoChange,
             validation: {
@@ -169,6 +176,7 @@ const AddForm = ({toggle,updateTable}) => {
             label: "Адрес",
             name: "address",
             type: "text",
+            exampleField: "Гусь-Хрустальный, ул. Космонавтов, д. 60",
             onBlur: handleBlur,
             onChange: handleAddressChange,
             validation: {
@@ -180,6 +188,7 @@ const AddForm = ({toggle,updateTable}) => {
             label: "Тип документа",
             name: "documentType",
             type: "text",
+            exampleField: "пасспорт",
             onBlur: handleBlur,
             onChange: handleDocumentTypeChange,
             validation: {
@@ -191,6 +200,7 @@ const AddForm = ({toggle,updateTable}) => {
             label: "Номер документа",
             name: "documentNumber",
             type: "text",
+            exampleField: "4953 461348",
             onBlur: handleBlur,
             onChange: handleDocumentNumberChange,
             validation: {
@@ -222,6 +232,7 @@ const AddForm = ({toggle,updateTable}) => {
                                 onBlur={field.onBlur}
                                 onInput={field.onInput}
                                 onChange={field.onChange}
+                                placeholder={field.exampleField}
                             />
                             {field.error ? <div style={{ color: "red" }}>{field.error}</div> : null}
                         </div>
