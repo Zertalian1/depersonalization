@@ -1,19 +1,6 @@
-version: '3.8'
+version: "3.9"
 
 services:
-
-  db1:
-    image: postgres:latest
-    environment:
-      POSTGRES_DB: BigCaseClub
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 1234
-    ports:
-      - "5432:5432"
-    volumes:
-      - app-volume:/var/lib/postgresql/data-original
-    depends_on:
-      - db2
 
   db2:
     image: postgres:latest
@@ -30,12 +17,27 @@ services:
     volumes:
       - app-volume:/var/lib/postgresql/data-depersonalize
 
+  db1:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: BigCaseClub
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - "5432:5432"
+    volumes:
+      - app-volume:/var/lib/postgresql/data-original
+    depends_on:
+      db2:
+        condition: service_started
+
   backend:
     image: zertallian/depersonalization-backend
     ports:
       - "8080:8080"
     depends_on:
-      - db1
+      db1:
+        condition: service_started
 
 
   frontend:
