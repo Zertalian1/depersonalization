@@ -104,7 +104,7 @@ const AddForm = ({toggle,updateTable}) => {
             label: "Дата рождения",
             name: "dateOfBirth",
             type: "text",
-            exampleField: "27-12-2002",
+            exampleField: "2002-12-27",
             onBlur: handleBlur,
             onChange: handleDateOfBirthChange,
             validation: {
