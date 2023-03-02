@@ -27,9 +27,6 @@ services:
       - "5432:5432"
     volumes:
       - app-volume:/var/lib/postgresql/data-original
-    depends_on:
-      db2:
-        condition: service_started
 
   backend:
     image: zertallian/depersonalization-backend
@@ -38,10 +35,12 @@ services:
     depends_on:
       db1:
         condition: service_started
+      db2:
+        condition: service_started
 
 
   frontend:
-    image: zertallian/depersonalization-frontend
+    image: zertallian/depersonalization-frontend:latest
     ports:
       - "3000:3000"
     depends_on:
