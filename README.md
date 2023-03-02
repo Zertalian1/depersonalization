@@ -66,3 +66,8 @@ https://git.codenrock.com/adventure-league/cnrprod-team-27357/depersonalization
 [npm]:https://www.npmjs.com/
 [Java]:https://www.java.com/
 
+## Возможные проблемы
+
+При развертывании докер образа может получиться так, что база данных запуститься позже бэкеда.
+В такой ситуации достаточно перезапустить контейнер отвечающий за бэкенд. 
+
